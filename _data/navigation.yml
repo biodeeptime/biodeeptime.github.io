@@ -1,0 +1,24 @@
+- name: About
+  link: /about/
+- name: Database
+  link: /database/
+  dropdown:
+    - name: Access
+      link: /database/access/
+    - name: Structure
+      link: /database/access/
+    - name: Milestones
+      link: /database/access/
+    - name: Citation
+      link: /database/access/
+- name: History
+  link: /history/
+  dropdown:
+    - name: People
+      link: /database/access/
+    - name: Funding
+      link: /database/access/
+- name: Tutorials
+  link: /tutorials/
+- name: Publications
+  link: /tutorials/
