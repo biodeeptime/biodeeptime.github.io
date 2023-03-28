@@ -3,7 +3,7 @@
 - name: Database
   link: /database/
   dropdown:
-    - name: Access
+    - name: Contributors 
       link: /database/access/
     - name: Structure
       link: /database/access/
@@ -11,14 +11,20 @@
       link: /database/access/
     - name: Citation
       link: /database/access/
-- name: History
-  link: /history/
+    - name: Access
+      link: /database/access/
+- name: Team
+  link: /tema/
   dropdown:
     - name: People
+      link: /database/access/
+    - name: Workshops
       link: /database/access/
     - name: Funding
       link: /database/access/
 - name: Tutorials
   link: /tutorials/
 - name: Publications
+  link: /tutorials/
+- name: Contribute!
   link: /tutorials/
