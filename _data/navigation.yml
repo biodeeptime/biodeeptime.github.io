@@ -1,30 +1,32 @@
 - name: About
   link: /about/
 - name: Database
-  link: /database/
   dropdown:
     - name: Contributors 
-      link: /database/access/
+      link: /database/contributing/
     - name: Structure
-      link: /database/access/
+      link: /database/structure/
     - name: Milestones
-      link: /database/access/
+      link: /database/milestones/
     - name: Citation
-      link: /database/access/
+      link: /database/citation/
     - name: Access
       link: /database/access/
 - name: Team
-  link: /tema/
   dropdown:
     - name: People
-      link: /database/access/
+      link: /team/people/
     - name: Workshops
-      link: /database/access/
+      link: /team/workshops/
     - name: Funding
-      link: /database/access/
+      link: /team/funding/
 - name: Tutorials
   link: /tutorials/
 - name: Publications
-  link: /tutorials/
+  link: /publications/
 - name: Contribute!
-  link: /tutorials/
+  dropdown:
+    - name: Specifications
+      link: /contribute/specs/
+    - name: Workshops
+      link: /contribute/contact/
