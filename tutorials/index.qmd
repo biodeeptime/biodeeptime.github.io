@@ -151,110 +151,75 @@
                     
                     
                     
-    
-    
-
-<div class="contents">
-    <div class="menu">
-        <p class="menu-label">Contents</p>
-        <ul class="menu-list">
-  <li><a href="#preparing-data">Preparing data</a>
-    <ul>
-      <li><a href="#subheading">Subheading</a></li>
-      <li><a href="#subheading-2">Subheading 2</a></li>
-    </ul>
-  </li>
-</ul>
-    </div>
-</div>
-
-
-
-
 <div class="content">
-    <p>Add <code class="language-plaintext highlighter-rouge">toc: true</code> to the metadata of the .md file for a table of contents.</p>
+    ```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(divDyn)
+```
 
-<h1 id="introduction">Introduction</h1>
+Add `toc: true` to the metadata of the .md file for a table of contents.
 
-<ul>
-  <li>Database was designed for use in research in mind</li>
-  <li>Here are some tutorials on how to use it:</li>
-</ul>
+# Introduction
 
-<hr />
+- Database was designed for use in research in mind
+- Here are some tutorials on how to use it: 
 
-<h1 id="more-tutorials">More tutorials</h1>
+* * *
 
-<p>Additional tutorials will be made available on the
-<a href="https://www.evolv-ed.net/">Evolv-ED</a> + logo</p>
+# More tutorials
 
-<hr />
+Additional tutorials will be made available on the [Evolv-ED](https://www.evolv-ed.net/) + logo 
 
-<h2 id="preparing-data">Preparing data</h2>
+* * * 
 
-<p>Example R code chunks:</p>
+## Preparing data
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># counts of specimens</span><span class="w">
-</span><span class="n">counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">35</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">13</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span><span class="w">
-</span><span class="n">counts</span><span class="w">
-</span></code></pre></div></div>
+Example R code chunks: 
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [1] 35 19 13  9  6  4  2  2  2  2  2  2  2  1  1  1  1  1  1  1
-</code></pre></div></div>
+```{r counts, message=FALSE, paged.print=FALSE}
+# counts of specimens
+counts <- c(35,19,13,9,6,4,2,2,2,2,2,2,2,1,1,1,1,1,1,1)
+counts
+```
 
-<p>We can have a citation here: such as (Kocsis et al. 2019)</p>
+We can have a citation here: such as [@kocsis2019package]
 
-<h3 id="subheading">Subheading</h3>
+### Subheading
 
-<p>Some more R code</p>
+Some more R code
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># one letter that represents each species</span><span class="w">
-</span><span class="n">species</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">counts</span><span class="p">)]</span><span class="w">
+```{r specimens, message=FALSE, paged.print=FALSE}
+# one letter that represents each species
+species <- letters[1:length(counts)]
 
-</span><span class="c1"># extended format of the sample</span><span class="w">
-</span><span class="n">specimens</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="n">species</span><span class="p">,</span><span class="w"> </span><span class="n">counts</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
+# extended format of the sample
+specimens <- rep(species, counts)
+```
 
-<p>Running the <code class="language-plaintext highlighter-rouge">table()</code> function confirms that the structure we created is
-indeed matching the count data above.</p>
+Running the ``table()`` function confirms that the structure we created is indeed matching the count data above. 
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span><span class="p">(</span><span class="n">specimens</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
+```{r table, message=FALSE, paged.print=FALSE}
+table(specimens)
+```
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>specimens
- a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t 
-35 19 13  9  6  4  2  2  2  2  2  2  2  1  1  1  1  1  1  1 
-</code></pre></div></div>
+To make the vector of specimens compatible with the ``subsample()`` function, we have to make it a ``data.frame``.
 
-<p>To make the vector of specimens compatible with the <code class="language-plaintext highlighter-rouge">subsample()</code>
-function, we have to make it a <code class="language-plaintext highlighter-rouge">data.frame</code>.</p>
+```{r df, message=FALSE, paged.print=FALSE}
+samp <- data.frame(specimens, stringsAsFactors=FALSE)
+```
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">samp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">specimens</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
+### Subheading 2 
 
-<h3 id="subheading-2">Subheading 2</h3>
+An example plot
 
-<p>An example plot</p>
+```{r tabplot, fig.width=10}
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">specimens</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
+plot(table(specimens))
+```
 
-<p><img src="tutorials_files/figure-commonmark/tabplot-1.png" alt="" /></p>
 
-<h1 id="references">References</h1>
+# References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-kocsis2019package" class="csl-entry">
-
-Kocsis, Ádám T., Carl J. Reddin, John Alroy, and Wolfgang Kiessling.
-2019. “The R Package <span class="nocase">divDyn</span> for Quantifying
-Diversity Dynamics Using Fossil Sampling Data.” *Methods in Ecology and
-Evolution* 10 (5): 735–43. &lt;https://doi.org/10.1111/2041-210X.13161&gt;.
-
-</div>
-
-</div>
 
 </div>
                 </div>
