@@ -1,0 +1,80 @@
+---
+title: Tutorials
+subttitle: Using BioDeepTime in analytical code
+bibliography: 'bibliography.bib'
+format:
+  gfm: 
+    variant: +yaml_metadata_block
+permalink: /tutorials/
+layout: page
+---
+
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(divDyn)
+```
+
+Add `toc: true` to the metadata of the .md file for a table of contents.
+
+# Introduction
+
+- Database was designed for use in research in mind
+- Here are some tutorials on how to use it: 
+
+* * *
+
+# More tutorials
+
+Additional tutorials will be made available on the [Evolv-ED](https://www.evolv-ed.net/) + logo 
+
+* * * 
+
+## Preparing data
+
+Example R code chunks: 
+
+```{r counts, message=FALSE, paged.print=FALSE}
+# counts of specimens
+counts <- c(35,19,13,9,6,4,2,2,2,2,2,2,2,1,1,1,1,1,1,1)
+counts
+```
+
+We can have a citation here: such as [@kocsis2019package]
+
+### Subheading
+
+Some more R code
+
+```{r specimens, message=FALSE, paged.print=FALSE}
+# one letter that represents each species
+species <- letters[1:length(counts)]
+
+# extended format of the sample
+specimens <- rep(species, counts)
+```
+
+Running the ``table()`` function confirms that the structure we created is indeed matching the count data above. 
+
+```{r table, message=FALSE, paged.print=FALSE}
+table(specimens)
+```
+
+To make the vector of specimens compatible with the ``subsample()`` function, we have to make it a ``data.frame``.
+
+```{r df, message=FALSE, paged.print=FALSE}
+samp <- data.frame(specimens, stringsAsFactors=FALSE)
+```
+
+### Subheading 2 
+
+An example plot
+
+```{r tabplot, fig.width=10}
+
+plot(table(specimens))
+```
+
+
+# References
+
