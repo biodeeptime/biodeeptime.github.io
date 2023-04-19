@@ -1,7 +1,7 @@
 ---
 layout: page
-title: The BioDeepTime Database
-subtitle: sub
+title: BioDeepTime
+subtitle: Assemblage time series across scales
 ---
 
 # Landing page
