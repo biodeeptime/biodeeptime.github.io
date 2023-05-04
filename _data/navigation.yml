@@ -1,5 +1,13 @@
 - name: About
   link: /about/
+- name: Team
+  dropdown:
+    - name: People
+      link: /team/people/
+    - name: Workshops
+      link: /team/workshops/
+    - name: Funding
+      link: /team/funding/
 - name: Database
   dropdown:
     - name: Contributors 
@@ -12,14 +20,6 @@
       link: /database/citation/
     - name: Access
       link: /database/access/
-- name: Team
-  dropdown:
-    - name: People
-      link: /team/people/
-    - name: Workshops
-      link: /team/workshops/
-    - name: Funding
-      link: /team/funding/
 - name: Tutorials
   link: /tutorials/
 - name: Publications
