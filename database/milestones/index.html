@@ -44,7 +44,8 @@
     <div class="container">
         <div class="navbar-brand">
             <a href="/" class="navbar-item">
-                BioDeepTime
+              <img src="https://biodeeptime.github.io/images/logo.png" style="margin-right:5px">
+			  BioDeepTime
             </a>
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu" :class="{ 'is-active': openNav }" x-on:click="openNav = !openNav">
                 <span aria-hidden="true"></span>
@@ -81,15 +82,15 @@
                         <a href="" class="navbar-link ">Database</a>
                         <div class="navbar-dropdown">
                             
-                            <a href="/database/contributing/" class="navbar-item ">Contributors</a>
-                            
                             <a href="/database/structure/" class="navbar-item ">Structure</a>
+                            
+                            <a href="/database/contributing/" class="navbar-item ">Contributors</a>
                             
                             <a href="/database/milestones/" class="navbar-item is-active">Milestones</a>
                             
-                            <a href="/database/citation/" class="navbar-item ">Citation</a>
-                            
                             <a href="/database/access/" class="navbar-item ">Access</a>
+                            
+                            <a href="/database/attribution/" class="navbar-item ">Attribution</a>
                             
                         </div>
                     </div>
@@ -131,12 +132,20 @@
         <section class="hero  is-medium  is-bold is-primary" >
     <div class="hero-body ">
         <div class="container">
-            <h1 class="title is-2">Milestones</h1>
-            <p class="subtitle is-3"></p>
-            
+		  <div class="columns is-vcentered">
+			<div class="column is-7">
+			  <h1 class="title is-2">Milestones</h1>
+			  <p class="subtitle is-3"></p>
+			  
+			</div>
+			<div class="column is-2">
+			  <img src="https://biodeeptime.github.io/images/logo.png" width="120px">
+			</div>
+			</div>
         </div>
     </div>
 </section>
+
     
     
 
@@ -152,12 +161,153 @@
                     
                     
 <div class="content">
+    <div class="columns">
+
+<div class="column is-8">
     <h1 id="database-milestones">Database milestones</h1>
 
+    <p>Due to the heterogeneity of the constituent data, BioDeepTime is generated manually in semi-regular intervals.</p>
+
+    <ul>
+      <li>describing database releases</li>
+      <li>release cycles explained</li>
+      <li>change logs</li>
+    </ul>
+
+  </div>
+
+<div class="column is-4">
+<div class="contents">
+      <div class="menu">
+<p class="menu-label">Contents</p>
+<ul class="menu-list">
+<li>
+<a href="#milestones-explained">Milestones explained</a>  
+</li>
+<li>
+<a href="#list-of-known-issues">List of known issues</a>  
+</li>
+<li>
+<a href="#biodeeptime-v070-2023-06-xx">Version 0.7.0</a>  
+</li>
+<li>
+<a href="#biodeeptime-v060-2023-01-17">Version 0.6.0</a>  
+</li>
+</ul>
+</div>
+    </div>
+</div>
+
+</div>
+
+<hr />
+
+<h1 id="list-of-known-issues">List of known issues</h1>
+
+<h3 id="marben">MARBEN</h3>
 <ul>
-  <li>describing database releases</li>
-  <li>release cycles explained</li>
-  <li>change logs</li>
+  <li>Missing <code class="language-plaintext highlighter-rouge">species</code> and <code class="language-plaintext highlighter-rouge">genus</code> columns</li>
+</ul>
+
+<h3 id="general">General</h3>
+<ul>
+  <li>References bibtex need manual review. Character encoding is still a recurring problem.</li>
+</ul>
+
+<hr />
+
+<h1 id="change-log">Change log</h1>
+
+<h2 id="biodeeptime-v070-2023-06-xx">BioDeepTime v0.7.0 [2023-06-xx]</h2>
+
+<h3 id="added">Added</h3>
+<ul>
+  <li>new field <code class="language-plaintext highlighter-rouge">samples.totalCount</code> that represents the sample size in the case of count data, rather than the target sampling effort</li>
+  <li>Three new <code class="language-plaintext highlighter-rouge">abundanceUnit</code> categories: <code class="language-plaintext highlighter-rouge">"biomass cover"</code>, <code class="language-plaintext highlighter-rouge">"biomass weight"</code>, <code class="language-plaintext highlighter-rouge">"biomass volume"</code></li>
+  <li>bibtex entries formatted by ChatGPT to the <code class="language-plaintext highlighter-rouge">bibtex</code> column of the <code class="language-plaintext highlighter-rouge">refs</code> table</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+<ul>
+  <li>The word occurrence was systmatically replaced with <code class="language-plaintext highlighter-rouge">record</code>. The <code class="language-plaintext highlighter-rouge">occurrences</code> table was rename to <code class="language-plaintext highlighter-rouge">records</code>, its primary key from <code class="language-plaintext highlighter-rouge">occID</code> to <code class="language-plaintext highlighter-rouge">recordID</code>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">timeUnits</code> table was renamed to <code class="language-plaintext highlighter-rouge">timeOriginalUnits</code> for better consistency. Consequently, the the fields <code class="language-plaintext highlighter-rouge">timeUnitID</code> and <code class="language-plaintext highlighter-rouge">timeUnit</code> were rename to <code class="language-plaintext highlighter-rouge">timeOriginalUnitID</code> and <code class="language-plaintext highlighter-rouge">timeOriginalUnit</code>, respectively.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">ranks</code> table was renamed to <code class="language-plaintext highlighter-rouge">analyzedRanks</code> for better consistency.</li>
+  <li>Reference entries are forced into UTF-8 encoding</li>
+</ul>
+
+<h5 id="biotime">BioTime</h5>
+<ul>
+  <li>Omitted studies 39 and 217 due to potentially erroneous entries</li>
+  <li>Added biomass data to where there were no <code class="language-plaintext highlighter-rouge">abundanceUnit</code>s earlier</li>
+  <li>Time series taxonomic/environment groups are added</li>
+</ul>
+
+<h5 id="neotoma">Neotoma</h5>
+<ul>
+  <li>sample sum count is moved to <code class="language-plaintext highlighter-rouge">samples.totalCount</code> from <code class="language-plaintext highlighter-rouge">samples.samplingEffort</code>. Accordingly <code class="language-plaintext highlighter-rouge">samplingEfforType</code> is consistently set to <code class="language-plaintext highlighter-rouge">NA</code>.</li>
+  <li>Neotoma references were split, multiple refs per samples are now properly indicated</li>
+</ul>
+
+<h5 id="triton">Triton</h5>
+<ul>
+  <li>New version is used now - indicated to be released soon as Triton 2</li>
+  <li>Fixed issues where all abundance values were relative abundances, even when count was indicated.</li>
+  <li>The sample sum is now recorded in <code class="language-plaintext highlighter-rouge">samples.totalCount</code> and not in <code class="language-plaintext highlighter-rouge">samplingEffort</code>. In case where samples reflect normalization for 1 gramm, the value 1 is now recorded in <code class="language-plaintext highlighter-rouge">samplingEffort</code> with a <code class="language-plaintext highlighter-rouge">samplingEffortType</code> of “g”.</li>
+</ul>
+
+<h5 id="sedtraps">SedTraps</h5>
+<ul>
+  <li>added missing <code class="language-plaintext highlighter-rouge">samplingEffortType</code> (all are m^2)</li>
+</ul>
+
+<h5 id="marben-1">MARBEN</h5>
+<ul>
+  <li>added <code class="language-plaintext highlighter-rouge">samplingEffort</code> and <code class="language-plaintext highlighter-rouge">samplingEffortType</code> values from <code class="language-plaintext highlighter-rouge">processing</code></li>
+  <li>total count of count-type data</li>
+  <li>added missing reason: <code class="language-plaintext highlighter-rouge">"Community analysis"</code></li>
+</ul>
+
+<h6 id="pbdb">PBDB</h6>
+<ul>
+  <li>added total count of count-type data</li>
+</ul>
+
+<h6 id="direct-uploads">Direct uploads</h6>
+<ul>
+  <li>coccolithophore data: moved total count from <code class="language-plaintext highlighter-rouge">samplingEffort</code> to <code class="language-plaintext highlighter-rouge">totalCount</code></li>
+</ul>
+
+<h2 id="removed">Removed</h2>
+
+<h6 id="biotime-1">BioTime</h6>
+<ul>
+  <li>Studies 39 and 217 were removed due to quality reasons.</li>
+</ul>
+
+<hr />
+
+<h2 id="biodeeptime-v060-2023-01-17">BioDeepTime v0.6.0 [2023-01-17]</h2>
+
+<p><a href="https://doi.org/10.5281/zenodo.7504617"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7504617.svg" alt="DOI" /></a></p>
+
+<h3 id="added-1">Added</h3>
+<ul>
+  <li>The Geobiodiversity Database - the Fenxiang section</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+  <li>moved the coccolith data to “Direct uploads”</li>
+</ul>
+
+<h3 id="deleted">Deleted</h3>
+<ul>
+  <li>occurrenceTypeID column and occurenceType table</li>
+</ul>
+
+<h3 id="acknowledged">Acknowledged</h3>
+<ul>
+  <li>The two Neptune time series that have mixed taxonomy represent true data.</li>
 </ul>
 
 </div>

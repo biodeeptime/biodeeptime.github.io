@@ -44,7 +44,8 @@
     <div class="container">
         <div class="navbar-brand">
             <a href="/" class="navbar-item">
-                BioDeepTime
+              <img src="https://biodeeptime.github.io/images/logo.png" style="margin-right:5px">
+			  BioDeepTime
             </a>
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu" :class="{ 'is-active': openNav }" x-on:click="openNav = !openNav">
                 <span aria-hidden="true"></span>
@@ -81,15 +82,15 @@
                         <a href="" class="navbar-link ">Database</a>
                         <div class="navbar-dropdown">
                             
-                            <a href="/database/contributing/" class="navbar-item ">Contributors</a>
-                            
                             <a href="/database/structure/" class="navbar-item ">Structure</a>
+                            
+                            <a href="/database/contributing/" class="navbar-item ">Contributors</a>
                             
                             <a href="/database/milestones/" class="navbar-item ">Milestones</a>
                             
-                            <a href="/database/citation/" class="navbar-item ">Citation</a>
-                            
                             <a href="/database/access/" class="navbar-item is-active">Access</a>
+                            
+                            <a href="/database/attribution/" class="navbar-item ">Attribution</a>
                             
                         </div>
                     </div>
@@ -131,12 +132,20 @@
         <section class="hero  is-medium  is-bold is-primary" >
     <div class="hero-body ">
         <div class="container">
-            <h1 class="title is-2">Accessing data</h1>
-            <p class="subtitle is-3"></p>
-            
+		  <div class="columns is-vcentered">
+			<div class="column is-7">
+			  <h1 class="title is-2">Accessing data</h1>
+			  <p class="subtitle is-3"></p>
+			  
+			</div>
+			<div class="column is-2">
+			  <img src="https://biodeeptime.github.io/images/logo.png" width="120px">
+			</div>
+			</div>
         </div>
     </div>
 </section>
+
     
     
 
@@ -152,8 +161,131 @@
                     
                     
 <div class="content">
-    <p>Accessing the current version of the biodeepime database.
-link to the most up-to-date zenodo repository.</p>
+    <div class="columns is-vcentered">
+<div class="column is-9">
+    <p>All <a href="https://biodeeptime.github.io/database/milestones">published versions</a> of BioDeepTime are published as <a href="https://zenodo.org">Zenodo</a> depositions, and are accessible as static files under the main DOI. This DOI always redirects to the most up-to-date version of the database:</p>
+
+    <div class="control">
+<div class="tags has-addons">
+	<span class="tag is-dark">DOI</span>
+	<a href="https://doi.org/10.5281/zenodo.7504616" class="tag is-info">10.5281/zenodo.7504616</a>
+</div>
+</div>
+
+  </div>
+<div class="column is-3">
+<a href="https://doi.org/10.5281/zenodo.7504616">
+<img src="https://biodeeptime.github.io/images/logos/zenodo.png" style="border-radius:3%" />
+</a>
+</div>
+
+</div>
+
+<hr />
+
+<h1 id="files-of-the-most-recent-version-v06">Files of the most recent version (v0.6)</h1>
+
+<p>The current files of <strong>BioDeepTime</strong> (v0.6)are accessible from the links below.
+Both the original relational database and a record-denormalized data frame is available for download.</p>
+
+<h3 id="1-record-denormalized-data-frame">1) Record-denormalized data frame</h3>
+<div class="columns is-vcentered">
+<div class="column is-2">
+    <p><img src="https://biodeeptime.github.io/images/table.png" alt="table" /></p>
+
+  </div>
+<div class="column is-9">
+
+    <p>The <strong>BioDeepTime</strong> database in a single table, where every row represents one biogeographic record <em>(occurrence)</em>.</p>
+
+    <p>This form of the database is optimized for analyses, and can be accessed in binary R (<code class="language-plaintext highlighter-rouge">.rds</code>), plain text (<code class="language-plaintext highlighter-rouge">.csv</code>) and Apache Parquet (<code class="language-plaintext highlighter-rouge">.parquet</code>) formats:</p>
+
+    <p><a class="button is-link is-light" href="https://zenodo.org/record/7504617/files/biodeeptime.rds?download=1">
+    <span class="icon">
+	<i class="fas fa-download"></i>
+	</span>
+    <span>.rds</span>
+  </a>
+ <a class="button" href="https://zenodo.org/record/7504617/files/biodeeptime_csv.zip?download=1">
+    <span class="icon">
+	<i class="fas fa-download"></i>
+	</span>
+    <span>.csv</span>
+  </a>
+ <a class="button" href="https://zenodo.org/record/7504617/files/biodeeptime_parquet.zip?download=1">
+    <span class="icon">
+	<i class="fas fa-download"></i>
+	</span>
+    <span>.parquet</span>
+  </a></p>
+
+  </div>
+</div>
+<h3 id="2-sqlite-relational-database">2) SQLite Relational database</h3>
+
+<div class="columns is-vcentered">
+<div class="column is-2">
+    <p><img src="https://biodeeptime.github.io/images/rdb.png" alt="table" /></p>
+
+  </div>
+<div class="column is-9">
+
+    <p>This is the source of the denormalized table above.</p>
+
+    <p><a class="button is-primary is-light" href="https://zenodo.org/record/7504617/files/biodeeptime_sqlite.zip?download=1">
+    <span class="icon">
+	<i class="fas fa-download"></i>
+	</span>
+    <span>.sqlite</span>
+  </a></p>
+
+  </div>
+</div>
+<h3 id="3-additional-data">3) Additional data</h3>
+
+<h5 id="--references">- References</h5>
+
+<p><a class="button" href="https://zenodo.org/record/7504617/files/references.csv?download=1">
+    <span class="icon">
+	<i class="fas fa-download"></i>
+	</span>
+    <span>References (.csv)</span>
+  </a></p>
+
+<h5 id="--bchron-ages-for-neotoma">- BChron ages for Neotoma</h5>
+
+<p><a class="button" href="https://zenodo.org/record/7504617/files/neotoma_bchron.rds?download=1">
+    <span class="icon">
+	<i class="fas fa-download"></i>
+	</span>
+    <span>Neotoma BChron ages (.rds)</span>
+  </a></p>
+<hr />
+
+<div class="columns is-vcentered">
+<div class="column is-8">
+
+    <h1 id="via-the-chronosphere-r-package">Via the <code class="language-plaintext highlighter-rouge">chronosphere</code> R package</h1>
+
+    <p>New versions are automatically added to the <code class="language-plaintext highlighter-rouge">chronosphere</code> data-versioning framework (currently available in R only). You can access the BioDeepTime with the following coordinates:</p>
+
+    <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">chronosphere</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># available datasets</span><span class="w">
+</span><span class="n">available</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chronosphere</span><span class="o">::</span><span class="n">datasets</span><span class="p">(</span><span class="n">dat</span><span class="o">=</span><span class="s2">"biodeeptime"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># most recent occurrence table</span><span class="w">
+</span><span class="n">bdt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chronosphere</span><span class="o">::</span><span class="n">fetch</span><span class="p">(</span><span class="n">dat</span><span class="o">=</span><span class="s2">"biodeeptime"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p><a class="button is-link is-light" href="https://biodeeptime.github.io/tutorials">Check out the tutorials for a demonstration!</a></p>
+
+  </div>
+
+<div class="column is-2">
+    <p><img src="https://biodeeptime.github.io/images/logos/chronosphere.png" alt="chronosphere" /></p>
+  </div>
+</div>
 
 </div>
                 </div>

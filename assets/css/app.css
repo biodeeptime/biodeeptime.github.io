@@ -3823,9 +3823,9 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus { color: #ee2049 !imp
 
 .hero.is-small .hero-body { padding: 1.5rem; }
 
-@media screen and (min-width: 769px), print { .hero.is-medium .hero-body { padding: 9rem 4.5rem; } }
+@media screen and (min-width: 769px), print { .hero.is-medium .hero-body { padding: 5rem 2.5rem; } }
 
-@media screen and (min-width: 769px), print { .hero.is-large .hero-body { padding: 18rem 6rem; } }
+@media screen and (min-width: 769px), print { .hero.is-large .hero-body { padding: 9rem 4rem; } }
 
 .hero.is-halfheight .hero-body, .hero.is-fullheight .hero-body, .hero.is-fullheight-with-navbar .hero-body { align-items: center; display: flex; }
 
