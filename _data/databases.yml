@@ -1,0 +1,70 @@
+- ref: biotime 
+  name: BioTIME 
+  link: https://biotime.st-andrews.ac.uk/
+  logo: biotime_cent.png
+  evolved:
+  representatives:
+  - dornelas
+  - penny
+  text: A global database of modern assemblage time series for quantifying and understanding biodiversity change.
+- ref: sedtraps
+  name: Foram sediment traps 
+  link: https://zenodo.org/record/2638013
+  logo: generic.svg
+  evolved:
+  representatives:
+  - jonkers
+  text: High temporal resolution records of planktonic foraminifera assemblages from the modern ocean.
+- ref: gbdb
+  name: Geobiodiversity Database 
+  link: http://www.geobiodiversity.com/
+  logo: gbdb.png
+  evolved:
+  representatives:
+  - na
+  - li
+  text: Outcrop based list of 
+- ref: marben
+  name: MarBen 
+  link: 
+  logo: generic.svg
+  evolved:
+  representatives:
+  - tomasovych 
+  - may
+  - yasuhara
+  text: Assemblage time series from the marine benthos in shallow geological time.
+- ref: neotoma
+  name: The Neotoma Paleoecology Database 
+  link: https://www.neotomadb.org/
+  logo: packrat-logo.svg
+  evolved:
+  representatives:
+  - williams
+  - fastovich
+  text: The largest database of palinomorph time series. 
+- ref: neptune
+  name: Neptune Sandbox Berlin
+  link: https://www.neotomadb.org/
+  logo: neptunedb.png
+  evolved:
+  representatives:
+  - renaudie
+  text:
+- ref: pbdb
+  name: The Paleobiology Database 
+  link: https://paleobiodb.org/
+  logo: PBDB2014.png
+  evolved:
+  representatives:
+  - finnegan
+  - kiessling
+  text: A community-driven database of published fossil biogeographical observations (occurrences). 
+- ref: triton
+  name: The Triton Database 
+  link: "https://springernature.figshare.com/articles/dataset/Metadata_record_for_Triton_a_new_species-level_database_of_Cenozoic_planktonic_foraminiferal_occurrences/14655564"
+  logo: Triton.png
+  evolved:
+  representatives:
+  - saupe
+  text: A curated database of planktonic foraminifera from the Cenozoic.

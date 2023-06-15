@@ -10,16 +10,16 @@
       link: /team/funding/
 - name: Database
   dropdown:
-    - name: Contributors 
-      link: /database/contributing/
     - name: Structure
       link: /database/structure/
+    - name: Contributors 
+      link: /database/contributing/
     - name: Milestones
       link: /database/milestones/
-    - name: Citation
-      link: /database/citation/
     - name: Access
       link: /database/access/
+    - name: Attribution
+      link: /database/attribution/
 - name: Tutorials
   link: /tutorials/
 - name: Publications

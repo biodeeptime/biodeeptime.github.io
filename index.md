@@ -2,6 +2,8 @@
 layout: page
 title: BioDeepTime
 subtitle: Assemblage time series across scales
+hero_link: /database/access/
+hero_link_text: Download
 ---
 
 # Landing page

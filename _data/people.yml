@@ -1,0 +1,167 @@
+- ref: kocsis
+  first: Ádám 
+  last: Kocsis
+  webpage: https://www.gzn.nat.fau.de/person/adam-kocsis/
+  institute: GeoZentrum Nordbayern, Friedrich-Alexander-Universität Erlangen-Nürnberg
+  image: kocsis.jpg
+  special: admin
+- ref: penny
+  first: Amelia
+  last: Penny
+  webpage: https://risweb.st-andrews.ac.uk/portal/en/persons/amelia-penny(ab5b1124-b30e-45fc-a401-bfbd0daa2c69).html
+  institute: University of St. Andrews
+  image: penny.jpeg
+- ref: rillo
+  first: Marina 
+  last: Rillo
+  webpage: https://uol.de/icbm/planktologie/mitarbeiter/marina-rillo
+  institute: Carl von Ossietzky Universität Oldenburg
+  image: marina-rillo.jpg
+  special: admin
+- ref: dornelas
+  first: Maria 
+  last: Dornelas
+  webpage: https://risweb.st-andrews.ac.uk/portal/en/persons/maria-dornelas(517083b5-9f06-4404-9327-2108c35c757d).html
+  institute: University of St. Andrews 
+  image: dornelas.jpg
+  special:
+- ref: finnegan
+  first: Seth 
+  last: Finnegan
+  webpage: 
+  institute: University of California, Berkeley
+  image: finnegans.jpg 
+  special: pi
+- ref: hull
+  first: Pincelli 
+  last: Hull
+  webpage: 
+  institute: Yale University
+  image: Picelli-Hull.jpg
+  special: pi
+- ref: smith
+  first: Jansen 
+  last: Smith
+  webpage: 
+  institute: University of New Mexico
+  image: smith.jpeg
+  special: admin
+- ref: jonkers
+  first: Lukas  
+  last: Jonkers  
+  webpage: https://www.marum.de/Lukas-Jonkers.html
+  institute: MARUM, University of Bremen
+  image: jonkers.jpg 
+  special: 
+- ref: williams
+  first: Jack   
+  last: Williams  
+  webpage: https://williamspaleolab.github.io/people/
+  institute: University of Madison, Wisconsin
+  image: williams.jpg
+  special:
+- ref: na
+  first: Lin   
+  last: Na  
+  webpage: http://sourcedb.nigpas.cas.cn/en/ywrck/201704/t20170426_4780665.html
+  institute: Nanjing Institute of Geology and paleontology
+  image: generic.png
+  special:
+- ref: li
+  first: Qijian   
+  last: Li  
+  webpage: http://sourcedb.nigpas.cas.cn/en/ywrck/201602/t20160222_4534933.html
+  institute: Nanjing Institute of Geology and paleontology
+  image: qijian.jpg
+  special:
+- ref: tomasovych
+  first: Adam   
+  last: Tomasovych  
+  webpage: http://www.geo.sav.sk/en/staff/adam-tomasovych-en/
+  institute: Slovak Academy of Sciences
+  image: adamt.jpg
+  special:
+- ref: may
+  first: Huai-Hsuan (May)  
+  last: Huang  
+  webpage: https://naturalhistory.si.edu/staff/may-huang
+  institute: Smithsonian Institution
+  image: may.jpeg
+  special:
+- ref: fastovich
+  first: David    
+  last: Fastovich  
+  webpage: http://davidfastovich.com/
+  institute: Syracuse University Paleoclimate Dynamics Lab
+  image: fastovich.jpg
+  special:
+- ref: saupe
+  first: Erin    
+  last: Saupe  
+  webpage: https://www.earth.ox.ac.uk/people/erin-saupe/
+  institute: University of Oxford 
+  image: saupe.jpg
+  special:
+- ref: renaudie
+  first: Johan    
+  last: Renaudie  
+  webpage: https://www.museumfuernaturkunde.berlin/en/about/team/johan.renaudie
+  institute: Museum für Naturkunde, Leibniz-Institut für Evolutions- und Biodiversitätsforschung (Berlin)
+  image: renaudie.jpeg
+  special:
+- ref: liow
+  first: Lee Hsiang    
+  last: Liow  
+  webpage: https://www.nhm.uio.no/english/about/organization/research-collections/people/leehl/index.html
+  institute: Natural History Museum, University of Oslo 
+  image: leehsiang.jpeg
+  special:
+- ref: sugawara
+  first: Mauro 
+  last: Sugawara
+  webpage: https://www.zoology.ubc.ca/person/mauro-toshiro-caiuby-sugawara
+  institute: University of British Columbia
+  image: sugawara.jpg
+  special:
+- ref: margulis
+  first: Miranda 
+  last: Margulis-Ohnuma
+  webpage: https://www.ldeo.columbia.edu/~polsen/nbcp/Margulis-Ohnuma+2021_Strong_inclination%20pacing.pdf
+  institute: Yale University
+  image: generic.png
+  special:
+- ref: yasuhara
+  first: Moriaki 
+  last: Yasuhara 
+  webpage: https://moriakiyasuhara.com/
+  institute: University of Hong Kong
+  image: yasuhara.jpg
+  special:
+- ref: meyers
+  first: Stephen R. 
+  last: Meyers 
+  webpage: http://www.geology.wisc.edu/~smeyers/
+  institute: University of Wisconsin, Madison
+  image: meyers.jpg
+  special:
+- ref: kiessling
+  first: Wolfgang 
+  last: Kiessling 
+  webpage: https://www.gzn.nat.fau.eu/palaeontologie/team/professors/kiessling/
+  institute: GeoZentrum Nordbayern, Friedrich-Alexander-Universität Erlangen-Nürnberg
+  image: kiessling.jpg
+  special:
+- ref: pippenger
+  first: Kate 
+  last: Pippenger 
+  webpage: 
+  institute: Yale University
+  image: pippenger.jpeg
+  special: 
+- ref: steinbauer
+  first: Manuel 
+  last: Steinbauer 
+  webpage: 
+  institute: University of Bayreuth 
+  image: steinbauer.jpg
+  special:
