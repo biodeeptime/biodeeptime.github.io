@@ -139,7 +139,7 @@
 			  
 			</div>
 			<div class="column is-2">
-			  <img src="https://biodeeptime.github.io/images/logo.png" width="120px">
+			  <a href="https://biodeeptime.github.io"><img src="https://biodeeptime.github.io/images/logo.png" width="120px"></a>
 			</div>
 			</div>
         </div>
@@ -160,95 +160,130 @@
                     
                     
                     
-    
-    
-
-<div class="contents">
-    <div class="menu">
-        <p class="menu-label">Contents</p>
-        <ul class="menu-list">
-  <li><a href="#preparing-data">Preparing data</a>
-    <ul>
-      <li><a href="#subheading">Subheading</a></li>
-      <li><a href="#subheading-2">Subheading 2</a></li>
-    </ul>
-  </li>
-</ul>
-    </div>
-</div>
-
-
-
-
 <div class="content">
-    <p>Add <code class="language-plaintext highlighter-rouge">toc: true</code> to the metadata of the .md file for a table of contents.</p>
+    <p>The tutorial here represents the absolute basics of accessing the
+BioDeepTime database. More elaborate tutorials will be made available on
+<a href="https://www.evolv-ed.net/">Evolv-ED</a>.</p>
 
-<h1 id="introduction">Introduction</h1>
+<p>Add <code class="language-plaintext highlighter-rouge">toc: true</code> to the metadata of the .md file for a table of contents.</p>
 
-<ul>
-  <li>Database was designed for use in research in mind</li>
-  <li>Here are some tutorials on how to use it:</li>
-</ul>
+<h2 id="the-data">The Data</h2>
 
-<hr />
+<h3 id="download">Download</h3>
 
-<h1 id="more-tutorials">More tutorials</h1>
+<p>The BioDeepTime database is made available through the ‘chronosphere’
+research data API. The <a href="https://cran.r-project.org/package=chronosphere">R
+client</a> to access data
+can be installed from the CRAN servers with:</p>
 
-<p>Additional tutorials will be made available on the
-<a href="https://www.evolv-ed.net/">Evolv-ED</a> + logo</p>
-
-<hr />
-
-<h2 id="preparing-data">Preparing data</h2>
-
-<p>Example R code chunks:</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># counts of specimens</span><span class="w">
-</span><span class="n">counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">35</span><span class="p">,</span><span class="m">19</span><span class="p">,</span><span class="m">13</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span><span class="w">
-</span><span class="n">counts</span><span class="w">
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"chronosphere"</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [1] 35 19 13  9  6  4  2  2  2  2  2  2  2  1  1  1  1  1  1  1
+<p>The most up-to-date version of the denormalized BioDeepTiem database can
+be accessed with:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># attach package</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">chronosphere</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Chronosphere - Evolving Earth System Variables
+Important: never fetch data as a superuser / with admin. privileges!
+
+Note that the package was split for efficient maintenance and development:
+ - Plate tectonic calculations -&gt; package 'rgplates'
+ - Arrays of raster and vector spatials -&gt; package 'via'
 </code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># download data, verbose=FALSE hides the default chatter </span><span class="w">
+</span><span class="n">bdt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fetch</span><span class="p">(</span><span class="s2">"biodeeptime"</span><span class="p">,</span><span class="w"> </span><span class="n">verbose</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Note that this table is rather large and might take a bit of time to
+load. The accessible data items can be downloaded with
+(<code class="language-plaintext highlighter-rouge">datasets("biodeeptime")</code>).</p>
+
+<h3 id="structure">Structure</h3>
+
+<p>The default representation of the denormalized table is a <code class="language-plaintext highlighter-rouge">data.frame</code>,
+where every row represents one record or biogeographic observation (the
+presence of a taxon in a sample).</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">bdt</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'data.frame':   7432199 obs. of  38 variables:
+ $ db                : chr  "Neotoma" "Neotoma" "Neotoma" "Neotoma" ...
+ $ seriesID          : chr  "TS_1" "TS_1" "TS_1" "TS_1" ...
+ $ seriesOriginalName: chr  "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" ...
+ $ seriesOriginalID  : chr  "11" "11" "11" "11" ...
+ $ long              : num  136 136 136 136 136 ...
+ $ lat               : num  67.8 67.8 67.8 67.8 67.8 ...
+ $ depthUnit         : chr  "cmbct" "cmbct" "cmbct" "cmbct" ...
+ $ ageModel          : chr  "4" "4" "4" "4" ...
+ $ reason            : chr  "Community analysis" "Community analysis" "Community analysis" "Community analysis" ...
+ $ sampleID          : chr  "S_1" "S_1" "S_1" "S_1" ...
+ $ sampleOriginalID  : chr  "158" "158" "158" "158" ...
+ $ sampleOriginalName: chr  NA NA NA NA ...
+ $ depth             : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ age               : num  1321 1321 1321 1321 1321 ...
+ $ ageProc           : chr  "bchron" "bchron" "bchron" "bchron" ...
+ $ ageOld            : num  2463 2463 2463 2463 2463 ...
+ $ ageYoung          : num  355 355 355 355 355 ...
+ $ timeOriginalUnit  : chr  "Radiocarbon years BP" "Radiocarbon years BP" "Radiocarbon years BP" "Radiocarbon years BP" ...
+ $ timeOriginal      : num  1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 ...
+ $ timeOriginalOld   : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ timeOriginalYoung : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ waterDepth        : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ preservation      : chr  NA NA NA NA ...
+ $ samplingEffort    : num  809 809 809 809 809 809 809 809 809 809 ...
+ $ minimumMesh       : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ maximumMesh       : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ environment       : chr  "Terrestrial or Freshwater" "Terrestrial or Freshwater" "Terrestrial or Freshwater" "Terrestrial or Freshwater" ...
+ $ samplingEffortType: chr  NA NA NA NA ...
+ $ taxonID           : int  11 6 1 8 7 3 4 10 2 13 ...
+ $ analyzedTaxon     : chr  "Cyperaceae" "Cichorioideae" "Ranunculaceae undiff." "Artemisia" ...
+ $ species           : chr  NA NA NA NA ...
+ $ genus             : chr  NA NA NA NA ...
+ $ openNomenclature  : chr  NA NA NA NA ...
+ $ analyzedRank      : chr  NA NA NA NA ...
+ $ group             : chr  "Vascular plants and bryophytes" "Vascular plants and bryophytes" "Vascular plants and bryophytes" "Vascular plants and bryophytes" ...
+ $ abundance         : num  7 3 1 5 3 2 2 6 1 22 ...
+ $ abundanceUnit     : chr  "count" "count" "count" "count" ...
+ $ refID             : chr  "2" "2" "2" "2" ...
+ - attr(*, "chronosphere")=List of 13
+  ..$ dat         : chr "biodeeptime"
+  ..$ var         : chr "denormalized"
+  ..$ res         : logi NA
+  ..$ ver         : num 0.6
+  ..$ datafile    : chr "biodeeptime.rds"
+  ..$ item        : int 14
+  ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
+  ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
+  ..$ downloadDate: POSIXct[1:1], format: "2023-06-20 16:55:38"
+  ..$ publishDate : chr "2023-01-28"
+  ..$ infoURL     : logi NA
+  ..$ API         : logi NA
+  ..$ additional  : list()
+</code></pre></div></div>
+
+<h2 id="basic-analysis">Basic analysis</h2>
+
+<p>The number of records in the database:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span><span class="p">(</span><span class="n">bdt</span><span class="o">$</span><span class="n">db</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 BioTIME           Direct uploads Geobiodiversity Database 
+                 4033249                     6906                     1358 
+                  MARBEN                  Neotoma          Neptune SandBox 
+                  286347                  2247503                   410736 
+   Paleobiology Database                 SedTraps                   Triton 
+                    1167                     9782                   435151 
+</code></pre></div></div>
+
+<p>Regular Quarto-stlye Rmarkdown follows from here.</p>
 
 <p>We can have a citation here: such as (Kocsis et al. 2019)</p>
-
-<h3 id="subheading">Subheading</h3>
-
-<p>Some more R code</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># one letter that represents each species</span><span class="w">
-</span><span class="n">species</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nb">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">counts</span><span class="p">)]</span><span class="w">
-
-</span><span class="c1"># extended format of the sample</span><span class="w">
-</span><span class="n">specimens</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="n">species</span><span class="p">,</span><span class="w"> </span><span class="n">counts</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p>Running the <code class="language-plaintext highlighter-rouge">table()</code> function confirms that the structure we created is
-indeed matching the count data above.</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">table</span><span class="p">(</span><span class="n">specimens</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>specimens
- a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t 
-35 19 13  9  6  4  2  2  2  2  2  2  2  1  1  1  1  1  1  1 
-</code></pre></div></div>
-
-<p>To make the vector of specimens compatible with the <code class="language-plaintext highlighter-rouge">subsample()</code>
-function, we have to make it a <code class="language-plaintext highlighter-rouge">data.frame</code>.</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">samp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">specimens</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="subheading-2">Subheading 2</h3>
-
-<p>An example plot</p>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">table</span><span class="p">(</span><span class="n">specimens</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
-
-<p><img src="tutorials_files/figure-commonmark/tabplot-1.png" alt="" /></p>
 
 <h1 id="references">References</h1>
 
