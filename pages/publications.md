@@ -4,4 +4,11 @@ title: Publications
 permalink: /publications/
 ---
 
-An itemized list of publications from the biodeeptime project (similar to the PBDB official publications). 
+<table>
+{% for paper in site.data.publications %}
+<tr>
+  <td> {{paper.number}}. </td>
+  <td style="padding-left: 22px ; text-indent: -22px ;"> {{paper.text}}</td>
+</tr>
+{% endfor %}
+</table>

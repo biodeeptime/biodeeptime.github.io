@@ -15,66 +15,53 @@ knitr::opts_chunk$set(echo = TRUE)
 library(divDyn)
 ```
 
+The tutorial here represents the absolute basics of accessing the BioDeepTime database. More elaborate tutorials will be made available on [Evolv-ED](https://www.evolv-ed.net/).
+
 Add `toc: true` to the metadata of the .md file for a table of contents.
 
-# Introduction
+## The Data
 
-- Database was designed for use in research in mind
-- Here are some tutorials on how to use it: 
+### Download
 
-* * *
+The BioDeepTime database is made available through the 'chronosphere' research data API. The [R client](https://cran.r-project.org/package=chronosphere) to access data can be installed from the CRAN servers with:
 
-# More tutorials
 
-Additional tutorials will be made available on the [Evolv-ED](https://www.evolv-ed.net/) + logo 
-
-* * * 
-
-## Preparing data
-
-Example R code chunks: 
-
-```{r counts, message=FALSE, paged.print=FALSE}
-# counts of specimens
-counts <- c(35,19,13,9,6,4,2,2,2,2,2,2,2,1,1,1,1,1,1,1)
-counts
+```{r chroninst, message=FALSE, eval=FALSE, echo=TRUE}
+install.packages("chronosphere")
 ```
+
+The most up-to-date version of the denormalized BioDeepTiem database can be accessed with: 
+
+```{r download}
+# attach package
+library(chronosphere)
+
+# download data, verbose=FALSE hides the default chatter 
+bdt <- fetch("biodeeptime", verbose=FALSE)
+```
+
+Note that this table is rather large and might take a bit of time to load. The accessible data items can be downloaded with (`datasets("biodeeptime")`).
+
+### Structure
+
+The default representation of the denormalized table is a `data.frame`, where every row represents one record or biogeographic observation (the presence of a taxon in a sample).
+
+```{r str}
+str(bdt)
+```
+
+
+## Basic analysis
+
+The number of records in the database: 
+
+```{r, dbs}
+table(bdt$db)
+```
+
+Regular Quarto-stlye Rmarkdown follows from here.
 
 We can have a citation here: such as [@kocsis2019package]
-
-### Subheading
-
-Some more R code
-
-```{r specimens, message=FALSE, paged.print=FALSE}
-# one letter that represents each species
-species <- letters[1:length(counts)]
-
-# extended format of the sample
-specimens <- rep(species, counts)
-```
-
-Running the ``table()`` function confirms that the structure we created is indeed matching the count data above. 
-
-```{r table, message=FALSE, paged.print=FALSE}
-table(specimens)
-```
-
-To make the vector of specimens compatible with the ``subsample()`` function, we have to make it a ``data.frame``.
-
-```{r df, message=FALSE, paged.print=FALSE}
-samp <- data.frame(specimens, stringsAsFactors=FALSE)
-```
-
-### Subheading 2 
-
-An example plot
-
-```{r tabplot, fig.width=10}
-
-plot(table(specimens))
-```
-
 
 # References
 
