@@ -140,8 +140,8 @@
 				  <a href="/database/access/" class="button is-info is-large">Download</a>
 			  
 			</div>
-			<div class="column is-2">
-			  <a href="https://biodeeptime.github.io"><img src="https://biodeeptime.github.io/images/logo.png" width="120px"></a>
+			<div class="column is-2" style="text-align:center">
+			  <a href="https://biodeeptime.github.io"><img src="https://biodeeptime.github.io/images/logo.png" width="400px"></a>
 			</div>
 			</div>
         </div>
@@ -156,22 +156,140 @@
         <div class="container">
             <div class="columns is-multiline">
                 
-                <div class="column is-12">
+                <div class="column is-8">
                     
                     
                     
                     
                     
 <div class="content">
-    <h1 id="landing-page">Landing page</h1>
+    <div class="columns">
+  <div class="column">
+	<h1>Welcome</h1>
+<p>The presence of humanity on the planet has been having a profound impact on life, which needs to be assessed in a broad temporal context. The BioDeepTime project aims to unravel how processes that change biological assemblages scale across historical and geological timescales.To achieve our goal, we have compiled biogeographic records of both modern and fossil organisms from various sources that include assemblage time series information over time.</p> 
+  </div>
+  <div class="column">
+
+  <table class="summary">
+	<tr>
+		<th>Records:</th>
+		<td>7432199</td>
+	</tr>
+	<tr style="background-color: #fafafa">
+		<th>Sources:</th>
+		<td>9</td>
+	</tr>
+	<tr>
+		<th>Time Series:</th>
+		<td>10071</td>
+	</tr>
+	<tr style="background-color: #fafafa">
+		<th>Samples:</th>
+		<td>986362</td>
+	</tr>
+	<tr>
+		<th>Taxon entries:</th>
+		<td>28814</td>
+	</tr>
+	<tr style="background-color: #fafafa">
+		<th>Oldest sample:</th>
+		<td>451.05 Ma</td>
+	</tr>
+	<tr>
+		<th>Youngest sample:</th>
+		<td>2022</td>
+	</tr>
+  </table>
+
+<br />
+	<div class="columns">
+		<div class="column">
+		<h5 style="text-align:center">Modern records</h5>
+<div x-data="{ open: false }">
+    <a x-on:click="open = true" title="View large image">
+        <figure class="image is-16by9">
+            <img src="https://biodeeptime.github.io/images/bdt/gridModernRobin.png" alt="Example image" />
+        </figure>
+    </a>
+    <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak="">
+        <div class="modal-background" x-on:click="open = false"></div>
+        <div class="modal-content">
+            
+                <img src="https://biodeeptime.github.io/images/bdt/gridModernRobin.png" alt="Example image" />
+            
+        </div>
+        <button class="modal-close is-large" aria-label="close" x-on:click="open = false"></button>
+    </div>
+</div>
+ 
+		</div>
+		<div class="column">
+		<h5 style="text-align:center">Fossil records</h5>
+<div x-data="{ open: false }">
+    <a x-on:click="open = true" title="View large image">
+        <figure class="image is-16by9">
+            <img src="https://biodeeptime.github.io/images/bdt/gridFossilRobin.png" alt="Example image" />
+        </figure>
+    </a>
+    <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak="">
+        <div class="modal-background" x-on:click="open = false"></div>
+        <div class="modal-content">
+            
+                <img src="https://biodeeptime.github.io/images/bdt/gridFossilRobin.png" alt="Example image" />
+            
+        </div>
+        <button class="modal-close is-large" aria-label="close" x-on:click="open = false"></button>
+    </div>
+</div>
+ 
+		</div>
+	</div>
+  </div>
+
+</div>
 
 <ul>
-  <li>general introduction</li>
-  <li>scope of the data: #database, # series # samples # taxa</li>
   <li>repeating basic links - most importantly: <a href="https://biodeeptime.github.io/database/access/">ACCESS</a>.</li>
 </ul>
 
 </div>
+                </div>
+                
+                <div class="column is-4-desktop is-4-tablet">
+                    <p class="title is-4">Latest Posts</p>
+
+<div class="columns is-multiline">
+    
+    <div class="column is-12">
+        <div class="card">
+    
+    <header class="card-header">
+        <a class="card-header-title" href="/biodeeptime/2023/07/11/webpage.html">New BioDeepTime webpage!</a>
+    </header>
+    
+    <div class="card-content">
+        <div class="content">
+            
+            
+                <p><p>Welcome to the new webpage of <strong>BioDeeptime</strong>! You can find relevant material under these headings.</p>
+</p>
+            
+        </div>
+        <div class="has-text-centered">
+            <a href="/biodeeptime/2023/07/11/webpage.html" class="button is-primary">Read more</a>
+        </div>
+    </div>
+    <footer class="card-footer">
+        <p class="card-footer-item">Published: Jul 11, 2023</p>
+    </footer>
+</div>
+    </div>
+    
+</div>
+
+
+
+
                 </div>
                 
             </div>
