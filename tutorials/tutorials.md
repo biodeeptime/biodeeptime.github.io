@@ -9,9 +9,9 @@ permalink: /tutorials/
 layout: page
 ---
 
-The tutorial here represents the absolute basics of accessing the
+The tutorial here represents the absolute basics of using the
 BioDeepTime database. More elaborate tutorials will be made available on
-[Evolv-ED](https://www.evolv-ed.net/).
+[Evolv-ED](https://www.evolv-ed.net/databases/registry/biodeeptime.html).
 
 Add `toc: true` to the metadata of the .md file for a table of contents.
 
@@ -110,7 +110,7 @@ str(bdt)
       ..$ item        : int 14
       ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
       ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-      ..$ downloadDate: POSIXct[1:1], format: "2023-06-20 16:55:38"
+      ..$ downloadDate: POSIXct[1:1], format: "2023-07-11 16:02:56"
       ..$ publishDate : chr "2023-01-28"
       ..$ infoURL     : logi NA
       ..$ API         : logi NA
@@ -119,18 +119,6 @@ str(bdt)
 ## Basic analysis
 
 The number of records in the database:
-
-``` r
-table(bdt$db)
-```
-
-
-                     BioTIME           Direct uploads Geobiodiversity Database 
-                     4033249                     6906                     1358 
-                      MARBEN                  Neotoma          Neptune SandBox 
-                      286347                  2247503                   410736 
-       Paleobiology Database                 SedTraps                   Triton 
-                        1167                     9782                   435151 
 
 Regular Quarto-stlye Rmarkdown follows from here.
 

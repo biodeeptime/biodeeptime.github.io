@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(divDyn)
 ```
 
-The tutorial here represents the absolute basics of accessing the BioDeepTime database. More elaborate tutorials will be made available on [Evolv-ED](https://www.evolv-ed.net/).
+The tutorial here represents the absolute basics of using the BioDeepTime database. More elaborate tutorials will be made available on [Evolv-ED](https://www.evolv-ed.net/databases/registry/biodeeptime.html).
 
 Add `toc: true` to the metadata of the .md file for a table of contents.
 
@@ -56,7 +56,21 @@ str(bdt)
 The number of records in the database: 
 
 ```{r, dbs}
-table(bdt$db)
+```
+
+```{r, echo=FALSE, include=FALSE}
+##### THIS CHUNK IS NOT PART OF THE TUTORIAL - this creates the summary statistics on the webpage!!!!
+summ <- data.frame(
+	records=nrow(bdt),
+	db=length(table(bdt$db)),
+	series=length(table(bdt$seriesID)), 
+	samples=length(table(bdt$sampleID)), 
+	taxa=length(table(bdt$analyzedTaxon)), 
+	from_ma=round(max(bdt$age)/1e4)/100, 
+	to_year=1950-min(bdt$age) 
+)
+write.csv(summ, file="../_data/summary.csv")
+##### THIS CHUNK IS NOT PART OF THE TUTORIAL - this creates the summary statistics on the webpage!!!!
 ```
 
 Regular Quarto-stlye Rmarkdown follows from here.

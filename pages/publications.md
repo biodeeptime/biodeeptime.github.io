@@ -8,7 +8,7 @@ permalink: /publications/
 {% for paper in site.data.publications %}
 <tr>
   <td> {{paper.number}}. </td>
-  <td style="padding-left: 22px ; text-indent: -22px ;"> {{paper.text}}</td>
+  <td style="padding-left: 22px ; text-indent: -22px ;text-align:left"> {{paper.text}}</td>
 </tr>
 {% endfor %}
 </table>
