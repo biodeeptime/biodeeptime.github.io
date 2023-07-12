@@ -110,7 +110,7 @@ str(bdt)
       ..$ item        : int 14
       ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
       ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-      ..$ downloadDate: POSIXct[1:1], format: "2023-07-11 16:02:56"
+      ..$ downloadDate: POSIXct[1:1], format: "2023-07-11 16:37:37"
       ..$ publishDate : chr "2023-01-28"
       ..$ infoURL     : logi NA
       ..$ API         : logi NA

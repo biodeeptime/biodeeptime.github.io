@@ -1,0 +1,47 @@
+- name: 1st Paleosynthesis on-site workshop  
+  year: 2022
+  date: March 27 - March 30
+  where: Erlangen - <a href="https://www.gzn.nat.fau.eu/">GeoZentrum Nordbayern, FAU </a>
+  text: 
+  logo: images/workshops/paleosynthesis_workshop_logo.png
+  funder:
+    - paleosynthesis
+  groupPhoto: images/workshops/first_workshop.jpeg
+  onsite:
+    - may
+    - saupe
+    - penny
+    - liow
+    - kocsis
+    - renaudie
+    - hull
+    - steinbauer
+    - tomasovych
+    - rillo
+    - sugawara
+    - smith
+    - kiessling
+
+- name: 2nd Paleosynthesis on-site workshop  
+  year: 2023
+  date: January 10 - January 13 
+  where: Erlangen - <a href="https://www.gzn.nat.fau.eu/">GeoZentrum Nordbayern, FAU </a>
+  text: 
+  logo: images/workshops/paleosynthesis_workshop_logo.png
+  funder:
+    - paleosynthesis
+  groupPhoto: images/workshops/second_workshop.png
+  onsite:
+    - margulis
+    - kocsis
+    - fastovich
+    - pippenger
+    - rillo
+    - smith
+    - finnegan
+    - dornelas
+    - kiessling 
+    - renaudie
+    - tomasovych
+    - penny 
+    - dowding

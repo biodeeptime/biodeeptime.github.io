@@ -129,7 +129,7 @@ bdt <- chronosphere::fetch(dat="biodeeptime")
 
 </div>
 
-<div class="column is-2" markdown="1">
-![chronosphere]({{site.url}}{{site.baseurl}}/images/logos/chronosphere.png)
+<div class="column is-2">
+<a href="https://chronosphere.info"><img alt="chronosphere" src="{{site.url}}{{site.baseurl}}/images/logos/chronosphere.png"></a> 
 </div>
 </div>

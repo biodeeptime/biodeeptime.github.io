@@ -9,7 +9,7 @@ show_sidebar: true
 
 <div class="columns">
   <div class="column">
-	<h1>Welcome</h1>
+	<h1>BioDeepTime</h1>
 <p>The presence of humanity on the planet has been having a profound impact on life, which needs to be assessed in a broad temporal context. The BioDeepTime project aims to unravel how processes that change biological assemblages scale across historical and geological timescales.To achieve our goal, we have compiled biogeographic records of both modern and fossil organisms from various sources that include assemblage time series information over time.</p> 
   </div>
   <div class="column">
@@ -48,11 +48,11 @@ show_sidebar: true
 <br>
 	<div class="columns">
 		<div class="column">
-		<h5 style="text-align:center">Modern records</h5>
+		<h5 style="text-align:center">Modern</h5>
 {% include image-modal.html ratio="is-16by9" link="/images/bdt/gridModernRobin.png" alt="Example image" large_link='/images/bdt/gridModernRobin.png' %} 
 		</div>
 		<div class="column">
-		<h5  style="text-align:center">Fossil records</h5>
+		<h5  style="text-align:center">Fossil</h5>
 {% include image-modal.html ratio="is-16by9" link="/images/bdt/gridFossilRobin.png" alt="Example image" large_link='/images/bdt/gridFossilRobin.png' %} 
 		</div>
 	</div>

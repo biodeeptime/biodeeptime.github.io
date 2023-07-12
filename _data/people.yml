@@ -43,7 +43,7 @@
   first: Jansen 
   last: Smith
   webpage: 
-  institute: University of New Mexico
+  institute: University of Minnesota Duluth 
   image: smith.jpeg
   special: admin
 - ref: jonkers
@@ -164,4 +164,11 @@
   webpage: 
   institute: University of Bayreuth 
   image: steinbauer.jpg
+  special:
+- ref: dowding
+  first: Elizabeth 
+  last: Dowding 
+  webpage: 
+  institute: GeoZentrum Nordbayern, Friedrich-Alexander-Universität Erlangen-Nürnberg 
+  image: generic.png
   special:
