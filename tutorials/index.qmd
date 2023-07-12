@@ -232,6 +232,7 @@ We can have a citation here: such as [@kocsis2019package]
 
 
 </div>
+
                 </div>
                 
             </div>
@@ -241,6 +242,22 @@ We can have a citation here: such as [@kocsis2019package]
         <footer class="footer">
     <div class="container">
         
+        
+        <div class="columns is-multiline">
+            
+            <div class="column has-text-centered">
+                <div>
+                    <a href="/" class="link">Home</a>
+                </div>
+            </div>
+            
+            <div class="column has-text-centered">
+                <div>
+                    <a href="/imprint/" class="link">Imprint</a>
+                </div>
+            </div>
+            
+        </div>
         
 
         <div class="content is-small has-text-centered">
