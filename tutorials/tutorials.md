@@ -26,6 +26,7 @@ can be installed from the CRAN servers with:
 
 ``` r
 install.packages("chronosphere")
+install.packages("tidyverse")
 ```
 
 The most up-to-date version of the denormalized BioDeepTiem database can
@@ -42,6 +43,25 @@ library(chronosphere)
     Note that the package was split for efficient maintenance and development:
      - Plate tectonic calculations -> package 'rgplates'
      - Arrays of raster and vector spatials -> package 'via'
+
+``` r
+library(tidyverse) # for data manipulation
+```
+
+    ── Attaching packages
+    ───────────────────────────────────────
+    tidyverse 1.3.2 ──
+
+    ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+    ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+    ✔ tidyr   1.2.0      ✔ stringr 1.4.0 
+    ✔ readr   2.1.2      ✔ forcats 0.5.1 
+    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ✖ dplyr::collapse() masks divDyn::collapse()
+    ✖ tidyr::fill()     masks divDyn::fill()
+    ✖ dplyr::filter()   masks stats::filter()
+    ✖ dplyr::lag()      masks stats::lag()
+    ✖ dplyr::slice()    masks divDyn::slice()
 
 ``` r
 # download data, verbose=FALSE hides the default chatter 
@@ -110,17 +130,80 @@ str(bdt)
       ..$ item        : int 14
       ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
       ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-      ..$ downloadDate: POSIXct[1:1], format: "2023-07-11 16:37:37"
+      ..$ downloadDate: POSIXct[1:1], format: "2023-07-13 10:46:17"
       ..$ publishDate : chr "2023-01-28"
       ..$ infoURL     : logi NA
       ..$ API         : logi NA
       ..$ additional  : list()
 
-## Basic analysis
+## Basic analyses
+
+The number of time series in the database:
+
+``` r
+length(unique(bdt$seriesID))
+```
+
+    [1] 10071
 
 The number of records in the database:
 
-Regular Quarto-stlye Rmarkdown follows from here.
+``` r
+length(bdt$db)
+```
+
+    [1] 7432199
+
+The number of unique sampling locations:
+
+``` r
+nrow(unique(bdt[, c("long", "lat")]))
+```
+
+    [1] 8762
+
+The oldest record in each database:
+
+``` r
+bdt %>% group_by(db) %>% summarize(max = max(age))
+```
+
+    # A tibble: 9 × 2
+      db                               max
+      <chr>                          <dbl>
+    1 BioTIME                         49.4
+    2 Direct uploads             1146200  
+    3 Geobiodiversity Database 451050000. 
+    4 MARBEN                    77200000  
+    5 Neotoma                   23900000  
+    6 Neptune SandBox          151075752  
+    7 Paleobiology Database    150889174. 
+    8 SedTraps                       -28.4
+    9 Triton                    65996942. 
+
+Finding the mean age (relative to 1950) of a sample from modern
+databases (BioTIME and SedTraps):
+
+``` r
+modern <- bdt %>%
+  filter(db == "BioTIME" | db == "SedTraps") ## filtering to only modern data
+
+mean(modern$age) 
+```
+
+    [1] -44.52683
+
+Finding the mean age (relative to 1950) of a sample from fossil
+databases:
+
+``` r
+fossil <- bdt %>%
+  filter(db != "BioTIME" & db != "SedTraps") ## filtering to exclude modern data
+
+mean(fossil$age) 
+```
+
+    [1] 4976267
 
 We can have a citation here: such as (Kocsis et al. 2019)
 

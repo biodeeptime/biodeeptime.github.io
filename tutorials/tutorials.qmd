@@ -77,23 +77,23 @@ length(unique(bdt$seriesID))
 
 The number of records in the database: 
 
-```{r, dbs}
+```{r, dbs2}
 length(bdt$db)
 ```
 
 The number of unique sampling locations:
 
-```{r, dbs}
+```{r, dbs3}
 nrow(unique(bdt[, c("long", "lat")]))
 ```
 
 The oldest record in each database:
-```{r, dbs}
+```{r, dbs4}
 bdt %>% group_by(db) %>% summarize(max = max(age))
 ```
 
 Finding the mean age (relative to 1950) of a sample from modern databases (BioTIME and SedTraps):
-```{r, dbs}
+```{r, dbs5}
 modern <- bdt %>%
   filter(db == "BioTIME" | db == "SedTraps") ## filtering to only modern data
 
@@ -102,7 +102,7 @@ mean(modern$age)
 ```
 
 Finding the mean age (relative to 1950) of a sample from fossil databases:
-```{r, dbs}
+```{r, dbs6}
 fossil <- bdt %>%
   filter(db != "BioTIME" & db != "SedTraps") ## filtering to exclude modern data
 
