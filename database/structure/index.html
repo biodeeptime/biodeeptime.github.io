@@ -164,7 +164,7 @@
       <li><a href="#sources-table"><code class="language-plaintext highlighter-rouge">sources</code> table</a></li>
       <li><a href="#series-table"><code class="language-plaintext highlighter-rouge">series</code> table</a></li>
       <li><a href="#agemodels-table"><code class="language-plaintext highlighter-rouge">ageModels</code> table</a></li>
-      <li><a href="#timeunits-table"><code class="language-plaintext highlighter-rouge">timeUnits</code> table</a></li>
+      <li><a href="#timeoriginalunits-table"><code class="language-plaintext highlighter-rouge">timeOriginalUnits</code> table</a></li>
       <li><a href="#depthunits-table"><code class="language-plaintext highlighter-rouge">depthUnits</code> table</a></li>
       <li><a href="#reasons-table"><code class="language-plaintext highlighter-rouge">reasons</code> table</a></li>
       <li><a href="#groups-table"><code class="language-plaintext highlighter-rouge">groups</code> table</a></li>
@@ -180,11 +180,11 @@
       <li><a href="#samplingefforttypes-table"><code class="language-plaintext highlighter-rouge">samplingEffortTypes</code> table</a></li>
     </ul>
   </li>
-  <li><a href="#occurrence-related-tables">Occurrence-related tables</a>
+  <li><a href="#occurrence-record-related-tables">Occurrence record-related tables</a>
     <ul>
-      <li><a href="#occurrences-table"><code class="language-plaintext highlighter-rouge">occurrences</code> table</a></li>
+      <li><a href="#records-table"><code class="language-plaintext highlighter-rouge">records</code> table</a></li>
       <li><a href="#taxa-table"><code class="language-plaintext highlighter-rouge">taxa</code> table</a></li>
-      <li><a href="#ranks-table"><code class="language-plaintext highlighter-rouge">ranks</code> table</a></li>
+      <li><a href="#analyzedranks-table"><code class="language-plaintext highlighter-rouge">analyzedRanks</code> table</a></li>
       <li><a href="#abundanceunits-table"><code class="language-plaintext highlighter-rouge">abundanceUnits</code> table</a></li>
     </ul>
   </li>
@@ -203,18 +203,29 @@
                     
                     
 <div class="content">
-    <h2 id="structure-outlines">Structure outlines</h2>
+    <style>
 
-<p>The BioDeepTime database is relational database compiled and stored in the SQLite 3 standard. Due to heterogeneity of the original data and variation in their focus and scopes, only a fraction of the data fields are copied over from the original database.</p>
+.content table td{
+	text-align: left
+}
+</style>
 
-<p><img src="https://biodeeptime.github.io/images/concept.png" alt="" />
-<a href="https://biodeeptime.github.io/database/attribution/#data-paper"><em>The basic entities of BioDeepTime (Smith et al. [Under Review])</em></a></p>
+<h2 id="structure-outlines">Structure outlines</h2>
+
+<p>BioDeepTime is a relational database compiled and stored in the SQLite 3 standard. Due to heterogeneity of the original data and variation in their focus and scopes, only a fraction of the data fields are copied over from the original database.</p>
+
+<p><a href="https://biodeeptime.github.io/images/concept.png"><img src="https://biodeeptime.github.io/images/concept.png" /></a>
+<a href="https://biodeeptime.github.io/database/attribution/#data-paper"><em>The basic entities of BioDeepTime (Smith et al. [In Press])</em></a></p>
 
 <h2 id="current-structure">Current structure</h2>
 
-<p>The structure described here represents the most up-to-date, <a href="">v0.6</a> version of BioDeepTime. The current schema includes 17 tables, which are organized according to the following entity-relationship diagram:</p>
+<p>The structure described here represents the most up-to-date, <a href="https://biodeeptime.github.io/database/milestones/#biodeeptime-v100-2023-07-12">v1.0.0</a> version of BioDeepTime. The current schema includes 17 tables, which are organized according to the following entity-relationship diagram:</p>
 
-<p><img src="https://biodeeptime.github.io/images/schema.svg" alt="" /></p>
+<p><a href="https://biodeeptime.github.io/images/schema.svg"><img src="https://biodeeptime.github.io/images/schema.svg" /></a></p>
+
+<hr />
+
+<h1 id="description-of-tables">Description of tables</h1>
 
 <h2 id="assemblage-time-series-related-tables">Assemblage time series-related tables</h2>
 
@@ -230,471 +241,540 @@
     <li><em>sampleOriginalIDField</em> (varchar): The name of the field the stores the sample IDs in the source database.</li>
     <li><em>refID</em> (INTEGER): Foreign key, refers to <em>refID</em> in the <code class="language-plaintext highlighter-rouge">refs</code> table. The reference of the source database.</li>
   </ul>
+</div>
+
+<div class="box">
+  <h3 id="series-table"><code class="language-plaintext highlighter-rouge">series</code> table</h3>
+
+  <p>The <code class="language-plaintext highlighter-rouge">series</code> table includes information unique to an entire assemblage time series.</p>
+
+  <ul>
+    <li><strong>seriesID</strong> (INTEGER): Primary key, unique ID of the assemblage time series. A positive integer that starts with the <code class="language-plaintext highlighter-rouge">TS_</code> prefix.</li>
+    <li><em>dbID</em> (INTEGER): Foreign key, refers to <em>dbID</em> in the <code class="language-plaintext highlighter-rouge">sources</code> table. Codes the source database that the time series is from.</li>
+    <li><em>long</em> (float): The present-day longitude coordinate of the time series, assumed to be WGS84.</li>
+    <li><em>lat</em> (float): The present-day latitude coordinat of the time series, assumed to be WGS84.</li>
+    <li><em>seriesOriginalName</em> (varchar): If applicable, the human-readable name of the time series, as it is saved in the original database.</li>
+    <li><em>seriesOriginalID</em> (varchar): The original unique id of the time series, as it is stored in the source database.</li>
+    <li><em>ageModelID</em> (INTEGER): Foreign key, refers to <em>ageModelID</em> in the <code class="language-plaintext highlighter-rouge">ageModels</code> table. If explicitly saved, refers to the age model used with the time series.</li>
+    <li><em>timeOriginalUnitID</em> (INTEGER): Foreign key, refers to <em>timeOriginalUnitID</em> in the <code class="language-plaintext highlighter-rouge">timeOriginalUnits</code> table. All samples in the time series originally have time information assigned to them. These are in the same unit in every time samples, which is coded in this field.</li>
+    <li><em>depthUnitID</em> (INTEGER): Foreign key, refers to <em>depthUnitID</em> in the <code class="language-plaintext highlighter-rouge">depthUnits</code> table. All samples in the time series originally have vertical position (i.e. depth) information assigned to them. These are in the same unit in every time samples, which is coded in this field.</li>
+    <li><em>reasonID</em> (INTEGER): Foreign key, refers to <em>reasonID</em> in the <code class="language-plaintext highlighter-rouge">reasons</code> table. The samples in the assemblage time series were analyzed with a scientific goal in mind.</li>
+    <li><em>timeDepthUnique</em> (INTEGER): Boolean field, including either <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">1</code>. Some time series have replicate samples coming from the depth/vertical position. If such replicate samples are not present, then every sample in the series represent a unique time point, coded with <code class="language-plaintext highlighter-rouge">1</code>. If there are multiple samples coming from the same depth/vertical position, this field is <code class="language-plaintext highlighter-rouge">0</code>.</li>
+    <li><em>groupID</em> (INTEGER):Foreign key, refers to <em>groupID</em> in the <code class="language-plaintext highlighter-rouge">groups</code> table. Every time series is limited to a particular group.</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h3 id="agemodels-table"><code class="language-plaintext highlighter-rouge">ageModels</code> table</h3>
+
+  <p>Lookup table for the names of age models.</p>
+
+  <ul>
+    <li><strong>ageModelID</strong> (INTEGER): Primary key, unique ID of an age model name.</li>
+    <li><em>ageModel</em> (varchar): The name of an age model.</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h3 id="timeoriginalunits-table"><code class="language-plaintext highlighter-rouge">timeOriginalUnits</code> table</h3>
+
+  <p>Lookup table for the units in which time is expressed in the original database.</p>
+
+  <ul>
+    <li><strong>timeOriginalUnitID</strong> (INTEGER): Primary key, unique ID of unit of time.</li>
+    <li><em>timeOriginalUnit</em> (varchar): The name of the time unit, either age or date. The value is either increasing or decreasing in the direction of time.</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>timeOriginalUnit</th>
+        <th>description</th>
+        <th>direction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">AD</code></td>
+        <td>Calendar years (AD).</td>
+        <td>increasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">ka</code></td>
+        <td>Age in thousands of years</td>
+        <td>decreasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">ma</code></td>
+        <td>Age in millions of years</td>
+        <td>decreasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Radiocarbon years BP</code></td>
+        <td>Age in years, result of radiocarbon dating.</td>
+        <td>decreasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Calibrated radiocarbon years BP</code></td>
+        <td>Age in years, result of radiocarbon dating and calibration.</td>
+        <td>decreasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Calendar years BP</code></td>
+        <td>Age in years.</td>
+        <td>decreasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Varve years BP</code></td>
+        <td>Age in years coming from varve-chronology.</td>
+        <td>decreasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">rday</code></td>
+        <td>Days expressed in the date format of R, number of days after 1970-01-01</td>
+        <td>increasing</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">rmonth</code></td>
+        <td>Indicates monthly resolution. As <code class="language-plaintext highlighter-rouge">rday</code>, the 15th day of the month.</td>
+        <td>increasing</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 
-<h3 id="series-table"><code class="language-plaintext highlighter-rouge">series</code> table</h3>
+<div class="box">
+  <h3 id="depthunits-table"><code class="language-plaintext highlighter-rouge">depthUnits</code> table</h3>
 
-<p>The <code class="language-plaintext highlighter-rouge">series</code> table includes information unique to an entire assemblage time series.</p>
+  <p>Lookup table for the units in which vertical position of sample in a time series is expressed.</p>
 
-<ul>
-  <li><strong>seriesID</strong> (INTEGER): Primary key, unique ID of the assemblage time series. A positive integer that starts with the <code class="language-plaintext highlighter-rouge">TS_</code> prefix.</li>
-  <li><em>dbID</em> (INTEGER): Foreign key, refers to <em>dbID</em> in the <code class="language-plaintext highlighter-rouge">sources</code> table. Codes the source database that the time series is from.</li>
-  <li><em>long</em> (float): The present-day longitude coordinate of the time series, assumed to be WGS84.</li>
-  <li><em>lat</em> (float): The present-day latitude coordinat of the time series, assumed to be WGS84.</li>
-  <li><em>seriesOriginalName</em> (varchar): If applicable, the human-readable name of the time series, as it is saved in the original database.</li>
-  <li><em>seriesOriginalID</em> (varchar): The original unique id of the time series, as it is stored in the source database.</li>
-  <li><em>ageModelID</em> (INTEGER): Foreign key, refers to <em>ageModelID</em> in the <code class="language-plaintext highlighter-rouge">ageModels</code> table. If explicitly saved, refers to the age model used with the time series.</li>
-  <li><em>timeOriginalUnitID</em> (INTEGER): Foreign key, refers to <em>timeOriginalUnitID</em> in the <code class="language-plaintext highlighter-rouge">timeOriginalUnits</code> table. All samples in the time series originally have time information assigned to them. These are in the same unit in every time samples, which is coded in this field.</li>
-  <li><em>depthUnitID</em> (INTEGER): Foreign key, refers to <em>depthUnitID</em> in the <code class="language-plaintext highlighter-rouge">depthUnits</code> table. All samples in the time series originally have vertical position (i.e. depth) information assigned to them. These are in the same unit in every time samples, which is coded in this field.</li>
-  <li><em>reasonID</em> (INTEGER): Foreign key, refers to <em>reasonID</em> in the <code class="language-plaintext highlighter-rouge">reasons</code> table. The samples in the assemblage time series were analyzed with a scientific goal in mind.</li>
-  <li><em>timeDepthUnique</em> (INTEGER): Boolean field, including either <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">1</code>. Some time series have replicate samples coming from the depth/vertical position. If such replicate samples are not present, then every sample in the series represent a unique time point, coded with <code class="language-plaintext highlighter-rouge">1</code>. If there are multiple samples coming from the same depth/vertical position, this field is <code class="language-plaintext highlighter-rouge">0</code>.</li>
-  <li><em>groupID</em> (INTEGER):Foreign key, refers to <em>groupID</em> in the <code class="language-plaintext highlighter-rouge">groups</code> table. Every time series is limited to a particular group.</li>
-</ul>
+  <ul>
+    <li><strong>depthUnitID</strong> (INTEGER): Primary key, unique ID of the unit of the vertical position of the sample.</li>
+    <li><em>depthUnit</em> (varchar): The name of the unit.</li>
+  </ul>
 
-<h3 id="agemodels-table"><code class="language-plaintext highlighter-rouge">ageModels</code> table</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>depthUnit</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">mbsf</code></td>
+        <td>meters below sea floor</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">cmbct</code></td>
+        <td>centimeter below core top</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">mfsb</code></td>
+        <td>meters from section bottom</td>
+      </tr>
+    </tbody>
+  </table>
 
-<p>Lookup table for the names of age models.</p>
+</div>
 
-<ul>
-  <li><strong>ageModelID</strong> (INTEGER): Primary key, unique ID of an age model name.</li>
-  <li><em>ageModel</em> (varchar): The name of an age model.</li>
-</ul>
+<div class="box">
+  <h3 id="reasons-table"><code class="language-plaintext highlighter-rouge">reasons</code> table</h3>
 
-<h3 id="timeunits-table"><code class="language-plaintext highlighter-rouge">timeUnits</code> table</h3>
+  <p>Lookup table for the reasons for which the series was described.</p>
 
-<p>Lookup table for the units in which time is expressed in the original database.</p>
+  <ul>
+    <li><strong>reasonID</strong> (INTEGER): Primary key, unique ID of the reason.</li>
+    <li><em>reason</em> (varchar): The reason as a string of characters.</li>
+  </ul>
 
-<ul>
-  <li><strong>timeUnitID</strong> (INTEGER): Primary key, unique ID of unit of time.</li>
-  <li><em>timeUnit</em> (varchar): The name of the time unit, either age or date. The value is either increasing or decreasing in the direction of time.</li>
-</ul>
+  <table>
+    <thead>
+      <tr>
+        <th>reason</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Community analysis</code></td>
+        <td>The purpose of sample description is community analysis.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Biostratigraphy</code></td>
+        <td>The purpose of sample description is biostratigraphic correlation.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Selected species</code></td>
+        <td>The purpose of sample description is the assesment of a pre-select species.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Extreme event</code></td>
+        <td>The purpose of sample description is the assessment of an extreme geological event.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>timeUnit</th>
-      <th>description</th>
-      <th>direction</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">AD</code></td>
-      <td>Calendar years (AD).</td>
-      <td>increasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">ka</code></td>
-      <td>Age in thousands of years</td>
-      <td>decreasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">ma</code></td>
-      <td>Age in millions of years</td>
-      <td>decreasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Radiocarbon years BP</code></td>
-      <td>Age in years, result of radiocarbon dating.</td>
-      <td>decreasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Calibrated radiocarbon years BP</code></td>
-      <td>Age in years, result of radiocarbon dating and calibration.</td>
-      <td>decreasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Calendar years BP</code></td>
-      <td>Age in years.</td>
-      <td>decreasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Varve years BP</code></td>
-      <td>Age in years coming from varve-chronology.</td>
-      <td>decreasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">rday</code></td>
-      <td>Days expressed in the date format of R, number of days after 1970-01-01</td>
-      <td>increasing</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">rmonth</code></td>
-      <td>Indicates monthly resolution. As <code class="language-plaintext highlighter-rouge">rday</code>, the 15th day of the month.</td>
-      <td>increasing</td>
-    </tr>
-  </tbody>
-</table>
+</div>
 
-<h3 id="depthunits-table"><code class="language-plaintext highlighter-rouge">depthUnits</code> table</h3>
+<div class="box">
 
-<p>Lookup table for the units in which vertical position of sample in a time series is expressed.</p>
+  <h3 id="groups-table"><code class="language-plaintext highlighter-rouge">groups</code> table</h3>
 
-<ul>
-  <li><strong>depthUnitID</strong> (INTEGER): Primary key, unique ID of the unit of the vertical position of the sample.</li>
-  <li><em>depthUnit</em> (varchar): The name of the unit.</li>
-</ul>
+  <p>Lookup table for the groups that the time series describe.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>depthUnit</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mbsf</code></td>
-      <td>meters below sea floor</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cmbct</code></td>
-      <td>centimeter below core top</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mfsb</code></td>
-      <td>meters from section bottom</td>
-    </tr>
-  </tbody>
-</table>
+  <ul>
+    <li><strong>groupID</strong> (INTEGER): Primary key, unique ID of the group.</li>
+    <li><em>group</em> (varchar): The name of the group. If the records in the time series belong to multiple groups, the entry is <code class="language-plaintext highlighter-rouge">Mixed</code>.</li>
+  </ul>
 
-<h3 id="reasons-table"><code class="language-plaintext highlighter-rouge">reasons</code> table</h3>
-
-<p>Lookup table for the reasons for which the series was described.</p>
-
-<ul>
-  <li><strong>reasonID</strong> (INTEGER): Primary key, unique ID of the reason.</li>
-  <li><em>reason</em> (varchar): The reason as a string of characters.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>reason</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Community analysis</code></td>
-      <td>The purpose of sample description is community analysis.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Biostratigraphy</code></td>
-      <td>The purpose of sample description is biostratigraphic correlation.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Selected species</code></td>
-      <td>The purpose of sample description is the assesment of a pre-select species.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Extreme event</code></td>
-      <td>The purpose of sample description is the assessment of an extreme geological event.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="groups-table"><code class="language-plaintext highlighter-rouge">groups</code> table</h3>
-
-<p>Lookup table for the groups that the time series describe.</p>
-
-<ul>
-  <li><strong>groupID</strong> (INTEGER): Primary key, unique ID of the group.</li>
-  <li><em>group</em> (varchar): The name of the group. If the occurrences in the time series belong to multiple groups, the entry is <code class="language-plaintext highlighter-rouge">Mixed</code>.</li>
-</ul>
+</div>
 
 <h2 id="assemblage-sample-related-tables">Assemblage sample-related tables</h2>
 
 <p>Samples of biological assemblages are grouped into the assemblage time series (multiple samples/series). Samples typically represent different states of the assemblage (temporal horizons), but this is not necessarily the case.</p>
 
-<h3 id="samples-table"><code class="language-plaintext highlighter-rouge">samples</code> table</h3>
+<div class="box">
 
-<ul>
-  <li><strong>sampleID</strong> (varchar): Primary key, the unique ID of the sample in BioDeepTime. A positive integer that starts with the <code class="language-plaintext highlighter-rouge">S_</code> prefix.</li>
-  <li><em>seriesID</em> (varchar): Foreign key, refers to a the <em>seriesID</em> field in the <code class="language-plaintext highlighter-rouge">series</code> table. The ID of the time series, the sample belongs to.</li>
-  <li><em>sampleOriginalName</em> (varchar): The original, human-readable name of the sample, copied from the source database.</li>
-  <li><em>sampleOriginalID</em> (varchar): The original unique ID of the sample, copied from the source database. These values come from the field which is recorded in the <em>sampleOriginalIDField</em> field of the <code class="language-plaintext highlighter-rouge">source</code> table.</li>
-  <li><em>timeOriginal</em> (float): The numeric value that represents the age/date of the sample, copied from the source database. The unit of measurement is time series-specific, and is therefore recorded in the <em>timeOriginalUnitID</em> of the <code class="language-plaintext highlighter-rouge">series</code> table.</li>
-  <li><em>timeOriginalOld</em> (float): The recorded older estimate for the age/date of the sample, in the same unit as <em>timeOriginal.</em></li>
-  <li><em>timeOriginalYoung</em> (float): The recorded younger estimate for the age/date of the sample, in the same unit as <em>timeOriginal.</em></li>
-  <li><em>age</em> (float): Sample age estimate expressed as years Before Present (relative to 1950, higher values mean older ages, negative values represent ages younger than 1950).</li>
-  <li><em>ageProcID</em> (INTEGER): Foreign key, refers to the <em>ageProcID</em> field of the <code class="language-plaintext highlighter-rouge">ageProcs</code> table. The transformation that was used to derive the <em>age</em>, <em>ageOld</em> and <em>ageYoung</em> column</li>
-  <li><em>ageOld</em> (float): Older confidence limit of the the age estimate, expressed as years Before Present.</li>
-  <li><em>ageYoung</em> (float): Younger confidence limit of the the age estimate, expressed as years Before Present.</li>
-  <li><em>depth</em> (float): The vertical position of the sample if the assemblage time series has a physical record. The unit of measurement (including directions) is specific to the time series, and is recorded in the <em>depthUnitID</em> field of the <code class="language-plaintext highlighter-rouge">series</code> table.</li>
-  <li><em>sequence</em> (float): The order of the samples in the time series, increasing in the direction of time. If samples are contemporaneous, the values are floating point numbers, as output by the <code class="language-plaintext highlighter-rouge">rank()</code> R function. This column serves internal purposes and is not exported to the denoramlized copy of the database.</li>
-  <li><em>waterDepth</em> (float): The estimated water depth in which the sample was taken, expressed in meters (if applicable).</li>
-  <li><em>environmentID</em> (INTEGER): Foreign key, refers to the <em>environmentID</em> field of the <code class="language-plaintext highlighter-rouge">environments</code> table. The general biological realm that the sample represents.</li>
-  <li><em>preservation</em> (varchar): Textual information on the preservation quality of the sample, copied over from the source database, if it was present.</li>
-  <li><em>samplingEffort</em> (float): Numeric value that expresses a sampling-related quantity. Its unit is recorded in the <em>samplingEffortType</em> column.</li>
-  <li><em>samplingEffortTypeID</em> (INTEGER): Foreign key, refers to the <em>samplingEffortTypeID</em> column of the <code class="language-plaintext highlighter-rouge">samplingEffortTypes</code> table. The units in which sampling effort is expressed.</li>
-  <li><em>minimumMesh</em> (float): If applicable, the minimum size of the mesh used to filter a microfossil/microorganism sample (in micrometers).</li>
-  <li><em>maximumMesh</em> (float): If applicable, the maximum size of the mesh used to filter a microfossil/microorganism sample (in micrometers).</li>
-</ul>
+  <h3 id="samples-table"><code class="language-plaintext highlighter-rouge">samples</code> table</h3>
 
-<h3 id="refs-table"><code class="language-plaintext highlighter-rouge">refs</code> table</h3>
+  <ul>
+    <li><strong>sampleID</strong> (varchar): Primary key, the unique ID of the sample in BioDeepTime. A positive integer that starts with the <code class="language-plaintext highlighter-rouge">S_</code> prefix.</li>
+    <li><em>seriesID</em> (varchar): Foreign key, refers to a the <em>seriesID</em> field in the <code class="language-plaintext highlighter-rouge">series</code> table. The ID of the time series, the sample belongs to.</li>
+    <li><em>sampleOriginalName</em> (varchar): The original, human-readable name of the sample, copied from the source database.</li>
+    <li><em>sampleOriginalID</em> (varchar): The original unique ID of the sample, copied from the source database. These values come from the field which is recorded in the <em>sampleOriginalIDField</em> field of the <code class="language-plaintext highlighter-rouge">source</code> table.</li>
+    <li><em>timeOriginal</em> (float): The numeric value that represents the age/date of the sample, copied from the source database. The unit of measurement is time series-specific, and is therefore recorded in the <em>timeOriginalUnitID</em> of the <code class="language-plaintext highlighter-rouge">series</code> table.</li>
+    <li><em>timeOriginalOld</em> (float): The recorded older estimate for the age/date of the sample, in the same unit as <em>timeOriginal.</em></li>
+    <li><em>timeOriginalYoung</em> (float): The recorded younger estimate for the age/date of the sample, in the same unit as <em>timeOriginal.</em></li>
+    <li><em>age</em> (float): Sample age estimate expressed as years Before Present (relative to 1950, higher values mean older ages, negative values represent ages younger than 1950).</li>
+    <li><em>ageProcID</em> (INTEGER): Foreign key, refers to the <em>ageProcID</em> field of the <code class="language-plaintext highlighter-rouge">ageProcs</code> table. The transformation that was used to derive the <em>age</em>, <em>ageOld</em> and <em>ageYoung</em> column</li>
+    <li><em>ageOld</em> (float): Older confidence limit of the the age estimate, expressed as years Before Present.</li>
+    <li><em>ageYoung</em> (float): Younger confidence limit of the the age estimate, expressed as years Before Present.</li>
+    <li><em>depth</em> (float): The vertical position of the sample if the assemblage time series has a physical record. The unit of measurement (including directions) is specific to the time series, and is recorded in the <em>depthUnitID</em> field of the <code class="language-plaintext highlighter-rouge">series</code> table.</li>
+    <li><em>sequence</em> (float): The order of the samples in the time series, increasing in the direction of time. If samples are contemporaneous, the values are floating point numbers, as output by the <code class="language-plaintext highlighter-rouge">rank()</code> R function. This column serves internal purposes and is not exported to the denoramlized copy of the database.</li>
+    <li><em>waterDepth</em> (float): The estimated water depth in which the sample was taken, expressed in meters (if applicable).</li>
+    <li><em>environmentID</em> (INTEGER): Foreign key, refers to the <em>environmentID</em> field of the <code class="language-plaintext highlighter-rouge">environments</code> table. The general biological realm that the sample represents.</li>
+    <li><em>preservation</em> (varchar): Textual information on the preservation quality of the sample, copied over from the source database, if it was present.</li>
+    <li><em>samplingEffort</em> (float): Numeric value that expresses a sampling-related quantity. Its unit is recorded in the <em>samplingEffortType</em> column.</li>
+    <li><em>samplingEffortTypeID</em> (INTEGER): Foreign key, refers to the <em>samplingEffortTypeID</em> column of the <code class="language-plaintext highlighter-rouge">samplingEffortTypes</code> table. The units in which sampling effort is expressed.</li>
+    <li><em>minimumMesh</em> (float): If applicable, the minimum size of the mesh used to filter a microfossil/microorganism sample (in micrometers).</li>
+    <li><em>maximumMesh</em> (float): If applicable, the maximum size of the mesh used to filter a microfossil/microorganism sample (in micrometers).</li>
+    <li><em>totalCount</em> (float): If applicable, the sum of the sample’s total abundance.</li>
+  </ul>
 
-<p>List of references where the original occurrence data come from. Includes the references of the source databases.</p>
+</div>
 
-<ul>
-  <li><strong>refID</strong> (INTEGER): Primary key, the unique ID of every reference.</li>
-  <li><em>ref</em> (varchar): The reference in text format, as it is stated in the original database. Standardization of format is ongoing.</li>
-</ul>
+<div class="box">
 
-<h3 id="reflinks-table"><code class="language-plaintext highlighter-rouge">reflinks</code> table</h3>
+  <h3 id="refs-table"><code class="language-plaintext highlighter-rouge">refs</code> table</h3>
 
-<p>Many-to-many connection table, linking assemblage samples to the references. This information is denormalized to text values (multiple refID/sample is separated by a comma).</p>
+  <p>List of references where the original record come from. Includes the references of the source databases.</p>
 
-<ul>
-  <li><em>refID</em> (INTEGER): Foreign key, refers to the <em>refID</em> field of the <code class="language-plaintext highlighter-rouge">refs</code> table. A reference tied to the sample.</li>
-  <li><em>sampleID</em> (varchar): Foreign key, refers to the <em>sampleID</em> field of the <code class="language-plaintext highlighter-rouge">samples</code> table. A sample that is described in a reference.</li>
-</ul>
+  <ul>
+    <li><strong>refID</strong> (INTEGER): Primary key, the unique ID of every reference.</li>
+    <li><em>ref</em> (varchar): The reference in text format, as it is stated in the original database. Standardization of format is ongoing.</li>
+    <li><em>bibtex</em> (varchar): A bibtex handle for the refs.bib file.</li>
+  </ul>
 
-<h3 id="ageprocs-table"><code class="language-plaintext highlighter-rouge">ageProcs</code> table</h3>
+</div>
 
-<p>Lookup table, the transformation applied to the sample, which led to the <em>age</em> estimate of the <code class="language-plaintext highlighter-rouge">samples</code>.</p>
+<div class="box">
 
-<ul>
-  <li><strong>ageProcID</strong> (INTEGER): Primary key, the unique ID of the transformation type.</li>
-  <li><em>ageProc</em> (varchar): The name of the transformation.</li>
-</ul>
+  <h3 id="reflinks-table"><code class="language-plaintext highlighter-rouge">reflinks</code> table</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>ageProc</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">translated original</code></td>
-      <td>The original ages were copied, and were translated to years BP.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">bchron</code></td>
-      <td>New ages estimates were calculated with the bchron R package.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">calibrated original</code></td>
-      <td>Original, radiometric dates were calibrated using the bchron R package.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">original</code></td>
-      <td>The originally stated ages were copied from the <code class="language-plaintext highlighter-rouge">timeOriginal</code> field.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">thickness-interpolation</code></td>
-      <td>Ages were calculated from bed thickness during the compilation of the BioDeepTime database.</td>
-    </tr>
-  </tbody>
-</table>
+  <p>Many-to-many connection table, linking assemblage samples to the references. This information is denormalized to text values (multiple refID/sample is separated by a comma).</p>
 
-<h3 id="environments-table"><code class="language-plaintext highlighter-rouge">environments</code> table</h3>
+  <ul>
+    <li><em>refID</em> (INTEGER): Foreign key, refers to the <em>refID</em> field of the <code class="language-plaintext highlighter-rouge">refs</code> table. A reference tied to the sample.</li>
+    <li><em>sampleID</em> (varchar): Foreign key, refers to the <em>sampleID</em> field of the <code class="language-plaintext highlighter-rouge">samples</code> table. A sample that is described in a reference.</li>
+  </ul>
 
-<p>Lookup table of the biological realms that the samples represent.</p>
+</div>
 
-<ul>
-  <li><strong>environmentID</strong> (INTEGER): Primary key, the unique ID of the environment.</li>
-  <li><em>environment</em> (varchar): The name of the sampled environment.</li>
-</ul>
+<div class="box">
 
-<table>
-  <thead>
-    <tr>
-      <th>environment</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Marine</code></td>
-      <td>The samples represent a marine aquatic environment.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Freshwater</code></td>
-      <td>The samples represent a freshwater aquatic environment.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Terrestrial</code></td>
-      <td>The samples represent terrestrial environment.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Terrestrial or Freshwater</code></td>
-      <td>The samples represent either a terrestrial or a freshwater aquatic environment.</td>
-    </tr>
-  </tbody>
-</table>
+  <h3 id="ageprocs-table"><code class="language-plaintext highlighter-rouge">ageProcs</code> table</h3>
 
-<h3 id="samplingefforttypes-table"><code class="language-plaintext highlighter-rouge">samplingEffortTypes</code> table</h3>
+  <p>Lookup table, the transformation applied to the sample, which led to the <em>age</em> estimate of the <code class="language-plaintext highlighter-rouge">samples</code>.</p>
 
-<p>Lookup table of the units of sampling efforts.</p>
+  <ul>
+    <li><strong>ageProcID</strong> (INTEGER): Primary key, the unique ID of the transformation type.</li>
+    <li><em>ageProc</em> (varchar): The name of the transformation.</li>
+  </ul>
 
-<ul>
-  <li><strong>samplingEffortTypeID</strong> (INTEGER): Primary key, the unique ID of the sampling effort type.</li>
-  <li><em>samplingEffortType</em> (varchar): The name of the sampling effort.</li>
-</ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ageProc</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">translated original</code></td>
+        <td>The original ages were copied, and were translated to years BP.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">bchron</code></td>
+        <td>New ages estimates were calculated with the bchron R package.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">calibrated original</code></td>
+        <td>Original, radiometric dates were calibrated using the bchron R package.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">original</code></td>
+        <td>The originally stated ages were copied from the <code class="language-plaintext highlighter-rouge">timeOriginal</code> field.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">thickness-interpolation</code></td>
+        <td>Ages were calculated from bed thickness during the compilation of the BioDeepTime database.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>samplingEffortType</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">specimens</code></td>
-      <td>The number of specimens counted in the sample.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">g</code></td>
-      <td>The sample weight in grams.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">cm3</code></td>
-      <td>The volume of the sample in cubic centimeters.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">ml</code></td>
-      <td>The volume of the sample in milliliters.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">km2</code></td>
-      <td>The area of the sample in square kilometers.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">m2</code></td>
-      <td>The area of the sample in square meters.</td>
-    </tr>
-  </tbody>
-</table>
+</div>
 
-<h2 id="occurrence-related-tables">Occurrence-related tables</h2>
+<div class="box">
 
-<p>The primary unit of observation is the occurrence: the presence of a taxon in a sample, which either is, or isn’t associated with an abundance value.</p>
+  <h3 id="environments-table"><code class="language-plaintext highlighter-rouge">environments</code> table</h3>
 
-<h3 id="occurrences-table"><code class="language-plaintext highlighter-rouge">occurrences</code> table</h3>
+  <p>Lookup table of the biological realms that the samples represent.</p>
 
-<p>Table to record many-to-many connections between taxa and samples.</p>
+  <ul>
+    <li><strong>environmentID</strong> (INTEGER): Primary key, the unique ID of the environment.</li>
+    <li><em>environment</em> (varchar): The name of the sampled environment.</li>
+  </ul>
 
-<ul>
-  <li><strong>occID</strong> (INTEGER): Primary key, unique ID for every occurrence.</li>
-  <li><em>sampleID</em> (varchar): Foreign key, refers to the <em>sampleID</em> field of the <code class="language-plaintext highlighter-rouge">samples</code> table.</li>
-  <li><em>taxonID</em> (INTEGER): Foreign key, refers to the <em>taxonID</em> field of the <code class="language-plaintext highlighter-rouge">taxa</code> table.</li>
-  <li><em>abundance</em> (float): A numeric value that contains the abundance information of the taxon in the sample.</li>
-  <li><em>abundanceUnitID</em> (INTEGER): Foreign key, refers to the <em>abundanceUnitID</em> of the <code class="language-plaintext highlighter-rouge">abundanceUnits</code> table.</li>
-</ul>
+  <table>
+    <thead>
+      <tr>
+        <th>environment</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Marine</code></td>
+        <td>The samples represent a marine aquatic environment.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Freshwater</code></td>
+        <td>The samples represent a freshwater aquatic environment.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Terrestrial</code></td>
+        <td>The samples represent terrestrial environment.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Terrestrial or Freshwater</code></td>
+        <td>The samples represent either a terrestrial or a freshwater aquatic environment.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<h3 id="taxa-table"><code class="language-plaintext highlighter-rouge">taxa</code> table</h3>
+</div>
 
-<p>List of the taxonomic entries that occur in the sample. These entities were copied over from the original databases - assuming that taxonomy homogeneous within an assemblage time series.</p>
+<div class="box">
 
-<ul>
-  <li><strong>taxonID</strong> (INTEGER): Primary key, the unique ID of the taxon entry.</li>
-  <li><em>analyzedTaxon</em> (varchar): The character string that refers to a taxon observation. These were copied over from the source databases.</li>
-  <li><em>species</em> (varchar): If available, the clean, most likely binomen of the <em>analyzedTaxon</em> entry.</li>
-  <li><em>genus</em> (varchar): If available, the clean, genus name the <em>analyzedTaxon</em> belongs to.</li>
-  <li><em>analyzedTaxonRankID</em> (INTEGER): Foreign key, refers to the <em>analyzedTaxonRankID</em> of the <em>ranks</em> table. The taxonomic rank of the <em>analyzedTaxon</em> entry.</li>
-  <li><em>openNomenclature</em> (varchar): Qualifiers of open nomenclature that occur in the <em>analyzedTaxon</em> entry.</li>
-</ul>
+  <h3 id="samplingefforttypes-table"><code class="language-plaintext highlighter-rouge">samplingEffortTypes</code> table</h3>
 
-<h3 id="ranks-table"><code class="language-plaintext highlighter-rouge">ranks</code> table</h3>
+  <p>Lookup table of the units of sampling efforts.</p>
 
-<p>Lookup table of the taxonomic ranks that the occurrences represent.</p>
+  <ul>
+    <li><strong>samplingEffortTypeID</strong> (INTEGER): Primary key, the unique ID of the sampling effort type.</li>
+    <li><em>samplingEffortType</em> (varchar): The name of the sampling effort.</li>
+  </ul>
 
-<ul>
-  <li><strong>analyzedTaxonRankID</strong> (INTEGER): Primary key, the unique id of the rank.</li>
-  <li><em>analyzedRank</em> (varchar): The rank of the analyzed taxon.</li>
-</ul>
+  <table>
+    <thead>
+      <tr>
+        <th>samplingEffortType</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">specimens</code></td>
+        <td>The number of specimens counted in the sample.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">g</code></td>
+        <td>The sample weight in grams.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">cm3</code></td>
+        <td>The volume of the sample in cubic centimeters.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">ml</code></td>
+        <td>The volume of the sample in milliliters.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">km2</code></td>
+        <td>The area of the sample in square kilometers.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">m2</code></td>
+        <td>The area of the sample in square meters.</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>analyzedRank</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Species</code></td>
-      <td>The rank of species.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Genus</code></td>
-      <td>The rank of genera.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Family</code></td>
-      <td>The rank of families.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Order</code></td>
-      <td>The rank of orders.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Class</code></td>
-      <td>The rank of classes.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Phylum</code></td>
-      <td>The rank of phyla.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">indet</code></td>
-      <td>Unidentified rank.</td>
-    </tr>
-  </tbody>
-</table>
+</div>
 
-<h3 id="abundanceunits-table"><code class="language-plaintext highlighter-rouge">abundanceUnits</code> table</h3>
+<h2 id="occurrence-record-related-tables">Occurrence record-related tables</h2>
 
-<p>Lookup table of the units in which the abundance of a taxon in a sample is expressed.</p>
+<p>The primary unit is one (occurrence) record: the presence of a taxon in a sample, which either is, or isn’t associated with an abundance value.</p>
 
-<ul>
-  <li><strong>abundanceUnitID</strong> (INTEGER): Primary key, the unique ID of the abundance unit.</li>
-  <li><em>abundanceUnit</em> (varchar): The name of the unit of abundance.</li>
-</ul>
+<div class="box">
 
-<table>
-  <thead>
-    <tr>
-      <th>abundanceUnit</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">count</code></td>
-      <td>The number of specimens found in the sample (or in an observation, e.g. single quadrat - BioTime)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">percent</code></td>
-      <td>The percentage of the number of specimens occupied by the taxon in the sample.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">presence</code></td>
-      <td>Only the presence of a taxon is recorded.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">relative abundance</code></td>
-      <td>The proportion of the number of specimens occupied by the taxon in the sample.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">density count</code></td>
-      <td>The number of individuals in a given volume or area. (BioTIME)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">mean count</code></td>
-      <td>The mean number of species across several samples-quadrats (BioTIME)</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">flux</code></td>
-      <td>Average number of specimens sampled per day per squared-meter (sediment trap data)</td>
-    </tr>
-  </tbody>
-</table>
+  <h3 id="records-table"><code class="language-plaintext highlighter-rouge">records</code> table</h3>
+
+  <p>Table to record many-to-many connections between taxa and samples.</p>
+
+  <ul>
+    <li><strong>recordID</strong> (INTEGER): Primary key, unique ID for every record.</li>
+    <li><em>sampleID</em> (varchar): Foreign key, refers to the <em>sampleID</em> field of the <code class="language-plaintext highlighter-rouge">samples</code> table.</li>
+    <li><em>taxonID</em> (INTEGER): Foreign key, refers to the <em>taxonID</em> field of the <code class="language-plaintext highlighter-rouge">taxa</code> table.</li>
+    <li><em>abundance</em> (float): A numeric value that contains the abundance information of the taxon in the sample.</li>
+    <li><em>abundanceUnitID</em> (INTEGER): Foreign key, refers to the <em>abundanceUnitID</em> of the <code class="language-plaintext highlighter-rouge">abundanceUnits</code> table.</li>
+  </ul>
+</div>
+
+<div class="box">
+
+  <h3 id="taxa-table"><code class="language-plaintext highlighter-rouge">taxa</code> table</h3>
+
+  <p>List of the taxonomic entries that occur in the sample. These entities were copied over from the original databases - assuming that taxonomy homogeneous within an assemblage time series.</p>
+
+  <ul>
+    <li><strong>taxonID</strong> (INTEGER): Primary key, the unique ID of the taxon entry.</li>
+    <li><em>analyzedTaxon</em> (varchar): The character string that refers to a taxon observation. These were copied over from the source databases.</li>
+    <li><em>species</em> (varchar): If available, the clean, most likely binomen of the <em>analyzedTaxon</em> entry.</li>
+    <li><em>genus</em> (varchar): If available, the clean, genus name the <em>analyzedTaxon</em> belongs to.</li>
+    <li><em>analyzedTaxonRankID</em> (INTEGER): Foreign key, refers to the <em>analyzedTaxonRankID</em> of the <em>analyzedRanks</em> table. The taxonomic rank of the <em>analyzedTaxon</em> entry.</li>
+    <li><em>openNomenclature</em> (varchar): Qualifiers of open nomenclature that occur in the <em>analyzedTaxon</em> entry.</li>
+  </ul>
+
+</div>
+
+<div class="box">
+
+  <h3 id="analyzedranks-table"><code class="language-plaintext highlighter-rouge">analyzedRanks</code> table</h3>
+
+  <p>Lookup table of the taxonomic ranks that the record represents.</p>
+
+  <ul>
+    <li><strong>analyzedTaxonRankID</strong> (INTEGER): Primary key, the unique id of the rank.</li>
+    <li><em>analyzedRank</em> (varchar): The rank of the analyzed taxon.</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>analyzedRank</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Species</code></td>
+        <td>The rank of species.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Genus</code></td>
+        <td>The rank of genera.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Family</code></td>
+        <td>The rank of families.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Order</code></td>
+        <td>The rank of orders.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Class</code></td>
+        <td>The rank of classes.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">Phylum</code></td>
+        <td>The rank of phyla.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">indet</code></td>
+        <td>Unidentified rank.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="box">
+
+  <h3 id="abundanceunits-table"><code class="language-plaintext highlighter-rouge">abundanceUnits</code> table</h3>
+
+  <p>Lookup table of the units in which the abundance of a taxon in a sample is expressed.</p>
+
+  <ul>
+    <li><strong>abundanceUnitID</strong> (INTEGER): Primary key, the unique ID of the abundance unit.</li>
+    <li><em>abundanceUnit</em> (varchar): The name of the unit of abundance.</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th>abundanceUnit</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">count</code></td>
+        <td>The number of specimens found in the sample (or in an observation, e.g. single quadrat - BioTime)</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">percent</code></td>
+        <td>The percentage of the number of specimens occupied by the taxon in the sample.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">presence</code></td>
+        <td>Only the presence of a taxon is recorded.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">relative abundance</code></td>
+        <td>The proportion of the number of specimens occupied by the taxon in the sample.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">density count</code></td>
+        <td>The number of individuals in a given volume or area. (BioTIME)</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">mean count</code></td>
+        <td>The mean number of species across several samples-quadrats (BioTIME)</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">biomass cover</code></td>
+        <td>The area covered by a taxon in a sample.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">biomass volume</code></td>
+        <td>The volume of a taxon in a sample.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">biomass weight</code></td>
+        <td>The weight of a taxon in a sample.</td>
+      </tr>
+      <tr>
+        <td><code class="language-plaintext highlighter-rouge">flux</code></td>
+        <td>Average number of specimens sampled per day per squared-meter (sediment trap data)</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
 
 </div>
 

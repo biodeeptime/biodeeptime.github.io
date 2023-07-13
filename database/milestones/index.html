@@ -159,14 +159,19 @@
     <div class="columns">
 
 <div class="column is-8">
+
     <h1 id="database-milestones">Database milestones</h1>
 
-    <p>Due to the heterogeneity of the constituent data, BioDeepTime is generated manually in semi-regular intervals.</p>
+    <p><strong>BioDeepTime</strong> is drawing information from both static and dynamically-updated databases. Due to the heterogeneity of the constituent data, BioDeepTime is compiled manually in semi-regular intervals. These data products are versioned semantically, and are deposited separately - including the code that was used to build the version. These static data products were chosen to enhance reproducibility and tracability of results based on the database.</p>
+
+    <h3 id="versioning">Versioning</h3>
+
+    <p>The planned versioning framework is:</p>
 
     <ul>
-      <li>describing database releases</li>
-      <li>release cycles explained</li>
-      <li>change logs</li>
+      <li><strong>First-level</strong>: Large structural changes and major addition of sources.</li>
+      <li><strong>Second-level</strong>: Major corrections and additions of new timeseries.</li>
+      <li><strong>Third-level</strong>: Minor corrections.</li>
     </ul>
 
   </div>
@@ -183,7 +188,7 @@
 <a href="#list-of-known-issues">List of known issues</a>  
 </li>
 <li>
-<a href="#biodeeptime-v070-2023-06-xx">Version 0.7.0</a>  
+<a href="#biodeeptime-v100-2023-07-12">Version 1.0.0</a>  
 </li>
 <li>
 <a href="#biodeeptime-v060-2023-01-17">Version 0.6.0</a>  
@@ -206,25 +211,25 @@
 
 <h3 id="general">General</h3>
 <ul>
-  <li>References bibtex need manual review. Character encoding is still a recurring problem.</li>
+  <li>References need manual review especially bibtex. Character encoding is still a recurring problem. Some references entities  represent multiple references.</li>
 </ul>
 
 <hr />
 
 <h1 id="change-log">Change log</h1>
 
-<h2 id="biodeeptime-v070-2023-06-xx">BioDeepTime v0.7.0 [2023-06-xx]</h2>
+<h2 id="biodeeptime-v100-2023-07-12">BioDeepTime v1.0.0 [2023-07-12]</h2>
 
 <h3 id="added">Added</h3>
 <ul>
   <li>new field <code class="language-plaintext highlighter-rouge">samples.totalCount</code> that represents the sample size in the case of count data, rather than the target sampling effort</li>
   <li>Three new <code class="language-plaintext highlighter-rouge">abundanceUnit</code> categories: <code class="language-plaintext highlighter-rouge">"biomass cover"</code>, <code class="language-plaintext highlighter-rouge">"biomass weight"</code>, <code class="language-plaintext highlighter-rouge">"biomass volume"</code></li>
-  <li>bibtex entries formatted by ChatGPT to the <code class="language-plaintext highlighter-rouge">bibtex</code> column of the <code class="language-plaintext highlighter-rouge">refs</code> table</li>
+  <li>bibtex handles to the <code class="language-plaintext highlighter-rouge">bibtex</code> column of the <code class="language-plaintext highlighter-rouge">refs</code> table. The candidate bibtex entries are in the refs.bib file.</li>
 </ul>
 
 <h3 id="changed">Changed</h3>
 <ul>
-  <li>The word occurrence was systmatically replaced with <code class="language-plaintext highlighter-rouge">record</code>. The <code class="language-plaintext highlighter-rouge">occurrences</code> table was rename to <code class="language-plaintext highlighter-rouge">records</code>, its primary key from <code class="language-plaintext highlighter-rouge">occID</code> to <code class="language-plaintext highlighter-rouge">recordID</code>.</li>
+  <li>The word occurrence was systmatically replaced with <code class="language-plaintext highlighter-rouge">record</code>. The <code class="language-plaintext highlighter-rouge">occurrences</code> table was renamed to <code class="language-plaintext highlighter-rouge">records</code>, its primary key from <code class="language-plaintext highlighter-rouge">occID</code> to <code class="language-plaintext highlighter-rouge">recordID</code>.</li>
   <li>The <code class="language-plaintext highlighter-rouge">timeUnits</code> table was renamed to <code class="language-plaintext highlighter-rouge">timeOriginalUnits</code> for better consistency. Consequently, the the fields <code class="language-plaintext highlighter-rouge">timeUnitID</code> and <code class="language-plaintext highlighter-rouge">timeUnit</code> were rename to <code class="language-plaintext highlighter-rouge">timeOriginalUnitID</code> and <code class="language-plaintext highlighter-rouge">timeOriginalUnit</code>, respectively.</li>
   <li>The <code class="language-plaintext highlighter-rouge">ranks</code> table was renamed to <code class="language-plaintext highlighter-rouge">analyzedRanks</code> for better consistency.</li>
   <li>Reference entries are forced into UTF-8 encoding</li>
@@ -241,6 +246,7 @@
 <ul>
   <li>sample sum count is moved to <code class="language-plaintext highlighter-rouge">samples.totalCount</code> from <code class="language-plaintext highlighter-rouge">samples.samplingEffort</code>. Accordingly <code class="language-plaintext highlighter-rouge">samplingEfforType</code> is consistently set to <code class="language-plaintext highlighter-rouge">NA</code>.</li>
   <li>Neotoma references were split, multiple refs per samples are now properly indicated</li>
+  <li>Changed the taxon group to <code class="language-plaintext highlighter-rouge">Plants</code></li>
 </ul>
 
 <h5 id="triton">Triton</h5>
@@ -260,6 +266,7 @@
   <li>added <code class="language-plaintext highlighter-rouge">samplingEffort</code> and <code class="language-plaintext highlighter-rouge">samplingEffortType</code> values from <code class="language-plaintext highlighter-rouge">processing</code></li>
   <li>total count of count-type data</li>
   <li>added missing reason: <code class="language-plaintext highlighter-rouge">"Community analysis"</code></li>
+  <li>added reference to MARBEN</li>
 </ul>
 
 <h6 id="pbdb">PBDB</h6>
@@ -304,6 +311,8 @@
 <ul>
   <li>The two Neptune time series that have mixed taxonomy represent true data.</li>
 </ul>
+
+<hr />
 
 </div>
 
