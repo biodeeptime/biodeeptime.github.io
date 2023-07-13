@@ -1,1 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://biodeeptime.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://biodeeptime.github.io/" rel="alternate" type="text/html" /><updated>2023-07-13T10:54:19+02:00</updated><id>https://biodeeptime.github.io/feed.xml</id><title type="html">BioDeepTime</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">New BioDeepTime webpage!</title><link href="https://biodeeptime.github.io/biodeeptime/2023/07/11/webpage.html" rel="alternate" type="text/html" title="New BioDeepTime webpage!" /><published>2023-07-11T00:00:00+02:00</published><updated>2023-07-11T00:00:00+02:00</updated><id>https://biodeeptime.github.io/biodeeptime/2023/07/11/webpage</id><content type="html" xml:base="https://biodeeptime.github.io/biodeeptime/2023/07/11/webpage.html"><![CDATA[<p>Welcome to the new webpage of <strong>BioDeeptime</strong>! You can find relevant material under these headings.</p>]]></content><author><name>BioDeepTime team</name></author><category term="biodeeptime" /><summary type="html"><![CDATA[Welcome to the new webpage of BioDeeptime! You can find relevant material under these headings.]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://biodeeptime.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://biodeeptime.github.io/" rel="alternate" type="text/html" /><updated>2023-07-13T15:26:05+02:00</updated><id>https://biodeeptime.github.io/feed.xml</id><title type="html">BioDeepTime</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">The BioDeepTime webpage is online!</title><link href="https://biodeeptime.github.io/biodeeptime/2023/07/11/webpage.html" rel="alternate" type="text/html" title="The BioDeepTime webpage is online!" /><published>2023-07-11T00:00:00+02:00</published><updated>2023-07-11T00:00:00+02:00</updated><id>https://biodeeptime.github.io/biodeeptime/2023/07/11/webpage</id><content type="html" xml:base="https://biodeeptime.github.io/biodeeptime/2023/07/11/webpage.html"><![CDATA[<p>Welcome to the new webpage of <strong>BioDeeptime</strong>! You can find relevant material under these headings.</p>
+
+<h2 id="about">About</h2>
+
+<p>Basic description of the project.</p>
+
+<h2 id="team">Team</h2>
+
+<p>Everything related to people, groups and projects.</p>
+
+<ul>
+  <li><a href="https://biodeeptime.github.io/team/people/"><strong>People</strong></a>: Participants of the project.</li>
+  <li><a href="https://biodeeptime.github.io/team/workshops/"><strong>Workshops</strong></a>: The past in-person workshops.</li>
+  <li><a href="https://biodeeptime.github.io/team/funding/"><strong>Funding</strong></a>: Our funders.</li>
+</ul>
+
+<h2 id="database">Database</h2>
+
+<p>Everything related to our primary product, the BioDeepTime database.</p>
+
+<ul>
+  <li><a href="https://biodeeptime.github.io/database/structure/"><strong>Structure</strong></a>: The overall structure of the relational database.</li>
+  <li><a href="https://biodeeptime.github.io/database/contributors/"><strong>Contributors</strong></a>: The databases the are represented in BioDeepTime.</li>
+  <li><a href="https://biodeeptime.github.io/database/milestones/"><strong>Milestones</strong></a>: Version history.</li>
+  <li><a href="https://biodeeptime.github.io/database/access/"><strong>Access</strong></a>: Links to acces the database.</li>
+  <li><a href="https://biodeeptime.github.io/database/attribution/"><strong>Attribution</strong></a>: Information on the conditions of use.</li>
+</ul>
+
+<h2 id="tutorials">Tutorials</h2>
+
+<p>The <a href="https://biodeeptime.github.io/tutorials/">tutorials page</a> features a quick introductions on how to access the basic denormalized data frame in R.</p>
+
+<h2 id="publication">Publication</h2>
+
+<p>The <a href="https://biodeeptime.github.io/publications/">publications page</a> includes our official list of publications.</p>
+
+<h2 id="contribute">Contribute!</h2>
+
+<p>This section includes the <a href="https://biodeeptime.github.io/contribute/">criteria</a> for new contributions.</p>
+
+<h2 id="contact">Contact</h2>
+
+<p><a href="https://biodeeptime.github.io/contribute/">This pages</a> includes what kind of questions should be addressed to whom.</p>]]></content><author><name>BioDeepTime Team</name></author><category term="biodeeptime" /><summary type="html"><![CDATA[Welcome to the new webpage of BioDeeptime! You can find relevant material under these headings.]]></summary></entry></feed>
