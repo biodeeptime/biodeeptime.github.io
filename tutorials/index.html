@@ -177,6 +177,7 @@ client</a> to access data
 can be installed from the CRAN servers with:</p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"chronosphere"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"tidyverse"</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
 <p>The most up-to-date version of the denormalized BioDeepTiem database can
@@ -192,6 +193,25 @@ Important: never fetch data as a superuser / with admin. privileges!
 Note that the package was split for efficient maintenance and development:
  - Plate tectonic calculations -&gt; package 'rgplates'
  - Arrays of raster and vector spatials -&gt; package 'via'
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w"> </span><span class="c1"># for data manipulation</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>── Attaching packages
+───────────────────────────────────────
+tidyverse 1.3.2 ──
+
+✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.0      ✔ stringr 1.4.0 
+✔ readr   2.1.2      ✔ forcats 0.5.1 
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::collapse() masks divDyn::collapse()
+✖ tidyr::fill()     masks divDyn::fill()
+✖ dplyr::filter()   masks stats::filter()
+✖ dplyr::lag()      masks stats::lag()
+✖ dplyr::slice()    masks divDyn::slice()
 </code></pre></div></div>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># download data, verbose=FALSE hides the default chatter </span><span class="w">
@@ -259,18 +279,81 @@ presence of a taxon in a sample).</p>
   ..$ item        : int 14
   ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
   ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-  ..$ downloadDate: POSIXct[1:1], format: "2023-07-11 16:37:37"
+  ..$ downloadDate: POSIXct[1:1], format: "2023-07-13 10:46:17"
   ..$ publishDate : chr "2023-01-28"
   ..$ infoURL     : logi NA
   ..$ API         : logi NA
   ..$ additional  : list()
 </code></pre></div></div>
 
-<h2 id="basic-analysis">Basic analysis</h2>
+<h2 id="basic-analyses">Basic analyses</h2>
+
+<p>The number of time series in the database:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">bdt</span><span class="o">$</span><span class="n">seriesID</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 10071
+</code></pre></div></div>
 
 <p>The number of records in the database:</p>
 
-<p>Regular Quarto-stlye Rmarkdown follows from here.</p>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">length</span><span class="p">(</span><span class="n">bdt</span><span class="o">$</span><span class="n">db</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 7432199
+</code></pre></div></div>
+
+<p>The number of unique sampling locations:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nrow</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">bdt</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"long"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lat"</span><span class="p">)]))</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 8762
+</code></pre></div></div>
+
+<p>The oldest record in each database:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bdt</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">summarize</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">age</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 9 × 2
+  db                               max
+  &lt;chr&gt;                          &lt;dbl&gt;
+1 BioTIME                         49.4
+2 Direct uploads             1146200  
+3 Geobiodiversity Database 451050000. 
+4 MARBEN                    77200000  
+5 Neotoma                   23900000  
+6 Neptune SandBox          151075752  
+7 Paleobiology Database    150889174. 
+8 SedTraps                       -28.4
+9 Triton                    65996942. 
+</code></pre></div></div>
+
+<p>Finding the mean age (relative to 1950) of a sample from modern
+databases (BioTIME and SedTraps):</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">modern</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bdt</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"BioTIME"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"SedTraps"</span><span class="p">)</span><span class="w"> </span><span class="c1">## filtering to only modern data</span><span class="w">
+
+</span><span class="n">mean</span><span class="p">(</span><span class="n">modern</span><span class="o">$</span><span class="n">age</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] -44.52683
+</code></pre></div></div>
+
+<p>Finding the mean age (relative to 1950) of a sample from fossil
+databases:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fossil</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bdt</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">"BioTIME"</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">"SedTraps"</span><span class="p">)</span><span class="w"> </span><span class="c1">## filtering to exclude modern data</span><span class="w">
+
+</span><span class="n">mean</span><span class="p">(</span><span class="n">fossil</span><span class="o">$</span><span class="n">age</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 4976267
+</code></pre></div></div>
 
 <p>We can have a citation here: such as (Kocsis et al. 2019)</p>
 

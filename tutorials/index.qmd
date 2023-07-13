@@ -179,6 +179,7 @@ The BioDeepTime database is made available through the 'chronosphere' research d
 
 ```{r chroninst, message=FALSE, eval=FALSE, echo=TRUE}
 install.packages("chronosphere")
+install.packages("tidyverse")
 ```
 
 The most up-to-date version of the denormalized BioDeepTiem database can be accessed with: 
@@ -186,6 +187,7 @@ The most up-to-date version of the denormalized BioDeepTiem database can be acce
 ```{r download}
 # attach package
 library(chronosphere)
+library(tidyverse) # for data manipulation
 
 # download data, verbose=FALSE hides the default chatter 
 bdt <- fetch("biodeeptime", verbose=FALSE)
@@ -199,14 +201,6 @@ The default representation of the denormalized table is a `data.frame`, where ev
 
 ```{r str}
 str(bdt)
-```
-
-
-## Basic analysis
-
-The number of records in the database: 
-
-```{r, dbs}
 ```
 
 ```{r, echo=FALSE, include=FALSE}
@@ -224,7 +218,48 @@ write.csv(summ, file="../_data/summary.csv")
 ##### THIS CHUNK IS NOT PART OF THE TUTORIAL - this creates the summary statistics on the webpage!!!!
 ```
 
-Regular Quarto-stlye Rmarkdown follows from here.
+## Basic analyses
+
+The number of time series in the database:
+
+```{r, dbs}
+length(unique(bdt$seriesID))
+```
+
+The number of records in the database: 
+
+```{r, dbs2}
+length(bdt$db)
+```
+
+The number of unique sampling locations:
+
+```{r, dbs3}
+nrow(unique(bdt[, c("long", "lat")]))
+```
+
+The oldest record in each database:
+```{r, dbs4}
+bdt %>% group_by(db) %>% summarize(max = max(age))
+```
+
+Finding the mean age (relative to 1950) of a sample from modern databases (BioTIME and SedTraps):
+```{r, dbs5}
+modern <- bdt %>%
+  filter(db == "BioTIME" | db == "SedTraps") ## filtering to only modern data
+
+mean(modern$age) 
+
+```
+
+Finding the mean age (relative to 1950) of a sample from fossil databases:
+```{r, dbs6}
+fossil <- bdt %>%
+  filter(db != "BioTIME" & db != "SedTraps") ## filtering to exclude modern data
+
+mean(fossil$age) 
+
+```
 
 We can have a citation here: such as [@kocsis2019package]
 
