@@ -25,8 +25,8 @@
   - li
   text: Outcrop based list of 
 - ref: marben
-  name: MarBen 
-  link: 
+  name: MARBEN
+  link: https://zenodo.org/record/8136482
   logo: generic.svg
   evolved:
   representatives:

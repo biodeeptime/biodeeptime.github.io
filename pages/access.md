@@ -7,12 +7,12 @@ permalink: /database/access/
 
 <div class="columns is-vcentered">
 <div class="column is-9" markdown="1">
-All [published versions]({{site.url}}{{site.baseurl}}/database/milestones) of BioDeepTime are published as [Zenodo](https://zenodo.org) depositions, and are accessible as static files under the main DOI. This DOI always redirects to the most up-to-date version of the database:
+All [published versions]({{site.url}}{{site.baseurl}}/database/milestones) of BioDeepTime are published as [Zenodo](https://zenodo.org) depositions, and are accessible as static files under the main DOI. This DOI always redirects to the most up-to-date version of the database.
 
 <div class="control">
 <div class="tags has-addons">
-	<span class="tag is-dark">DOI</span>
-	<a href="https://doi.org/10.5281/zenodo.7504616" class="tag is-info">10.5281/zenodo.7504616</a>
+	<span class="tag is-dark is-large">doi</span>
+	<a href="https://doi.org/10.5281/zenodo.7504616" class="tag is-info is-large">10.5281/zenodo.7504616</a>
 </div>
 </div>
 
@@ -27,9 +27,9 @@ All [published versions]({{site.url}}{{site.baseurl}}/database/milestones) of Bi
 
 * * *
 
-# Files of the most recent version (v0.6)
+# Files of the most recent version (v1.0.0)
 
-The current files of **BioDeepTime** (v0.6)are accessible from the links below.
+The current files of **BioDeepTime** (v1.0.0) are accessible from the links below.
 Both the original relational database and a record-denormalized data frame is available for download.
 
 ### 1) Record-denormalized data frame

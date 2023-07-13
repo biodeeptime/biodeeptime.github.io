@@ -8,7 +8,7 @@
         <div class="modal-background" x-on:click="open = false"></div>
         <div class="modal-content">
             {% if include.large_link %}
-                <img src="{{ include.large_link | absolute_url }}" alt="{{ include.alt }}">
+                <img src="{{ include.large_link | absolute_url }}" alt="{{ include.alt }}" style="background-color:#ffffff">
             {% else %}
                 <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}">
             {% endif %}

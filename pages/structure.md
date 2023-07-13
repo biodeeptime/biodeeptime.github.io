@@ -5,21 +5,29 @@ permalink: database/structure/
 menubar_toc: true
 hero_image: "../../images/bg/ocean.jpg"
 ---
+<style>
 
+.content table td{
+	text-align: left
+}
+</style>
 ## Structure outlines 
 
-The BioDeepTime database is relational database compiled and stored in the SQLite 3 standard. Due to heterogeneity of the original data and variation in their focus and scopes, only a fraction of the data fields are copied over from the original database.  
+BioDeepTime is a relational database compiled and stored in the SQLite 3 standard. Due to heterogeneity of the original data and variation in their focus and scopes, only a fraction of the data fields are copied over from the original database.  
 
-![]({{site.url}}{{site.baseurl}}/images/concept.png)
-[*The basic entities of BioDeepTime (Smith et al. [Under Review])*]({{site.url}}{{site.baseurl}}/database/attribution/#data-paper)
+<a href="{{site.url}}{{site.baseurl}}/images/concept.png" ><img src="{{site.url}}{{site.baseurl}}/images/concept.png"></a>
+[*The basic entities of BioDeepTime (Smith et al. [In Press])*]({{site.url}}{{site.baseurl}}/database/attribution/#data-paper)
 
 
 ## Current structure
 
-The structure described here represents the most up-to-date, [v0.6]() version of BioDeepTime. The current schema includes 17 tables, which are organized according to the following entity-relationship diagram:
+The structure described here represents the most up-to-date, [v1.0.0]({{site.url}}{{site.baseurl}}/database/milestones/#biodeeptime-v100-2023-07-12) version of BioDeepTime. The current schema includes 17 tables, which are organized according to the following entity-relationship diagram:
 
-![]({{site.url}}{{site.baseurl}}/images/schema.svg)  
+<a href="{{site.url}}{{site.baseurl}}/images/schema.svg" ><img src="{{site.url}}{{site.baseurl}}/images/schema.svg"></a>
 
+* * *
+
+# Description of tables
 
 ## Assemblage time series-related tables
 
@@ -33,9 +41,9 @@ The `sources` table include information on the constituent databases of the BioD
 - *seriesOriginalIDField* (varchar): The name of the field that stores the series IDs in the source database.
 - *sampleOriginalIDField* (varchar): The name of the field the stores the sample IDs in the source database.
 - *refID* (INTEGER): Foreign key, refers to *refID* in the `refs` table. The reference of the source database.
-
 </div>
 
+<div class="box" markdown="1">
 ### `series` table
 
 The `series` table includes information unique to an entire assemblage time series.
@@ -52,22 +60,26 @@ The `series` table includes information unique to an entire assemblage time seri
 - *reasonID* (INTEGER): Foreign key, refers to *reasonID* in the `reasons` table. The samples in the assemblage time series were analyzed with a scientific goal in mind. 
 - *timeDepthUnique* (INTEGER): Boolean field, including either `0` or `1`. Some time series have replicate samples coming from the depth/vertical position. If such replicate samples are not present, then every sample in the series represent a unique time point, coded with `1`. If there are multiple samples coming from the same depth/vertical position, this field is `0`.
 - *groupID* (INTEGER):Foreign key, refers to *groupID* in the `groups` table. Every time series is limited to a particular group. 
+</div>
 
+<div class="box" markdown="1">
 ### `ageModels` table
 
 Lookup table for the names of age models.
 
 - **ageModelID** (INTEGER): Primary key, unique ID of an age model name.
 - *ageModel* (varchar): The name of an age model.
+</div>
 
-### `timeUnits` table
+<div class="box" markdown="1">
+### `timeOriginalUnits` table
 
 Lookup table for the units in which time is expressed in the original database.
 
-- **timeUnitID** (INTEGER): Primary key, unique ID of unit of time. 
-- *timeUnit* (varchar): The name of the time unit, either age or date. The value is either increasing or decreasing in the direction of time. 
+- **timeOriginalUnitID** (INTEGER): Primary key, unique ID of unit of time. 
+- *timeOriginalUnit* (varchar): The name of the time unit, either age or date. The value is either increasing or decreasing in the direction of time. 
 
-| timeUnit                          | description                                                             | direction  |
+| timeOriginalUnit                  | description                                                             | direction  |
 |-----------------------------------|-------------------------------------------------------------------------|------------|
 | `AD`                              | Calendar years (AD).                                                    | increasing |
 | `ka`                              | Age in thousands of years                                               | decreasing |
@@ -79,6 +91,9 @@ Lookup table for the units in which time is expressed in the original database.
 | `rday`                            | Days expressed in the date format of R, number of days after 1970-01-01 | increasing |
 | `rmonth`                          | Indicates monthly resolution. As `rday`, the 15th day of the month.     | increasing |
 
+</div>
+
+<div class="box" markdown="1">
 ### `depthUnits` table
 
 Lookup table for the units in which vertical position of sample in a time series is expressed.
@@ -92,7 +107,9 @@ Lookup table for the units in which vertical position of sample in a time series
 | `cmbct`   | centimeter below core top  |
 | `mfsb`    | meters from section bottom |
 
+</div>
 
+<div class="box" markdown="1">
 ### `reasons` table
 
 Lookup table for the reasons for which the series was described.
@@ -107,16 +124,24 @@ Lookup table for the reasons for which the series was described.
 | `Selected species`   | The purpose of sample description is the assesment of a pre-select species.         |
 | `Extreme event`      | The purpose of sample description is the assessment of an extreme geological event. |
 
+</div>
+
+<div class="box" markdown="1">
+
 ### `groups` table
 
 Lookup table for the groups that the time series describe.
 
 - **groupID** (INTEGER): Primary key, unique ID of the group.
-- *group* (varchar): The name of the group. If the occurrences in the time series belong to multiple groups, the entry is `Mixed`.
+- *group* (varchar): The name of the group. If the records in the time series belong to multiple groups, the entry is `Mixed`.
+
+</div>
 
 ## Assemblage sample-related tables
 
 Samples of biological assemblages are grouped into the assemblage time series (multiple samples/series). Samples typically represent different states of the assemblage (temporal horizons), but this is not necessarily the case.  
+
+<div class="box" markdown="1">
 
 ### `samples` table
 
@@ -140,13 +165,23 @@ Samples of biological assemblages are grouped into the assemblage time series (m
 - *samplingEffortTypeID* (INTEGER): Foreign key, refers to the *samplingEffortTypeID* column of the `samplingEffortTypes` table. The units in which sampling effort is expressed. 
 - *minimumMesh* (float): If applicable, the minimum size of the mesh used to filter a microfossil/microorganism sample (in micrometers).
 - *maximumMesh* (float): If applicable, the maximum size of the mesh used to filter a microfossil/microorganism sample (in micrometers).
+- *totalCount* (float): If applicable, the sum of the sample's total abundance. 
+
+</div>
+
+<div class="box" markdown="1">
 
 ### `refs` table
 
-List of references where the original occurrence data come from. Includes the references of the source databases.
+List of references where the original record come from. Includes the references of the source databases.
 
 - **refID** (INTEGER): Primary key, the unique ID of every reference. 
 - *ref* (varchar): The reference in text format, as it is stated in the original database. Standardization of format is ongoing.
+- *bibtex* (varchar): A bibtex handle for the refs.bib file.
+
+</div>
+
+<div class="box" markdown="1">
 
 ### `reflinks` table
 
@@ -154,6 +189,10 @@ Many-to-many connection table, linking assemblage samples to the references. Thi
 
 - *refID* (INTEGER): Foreign key, refers to the *refID* field of the `refs` table. A reference tied to the sample.
 - *sampleID* (varchar): Foreign key, refers to the *sampleID* field of the `samples` table. A sample that is described in a reference.
+
+</div>
+
+<div class="box" markdown="1">
 
 ### `ageProcs` table
 
@@ -171,6 +210,9 @@ Lookup table, the transformation applied to the sample, which led to the *age* e
 | `original`                | The originally stated ages were copied from the `timeOriginal` field.                       |
 | `thickness-interpolation` | Ages were calculated from bed thickness during the compilation of the BioDeepTime database. |
 
+</div>
+
+<div class="box" markdown="1">
 
 ### `environments` table
 
@@ -186,6 +228,10 @@ Lookup table of the biological realms that the samples represent.
 | `Freshwater`                | The samples represent a freshwater aquatic environment.                         |
 | `Terrestrial`               | The samples represent terrestrial environment.                                  |
 | `Terrestrial or Freshwater` | The samples represent either a terrestrial or a freshwater aquatic environment. |
+
+</div>
+
+<div class="box" markdown="1">
 
 ### `samplingEffortTypes` table
 
@@ -203,19 +249,26 @@ Lookup table of the units of sampling efforts.
 | `km2`              | The area of the sample in square kilometers.   |
 | `m2`               | The area of the sample in square meters.       |
 
-## Occurrence-related tables
+</div>
 
-The primary unit of observation is the occurrence: the presence of a taxon in a sample, which either is, or isn't associated with an abundance value. 
+## Occurrence record-related tables
 
-### `occurrences` table
+The primary unit is one (occurrence) record: the presence of a taxon in a sample, which either is, or isn't associated with an abundance value. 
+
+<div class="box" markdown="1">
+
+### `records` table
 
 Table to record many-to-many connections between taxa and samples. 
 
-- **occID** (INTEGER): Primary key, unique ID for every occurrence.
+- **recordID** (INTEGER): Primary key, unique ID for every record.
 - *sampleID* (varchar): Foreign key, refers to the *sampleID* field of the `samples` table.
 - *taxonID* (INTEGER): Foreign key, refers to the *taxonID* field of the `taxa` table.
 - *abundance* (float): A numeric value that contains the abundance information of the taxon in the sample. 
 - *abundanceUnitID* (INTEGER): Foreign key, refers to the *abundanceUnitID* of the `abundanceUnits` table. 
+</div>
+
+<div class="box" markdown="1">
 
 ### `taxa` table
 
@@ -225,12 +278,16 @@ List of the taxonomic entries that occur in the sample. These entities were copi
 - *analyzedTaxon* (varchar): The character string that refers to a taxon observation. These were copied over from the source databases. 
 - *species* (varchar): If available, the clean, most likely binomen of the *analyzedTaxon* entry.
 - *genus* (varchar): If available, the clean, genus name the *analyzedTaxon* belongs to. 
-- *analyzedTaxonRankID* (INTEGER): Foreign key, refers to the *analyzedTaxonRankID* of the *ranks* table. The taxonomic rank of the *analyzedTaxon* entry. 
+- *analyzedTaxonRankID* (INTEGER): Foreign key, refers to the *analyzedTaxonRankID* of the *analyzedRanks* table. The taxonomic rank of the *analyzedTaxon* entry. 
 - *openNomenclature* (varchar): Qualifiers of open nomenclature that occur in the *analyzedTaxon* entry.
 
-### `ranks` table
+</div>
 
-Lookup table of the taxonomic ranks that the occurrences represent.
+<div class="box" markdown="1">
+
+### `analyzedRanks` table
+
+Lookup table of the taxonomic ranks that the record represents.
 
 - **analyzedTaxonRankID** (INTEGER): Primary key, the unique id of the rank.
 - *analyzedRank* (varchar): The rank of the analyzed taxon.
@@ -244,7 +301,11 @@ Lookup table of the taxonomic ranks that the occurrences represent.
 | `Class`      | The rank of classes.  |
 | `Phylum`     | The rank of phyla.    |
 | `indet`      | Unidentified rank.    |
-	
+
+</div>	
+
+<div class="box" markdown="1">
+
 ### `abundanceUnits` table
 
 Lookup table of the units in which the abundance of a taxon in a sample is expressed. 
@@ -260,4 +321,9 @@ Lookup table of the units in which the abundance of a taxon in a sample is expre
 | `relative abundance` | The proportion of the number of specimens occupied by the taxon in the sample.                    |
 | `density count`      | The number of individuals in a given volume or area. (BioTIME)                                    |
 | `mean count`         | The mean number of species across several samples-quadrats (BioTIME)                              |
+| `biomass cover`      | The area covered by a taxon in a sample.                                                          |
+| `biomass volume`     | The volume of a taxon in a sample.                                                                |
+| `biomass weight`     | The weight of a taxon in a sample.                                                                |
 | `flux`               | Average number of specimens sampled per day per squared-meter (sediment trap data)                |
+
+</div>

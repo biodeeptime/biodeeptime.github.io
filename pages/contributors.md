@@ -4,19 +4,15 @@ title: Contributing databases
 permalink: database/contributing/
 ---
 
-
 BioDeepTime compiles assemblage time series data from a number of databases - all of which are publicly available. 
-	
 
 {% for db in site.data.databases %}
-
-
 
 <div class="box">
   <div class="columns is-vcentered">
 	<div class="column is-2">
 	<a  href="{{db['link']}}">
-	<img src="{{site.baseurl}}{{site.url}}/images/logos/{{db['logo']}}" alt="{{db['name']}} logo" style="margin-left:20px;margin-right:20px">
+	<img src="{{site.baseurl}}{{site.url}}/images/logos/{{db['logo']}}" width="200" alt="{{db['name']}} logo" style="margin-left:20px;margin-right:20px">
 	</a>
 	</div>
 	<div class="column is-1">
@@ -48,4 +44,6 @@ BioDeepTime compiles assemblage time series data from a number of databases - al
 {% endfor %}
 
 
-We are looking for additional databases...
+## Direct uploads 
+
+BioDeepTime also aggregates data from time series that are not part of any of the formal entities above. These are categorized as **Direct uploads**.
