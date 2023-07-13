@@ -110,18 +110,18 @@ This is the source of the denormalized table above.
 <div class="columns is-vcentered">
 <div class="column is-8" markdown="1">
 
-# Via the `chronosphere` R package
+# Via the `chronosphere` (R)
 
-New versions are automatically added to the `chronosphere` data-versioning framework (currently available in R only). You can access the BioDeepTime with the following coordinates:
+New versions are automatically added to the [`chronosphere` data-versioning](https://chronosphere.info) framework (currently available in R only). You can access the BioDeepTime with the following coordinates:
 
 ```R
 library(chronosphere)
 
 # available datasets
-available <- chronosphere::datasets(dat="biodeeptime")
+available <- chronosphere::datasets("biodeeptime")
 
 # most recent occurrence table
-bdt <- chronosphere::fetch(dat="biodeeptime")
+bdt <- chronosphere::fetch("biodeeptime")
 ```
 
 
