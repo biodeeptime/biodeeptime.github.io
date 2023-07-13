@@ -300,7 +300,26 @@
 		
 	</div>
 	<div class="column is-two-fifth">
-		<img src="https://biodeeptime.github.io/images/workshops/second_workshop.png" />
+
+	
+	
+	<div x-data="{ open: false }">
+    <a x-on:click="open = true" title="View large image">
+        <figure class="image ">
+            <img src="https://biodeeptime.github.io/images/workshops/second_workshop_small.png" alt="" />
+        </figure>
+    </a>
+    <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak="">
+        <div class="modal-background" x-on:click="open = false"></div>
+        <div class="modal-content">
+            
+                <img src="https://biodeeptime.github.io/images/workshops/second_workshop.png" alt="" style="background-color:#ffffff" />
+            
+        </div>
+        <button class="modal-close is-large" aria-label="close" x-on:click="open = false"></button>
+    </div>
+</div>
+ 
 	</div>
 </div>
 </div>
@@ -450,7 +469,26 @@
 		
 	</div>
 	<div class="column is-two-fifth">
-		<img src="https://biodeeptime.github.io/images/workshops/first_workshop.jpeg" />
+
+	
+	
+	<div x-data="{ open: false }">
+    <a x-on:click="open = true" title="View large image">
+        <figure class="image ">
+            <img src="https://biodeeptime.github.io/images/workshops/first_workshop_small.jpeg" alt="" />
+        </figure>
+    </a>
+    <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak="">
+        <div class="modal-background" x-on:click="open = false"></div>
+        <div class="modal-content">
+            
+                <img src="https://biodeeptime.github.io/images/workshops/first_workshop.jpeg" alt="" style="background-color:#ffffff" />
+            
+        </div>
+        <button class="modal-close is-large" aria-label="close" x-on:click="open = false"></button>
+    </div>
+</div>
+ 
 	</div>
 </div>
 </div>
