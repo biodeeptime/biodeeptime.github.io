@@ -1,5 +1,10 @@
-- name: PaleoSynthesis project
+- ref: paleosynthesis
+  name: The PaleoSynthesis project
   webpage: http://www.paleosynthesis.de/
-  funder: Volkswagenstiftung
-  ref: paleosynthesis
-  logo: 
+  logo: images/logos/Syn-Paleo-sq.bmp
+  funder_logo: images/logos/volkswagenstiftung.png
+  text: BioDeepTime began in the context of Paleosynthesis project the provided the initial funding for the working group. The Paleosynthesis project is funded by Volkswagenstiftung. 
+  what: The Paleosynthesis has provided funding for the travelling and accodomodation costs for our two first in-person meetings. 
+
+#- ref: sDiv
+#  name: sDiv Synthesis center

@@ -4,10 +4,6 @@ title: Workshops
 permalink: team/workshops/
 ---
 
-Two options:
-1. a rolling page with sectiond dedicated to invididual workshops
-2. Make this a hub, with links to new posts for the workshops (e.g. if want to make a news feed on the page)
-
 {% assign wsord = site.data.workshops | sort: 'year' | reverse %}
 {% for ws in wsord %}
 <section>
@@ -29,12 +25,18 @@ Two options:
 				</tr>
 				<tr> 
 				<th style="text-align: left">Funding: </th>
-				<td>{{ws.funder}} </td>
+				{%assign lastFunder = ''%}
+				{%for funds in site.data.funders %}
+				{% if ws.funder contains funds.ref %}
+				<td><a href="{{site.url}}{{site.baseurl}}/team/funding/#{{funds.name | slugify}}">{{funds.name}}</a></td>
+				{%assign lastFunder = funds.name%}
+				{% endif %}
+				{% endfor %}
 				</tr>
 			</table>
 			</div>
 			<div class="column is-one-third">
-			<img src="{{site.url}}{{site.baseurl}}/{{ws.logo}}" width="150px">
+			<a href="{{site.url}}{{site.baseurl}}/team/funding/#{{lastFunder | slugify}}"><img src="{{site.url}}{{site.baseurl}}/{{ws.logo}}" width="150px"></a>
 			</div>
 		</div>
 		<br>
