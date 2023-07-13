@@ -6,7 +6,7 @@ show_sidebar: true
 hero_image: "/images/bg/ocean.jpg"
 ---
 
-<h1>BioDeepTime</h1>
+<h1>BioDeepTime (v1.0)</h1>
 <div class="columns">
   <div class="column">
 <p style="text-align:justify">The presence of humanity on the planet has been having a profound impact on life, which needs to be assessed in a broad temporal context. The BioDeepTime project aims to unravel how processes that change biological assemblages scale across historical and geological timescales. To achieve our goal, we have compiled biogeographic records of both modern and fossil organisms from various sources that include assemblage time series information over time.</p> 

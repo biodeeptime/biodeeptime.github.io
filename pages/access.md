@@ -27,9 +27,9 @@ All [published versions]({{site.url}}{{site.baseurl}}/database/milestones) of Bi
 
 * * *
 
-# Files of the most recent version (v1.0.0)
+# Files of the most recent version (v1.0)
 
-The current files of **BioDeepTime** (v1.0.0) are accessible from the links below.
+The current files of **BioDeepTime** (v1.0) are accessible from the links below.
 Both the original relational database and a record-denormalized data frame is available for download.
 
 ### 1) Record-denormalized data frame

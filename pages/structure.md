@@ -21,7 +21,7 @@ BioDeepTime is a relational database compiled and stored in the SQLite 3 standar
 
 ## Current structure
 
-The structure described here represents the most up-to-date, [v1.0.0]({{site.url}}{{site.baseurl}}/database/milestones/#biodeeptime-v100-2023-07-12) version of BioDeepTime. The current schema includes 17 tables, which are organized according to the following entity-relationship diagram:
+The structure described here represents the most up-to-date, [v1.0]({{site.url}}{{site.baseurl}}/database/milestones/#biodeeptime-v10-2023-07-12) version of BioDeepTime. The current schema includes 17 tables, which are organized according to the following entity-relationship diagram:
 
 <a href="{{site.url}}{{site.baseurl}}/images/schema.svg" ><img src="{{site.url}}{{site.baseurl}}/images/schema.svg"></a>
 

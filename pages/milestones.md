@@ -17,8 +17,7 @@ permalink: database/milestones/
 The planned versioning framework is: 
 
 - **First-level**: Large structural changes and major addition of sources. 
-- **Second-level**: Major corrections and additions of new timeseries. 
-- **Third-level**: Minor corrections.  
+- **Second-level**: Corrections and additions of new data. Smaller structural changes. 
 
 </div>
 
@@ -34,10 +33,10 @@ The planned versioning framework is:
 <a href="#list-of-known-issues">List of known issues</a>  
 </li>
 <li>
-<a href="#biodeeptime-v100-2023-07-12">Version 1.0.0</a>  
+<a href="#biodeeptime-v10-2023-07-12">Version 1.0</a>  
 </li>
 <li>
-<a href="#biodeeptime-v060-2023-01-17">Version 0.6.0</a>  
+<a href="#biodeeptime-v06-2023-01-17">Version 0.6</a>  
 </li>
 </ul>
 </div>
@@ -60,7 +59,7 @@ The planned versioning framework is:
 
 # Change log
 
-## BioDeepTime v1.0.0 [2023-07-12]
+## BioDeepTime v1.0 [2023-07-12]
 
 ### Added
 - new field `samples.totalCount` that represents the sample size in the case of count data, rather than the target sampling effort
@@ -110,7 +109,7 @@ The planned versioning framework is:
 
 * * *
 
-## BioDeepTime v0.6.0 [2023-01-17]
+## BioDeepTime v0.6 [2023-01-17]
 
 <a href="https://doi.org/10.5281/zenodo.7504617"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.7504617.svg" alt="DOI"></a>
 

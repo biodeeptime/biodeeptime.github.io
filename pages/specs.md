@@ -4,7 +4,7 @@ title: Criteria for data to be contributed
 permalink: /contribute/
 ---
 
-**BioDeepTime version 1.0.0** targeted the highest-quality available time series data with a goal of analyzing community turnover driven by environmental factors. As such, the following criteria were used to create the database.
+**BioDeepTime version 1.0** targeted the highest-quality available time series data with a goal of analyzing community turnover driven by environmental factors. As such, the following criteria were used to create the database.
 
 ## (1) Minimum 10 time points
 * Shorter time series were omitted due to focus on longer-scale community dynamics and statistical power limitations.
