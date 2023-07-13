@@ -260,17 +260,17 @@ Both the original relational database and a record-denormalized data frame is av
 <div class="columns is-vcentered">
 <div class="column is-8">
 
-    <h1 id="via-the-chronosphere-r-package">Via the <code class="language-plaintext highlighter-rouge">chronosphere</code> R package</h1>
+    <h1 id="via-the-chronosphere-r">Via the <code class="language-plaintext highlighter-rouge">chronosphere</code> (R)</h1>
 
-    <p>New versions are automatically added to the <code class="language-plaintext highlighter-rouge">chronosphere</code> data-versioning framework (currently available in R only). You can access the BioDeepTime with the following coordinates:</p>
+    <p>New versions are automatically added to the <a href="https://chronosphere.info"><code class="language-plaintext highlighter-rouge">chronosphere</code> data-versioning</a> framework (currently available in R only). You can access the BioDeepTime with the following coordinates:</p>
 
     <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">chronosphere</span><span class="p">)</span><span class="w">
 
 </span><span class="c1"># available datasets</span><span class="w">
-</span><span class="n">available</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chronosphere</span><span class="o">::</span><span class="n">datasets</span><span class="p">(</span><span class="n">dat</span><span class="o">=</span><span class="s2">"biodeeptime"</span><span class="p">)</span><span class="w">
+</span><span class="n">available</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chronosphere</span><span class="o">::</span><span class="n">datasets</span><span class="p">(</span><span class="s2">"biodeeptime"</span><span class="p">)</span><span class="w">
 
 </span><span class="c1"># most recent occurrence table</span><span class="w">
-</span><span class="n">bdt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chronosphere</span><span class="o">::</span><span class="n">fetch</span><span class="p">(</span><span class="n">dat</span><span class="o">=</span><span class="s2">"biodeeptime"</span><span class="p">)</span><span class="w">
+</span><span class="n">bdt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">chronosphere</span><span class="o">::</span><span class="n">fetch</span><span class="p">(</span><span class="s2">"biodeeptime"</span><span class="p">)</span><span class="w">
 </span></code></pre></div>    </div>
 
     <p><a class="button is-link is-light" href="https://biodeeptime.github.io/tutorials">Check out the tutorials for a demonstration!</a></p>
