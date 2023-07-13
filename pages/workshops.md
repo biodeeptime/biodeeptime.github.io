@@ -53,7 +53,10 @@ permalink: team/workshops/
 		{% endfor %}
 	</div>
 	<div class="column is-two-fifth">
-		<img src="{{site.url}}{{site.baseurl}}/{{ws.groupPhoto}}">
+
+	{% assign linkSmall = site.url | append: baseurl | append: '/' | append: ws.groupPhoto_small %}
+	{% assign linkLarge = site.url | append: baseurl | append: '/' | append: ws.groupPhoto %}
+	{% include image-modal.html link=linkSmall large_link=linkLarge %} 
 	</div>
 </div>
 </div>

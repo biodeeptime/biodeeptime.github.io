@@ -117,6 +117,3 @@ permalink: team/people/
 {% endif %}
 
 
-- Open group.
-- We are looking for collaborators.
-- Please get in touch if you are would like to contribute data.

@@ -7,6 +7,7 @@
   funder:
     - paleosynthesis
   groupPhoto: images/workshops/first_workshop.jpeg
+  groupPhoto_small: images/workshops/first_workshop_small.jpeg
   onsite:
     - may
     - saupe
@@ -31,6 +32,7 @@
   funder:
     - paleosynthesis
   groupPhoto: images/workshops/second_workshop.png
+  groupPhoto_small: images/workshops/second_workshop_small.png
   onsite:
     - margulis
     - kocsis
