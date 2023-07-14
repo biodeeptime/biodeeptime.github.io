@@ -76,6 +76,7 @@ The planned versioning framework is:
 - Omitted studies 39 and 217 due to potentially erroneous entries
 - Added biomass data to where there were no `abundanceUnit`s earlier 
 - Time series taxonomic/environment groups are added
+- biomass values replaced abundance values in cases when count data was given as 0, but biomass was valid
 
 ##### Neotoma
 - sample sum count is moved to `samples.totalCount` from `samples.samplingEffort`. Accordingly `samplingEfforType` is consistently set to `NA`.

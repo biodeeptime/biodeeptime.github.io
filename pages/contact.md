@@ -9,7 +9,7 @@ permalink: /contact/
 
 ## If you wish to join us...
 
-You are invited to get in touch with us, if you wish to either contribute your data (see contribution requirements [here]({{site.url}}{{site.baseurl}}/contribute/)) or you would like to participate in research. Please write to our [principal investigtors]({{site.url}}{{site.baseurl}}/team/people/#project-coordination-pis) if you wish to be on board! 
+Our group is open for new collaborations. You are invited to get in touch with us, if you wish to either contribute your data (see contribution requirements [here]({{site.url}}{{site.baseurl}}/contribute/)) or you would like to participate in research. Please write to our [principal investigtors]({{site.url}}{{site.baseurl}}/team/people/#project-coordination-pis) if you wish to be on board! 
 
 ## Questions about the database
 
