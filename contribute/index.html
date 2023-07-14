@@ -21,9 +21,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">
     
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Criteria for data to be contributed | BioDeepTime</title>
+<title>Contributing data | BioDeepTime</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Criteria for data to be contributed" />
+<meta property="og:title" content="Contributing data" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
 <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
@@ -32,9 +32,9 @@
 <meta property="og:site_name" content="BioDeepTime" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Criteria for data to be contributed" />
+<meta property="twitter:title" content="Contributing data" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Criteria for data to be contributed","url":"https://biodeeptime.github.io/contribute/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Contributing data","url":"https://biodeeptime.github.io/contribute/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <!-- head scripts --></head>
@@ -129,7 +129,7 @@
         <div class="container">
 		  <div class="columns is-vcentered">
 			<div class="column is-7">
-			  <h1 class="title is-2">Criteria for data to be contributed</h1>
+			  <h1 class="title is-2">Contributing data</h1>
 			  <p class="subtitle is-3"></p>
 			  
 			</div>
@@ -156,21 +156,25 @@
                     
                     
 <div class="content">
-    <p><strong>BioDeepTime version 1.0</strong> targeted the highest-quality available time series data with a goal of analyzing community turnover driven by environmental factors. As such, the following criteria were used to create the database.</p>
+    <p>We are continuously looking for new data to be included in <strong>BioDeepTime</strong>. Optimally, these should be uploaded to one of our <a href="https://biodeeptime.github.io/databases/contributors/">source databases</a>, from where we can access the data in the next update. However, if adding your data in such a way is not feasible, it can be incorporated directly into <strong>BioDeepTime</strong>. Please, <a href="https://biodeeptime.github.io/contact/">get in touch with us</a>, if you would like to contribute!</p>
 
-<h2 id="1-minimum-10-time-points">(1) Minimum 10 time points</h2>
+<h2 id="criteria-for-data-to-be-contributed">Criteria for data to be contributed</h2>
+
+<p><strong>BioDeepTime version 1.0</strong> targeted the highest-quality available time series data with a goal of analyzing community turnover driven by environmental factors. As such, the following criteria were used to create the database.</p>
+
+<h3 id="1-minimum-10-time-points">(1) Minimum 10 time points</h3>
 <ul>
   <li>Shorter time series were omitted due to focus on longer-scale community dynamics and statistical power limitations.</li>
   <li>We define a time point as a unique combination of age and depth for a sample. In some time series, low resolution of ages has resulted in identical age estimates for neighboring samples but they are considered distinct because they occur at different depths.</li>
 </ul>
 
-<h2 id="2-allows-community-level-analysis">(2) Allows community-level analysis</h2>
+<h3 id="2-allows-community-level-analysis">(2) Allows community-level analysis</h3>
 <ul>
   <li>The intended use of the database is for community-level analyses. As such, it was required that all individuals in the sample were identified to the lowest possible taxonomic level (ideally species-level, but genus and family level are also present in the database). Data that focused only on selected species within the sample were omitted.</li>
   <li>Data types included in BioDeepTime include counts, flux, relative abundances, or presence.</li>
 </ul>
 
-<h2 id="3-internally-consistent-taxonomy">(3) Internally consistent taxonomy</h2>
+<h3 id="3-internally-consistent-taxonomy">(3) Internally consistent taxonomy</h3>
 
 <ul>
   <li>Ideally, taxonomy for all groups would be synonymized across time series; however, since analyses are being done per time series, we require the taxonomy within a time series to be consistent with itself.</li>
@@ -179,7 +183,7 @@
   <li>Whenever possible, higher level taxonomy (i.e., above Genus) should be included.</li>
 </ul>
 
-<h2 id="4-available-or-calculable-temporal-information-with-generally-understood-uncertainties">(4) Available or calculable temporal information (with generally understood uncertainties)</h2>
+<h3 id="4-available-or-calculable-temporal-information-with-generally-understood-uncertainties">(4) Available or calculable temporal information (with generally understood uncertainties)</h3>
 <ul>
   <li>Intended community turnover analyses require absolute age estimates for samples, particularly when attempting to correlate to potential causative environmental drivers.</li>
   <li>Many fossil time series—for instance from the Paleobiology Database—were omitted because of inherent uncertainties in sample ages. For example, ages based solely on stratigraphic position at the resolution of a geological stage can have uncertainties of hundreds of thousands or millions of years. Future versions of BioDeepTime will attempt to include these types of records, after the age models associated with them have been improved.</li>
