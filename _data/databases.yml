@@ -45,7 +45,7 @@
   text: The largest database of palinomorph time series. 
 - ref: neptune
   name: Neptune Sandbox Berlin
-  link: https://www.neotomadb.org/
+  link: http://nsb.mfn-berlin.de/
   logo: neptunedb.png
   evolved:
   representatives:
