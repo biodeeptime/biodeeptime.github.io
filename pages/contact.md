@@ -9,11 +9,11 @@ permalink: /contact/
 
 ## If you wish to join us...
 
-Our group is open for new collaborations. You are invited to get in touch with us, if you wish to either contribute your data (see contribution requirements [here]({{site.url}}{{site.baseurl}}/contribute/)) or you would like to participate in research. Please write to our [principal investigtors]({{site.url}}{{site.baseurl}}/team/people/#project-coordination-pis) if you wish to be on board! 
+Our group is open for new collaborations. You are invited to get in touch with us, if you wish to either contribute your data (see contribution requirements [here]({{site.url}}{{site.baseurl}}/contribute/)) or you would like to participate in research. Please write to our [project coordinators and PIs]({{site.url}}{{site.baseurl}}/team/people/#project-coordination-and-database-development) if you wish to be on board! 
 
 ## Questions about the database
 
-Technical issues with the database can be reported to the [database developers]({{site.url}}{{site.baseurl}}/team/people/#database-development). 
+Reports of technical issues with the database are also more than welcome. Please write one of our [database developers]({{site.url}}{{site.baseurl}}/team/people/#project-coordination-and-database-development). 
 
 </div>
 <div class="column is-one-fifth">

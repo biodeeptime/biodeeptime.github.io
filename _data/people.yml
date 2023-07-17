@@ -4,7 +4,7 @@
   webpage: https://www.gzn.nat.fau.de/person/adam-kocsis/
   institute: GeoZentrum Nordbayern, Friedrich-Alexander-Universität Erlangen-Nürnberg
   image: kocsis.jpg
-  special: admin
+  special: pi
 - ref: penny
   first: Amelia
   last: Penny
@@ -17,7 +17,7 @@
   webpage: https://uol.de/icbm/planktologie/mitarbeiter/marina-rillo
   institute: Carl von Ossietzky Universität Oldenburg
   image: marina-rillo.jpg
-  special: admin
+  special: pi
 - ref: dornelas
   first: Maria 
   last: Dornelas
@@ -45,7 +45,7 @@
   webpage: 
   institute: University of Minnesota Duluth 
   image: smith.jpeg
-  special: admin
+  special: pi
 - ref: jonkers
   first: Lukas  
   last: Jonkers  
@@ -101,7 +101,7 @@
   webpage: https://www.earth.ox.ac.uk/people/erin-saupe/
   institute: University of Oxford 
   image: saupe.jpg
-  special:
+  special: pi
 - ref: renaudie
   first: Johan    
   last: Renaudie  
