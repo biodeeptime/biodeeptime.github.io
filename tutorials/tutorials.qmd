@@ -87,7 +87,7 @@ The number of unique sampling locations:
 nrow(unique(bdt[, c("long", "lat")]))
 ```
 
-The oldest record in each database:
+The oldest record (relative to 1950) in each database:
 ```{r, dbs4}
 bdt %>% group_by(db) %>% summarize(max = max(age))
 ```
@@ -110,7 +110,60 @@ mean(fossil$age)
 
 ```
 
-We can have a citation here: such as [@kocsis2019package]
+For additional analyses and visualization, data summarization and manipulation can be done as follows:
+```
+## this manipulation summarizes information for each unique time series
+overview <- bdt %>% 
+  group_by(seriesID) %>%
+  dplyr::summarise(db = unique(db), ## source database
+                   #environment = unique(environment), ## broadly defined environment
+                   group = unique(group), ## taxonomic group
+                   lat = unique(lat), ## latitude
+                   long = unique(long), ## longitude
+                   #abundType = unique(abundanceUnit), ## abundance type of records
+                   samples = length(unique(sampleID)), ## number of samples
+                   richness = length(unique(analyzedTaxon)), ## number of unique species
+                   meanAge = mean(age, na.rm = TRUE), ## mean age of samples 
+                   minAge = min(age, na.rm = TRUE), ## minimum age of a sample
+                   maxAge = max(age, na.rm = TRUE), ## maximum age of a sample
+                   extent =  maxAge - minAge) ## temporal extent (duration) of the time series
+```
 
-# References
+## Visualizing the data
+
+Create a donut plot showing the contribution of source databases to BioDeepTime:
+```## donut plot for proportion contribution of each database
+databases <- overview %>%
+  group_by(db) %>%
+  dplyr::summarise(count = n())
+
+# Compute percentages
+databases$fraction <- databases$count / sum(databases$count)
+
+# Compute the cumulative percentages (top of each rectangle)
+databases$ymax <- cumsum(databases$fraction)
+
+# Compute the bottom of each rectangle
+databases$ymin <- c(0, head(databases$ymax, n=-1))
+
+# Compute label position
+databases$labelPosition <- (databases$ymax + databases$ymin)/2
+
+# Compute a good label
+databases$label <- paste0(databases$db, ", ", databases$count)
+
+# Make the plot
+ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
+	geom_rect() +
+	#geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)
+	scale_fill_manual(values = colors) +
+	coord_polar(theta="y") +
+	xlim(c(2, 4)) +
+	theme_void() +
+	#theme(legend.position = "none") ## controls the presence of a legend
+
+```
+
+
+
 
