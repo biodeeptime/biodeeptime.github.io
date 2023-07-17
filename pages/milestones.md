@@ -61,6 +61,8 @@ The planned versioning framework is:
 
 ## BioDeepTime v1.0 [2023-07-12]
 
+<a href="https://doi.org/10.5281/zenodo.8154672"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8154672.svg" alt="DOI"></a>
+
 ### Added
 - new field `samples.totalCount` that represents the sample size in the case of count data, rather than the target sampling effort
 - Three new `abundanceUnit` categories: `"biomass cover"`, `"biomass weight"`, `"biomass volume"`

@@ -44,19 +44,19 @@ The **BioDeepTime** database in a single table, where every row represents one b
 
 This form of the database is optimized for analyses, and can be accessed in binary R (`.rds`), plain text (`.csv`) and Apache Parquet (`.parquet`) formats:
 
- <a class="button is-link is-light" href="https://zenodo.org/record/7504617/files/biodeeptime.rds?download=1">
+ <a class="button is-link is-light" href="https://zenodo.org/record/8154672/files/biodeeptime.rds?download=1">
     <span class="icon">
 	<i class="fas fa-download"></i>
 	</span>
     <span>.rds</span>
   </a>
- <a class="button" href="https://zenodo.org/record/7504617/files/biodeeptime_csv.zip?download=1">
+ <a class="button" href="https://zenodo.org/record/8154672/files/biodeeptime_csv.zip?download=1">
     <span class="icon">
 	<i class="fas fa-download"></i>
 	</span>
     <span>.csv</span>
   </a>
- <a class="button" href="https://zenodo.org/record/7504617/files/biodeeptime_parquet.zip?download=1">
+ <a class="button" href="https://zenodo.org/record/8154672/files/biodeeptime_parquet.zip?download=1">
     <span class="icon">
 	<i class="fas fa-download"></i>
 	</span>
@@ -77,7 +77,7 @@ This form of the database is optimized for analyses, and can be accessed in bina
 
 This is the source of the denormalized table above.  
 
- <a class="button is-primary is-light" href="https://zenodo.org/record/7504617/files/biodeeptime_sqlite.zip?download=1">
+ <a class="button is-primary is-light" href="https://zenodo.org/record/8154672/files/biodeeptime_sqlite.zip?download=1">
     <span class="icon">
 	<i class="fas fa-download"></i>
 	</span>
@@ -90,7 +90,7 @@ This is the source of the denormalized table above.
 
 ##### - References 
 
- <a class="button" href="https://zenodo.org/record/7504617/files/references.csv?download=1">
+ <a class="button" href="https://zenodo.org/record/8154672/files/references.csv?download=1">
     <span class="icon">
 	<i class="fas fa-download"></i>
 	</span>
@@ -99,7 +99,7 @@ This is the source of the denormalized table above.
 
 ##### - BChron ages for Neotoma
 
- <a class="button" href="https://zenodo.org/record/7504617/files/neotoma_bchron.rds?download=1">
+ <a class="button" href="https://zenodo.org/record/8154672/files/neotoma_bchron.rds?download=1">
     <span class="icon">
 	<i class="fas fa-download"></i>
 	</span>
