@@ -82,7 +82,7 @@ presence of a taxon in a sample).
 str(bdt)
 ```
 
-    'data.frame':   7432199 obs. of  38 variables:
+    'data.frame':   7437847 obs. of  39 variables:
      $ db                : chr  "Neotoma" "Neotoma" "Neotoma" "Neotoma" ...
      $ seriesID          : chr  "TS_1" "TS_1" "TS_1" "TS_1" ...
      $ seriesOriginalName: chr  "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" ...
@@ -106,32 +106,33 @@ str(bdt)
      $ timeOriginalYoung : num  NA NA NA NA NA NA NA NA NA NA ...
      $ waterDepth        : num  NA NA NA NA NA NA NA NA NA NA ...
      $ preservation      : chr  NA NA NA NA ...
-     $ samplingEffort    : num  809 809 809 809 809 809 809 809 809 809 ...
+     $ samplingEffort    : num  NA NA NA NA NA NA NA NA NA NA ...
      $ minimumMesh       : num  NA NA NA NA NA NA NA NA NA NA ...
      $ maximumMesh       : num  NA NA NA NA NA NA NA NA NA NA ...
      $ environment       : chr  "Terrestrial or Freshwater" "Terrestrial or Freshwater" "Terrestrial or Freshwater" "Terrestrial or Freshwater" ...
      $ samplingEffortType: chr  NA NA NA NA ...
-     $ taxonID           : int  11 6 1 8 7 3 4 10 2 13 ...
-     $ analyzedTaxon     : chr  "Cyperaceae" "Cichorioideae" "Ranunculaceae undiff." "Artemisia" ...
+     $ totalCount        : num  809 809 809 809 809 809 809 809 809 809 ...
+     $ taxonID           : int  4 10 3 11 8 1 13 12 5 9 ...
+     $ analyzedTaxon     : chr  "Valeriana" "Onagraceae" "Ericaceae" "Cyperaceae" ...
      $ species           : chr  NA NA NA NA ...
      $ genus             : chr  NA NA NA NA ...
      $ openNomenclature  : chr  NA NA NA NA ...
      $ analyzedRank      : chr  NA NA NA NA ...
-     $ group             : chr  "Vascular plants and bryophytes" "Vascular plants and bryophytes" "Vascular plants and bryophytes" "Vascular plants and bryophytes" ...
-     $ abundance         : num  7 3 1 5 3 2 2 6 1 22 ...
+     $ group             : chr  "Plants" "Plants" "Plants" "Plants" ...
+     $ abundance         : num  2 6 2 7 5 1 22 12 3 5 ...
      $ abundanceUnit     : chr  "count" "count" "count" "count" ...
      $ refID             : chr  "2" "2" "2" "2" ...
      - attr(*, "chronosphere")=List of 13
       ..$ dat         : chr "biodeeptime"
       ..$ var         : chr "denormalized"
       ..$ res         : logi NA
-      ..$ ver         : num 0.6
+      ..$ ver         : num 1
       ..$ datafile    : chr "biodeeptime.rds"
-      ..$ item        : int 14
+      ..$ item        : int 702
       ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
-      ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-      ..$ downloadDate: POSIXct[1:1], format: "2023-07-13 10:46:17"
-      ..$ publishDate : chr "2023-01-28"
+      ..$ bibtex      : chr "@misc{jansen_a_smith_2023_8154672,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
+      ..$ downloadDate: POSIXct[1:1], format: "2023-07-18 13:01:36"
+      ..$ publishDate : chr "2023-07-12"
       ..$ infoURL     : logi NA
       ..$ API         : logi NA
       ..$ additional  : list()
@@ -144,7 +145,7 @@ The number of time series in the database:
 length(unique(bdt$seriesID))
 ```
 
-    [1] 10071
+    [1] 10062
 
 The number of records in the database:
 
@@ -152,7 +153,7 @@ The number of records in the database:
 length(bdt$db)
 ```
 
-    [1] 7432199
+    [1] 7437847
 
 The number of unique sampling locations:
 
@@ -160,9 +161,9 @@ The number of unique sampling locations:
 nrow(unique(bdt[, c("long", "lat")]))
 ```
 
-    [1] 8762
+    [1] 8752
 
-The oldest record in each database:
+The oldest record (relative to 1950) in each database:
 
 ``` r
 bdt %>% group_by(db) %>% summarize(max = max(age))
@@ -179,7 +180,7 @@ bdt %>% group_by(db) %>% summarize(max = max(age))
     6 Neptune SandBox          151075752  
     7 Paleobiology Database    150889174. 
     8 SedTraps                       -28.4
-    9 Triton                    65996942. 
+    9 Triton                    65997000  
 
 Finding the mean age (relative to 1950) of a sample from modern
 databases (BioTIME and SedTraps):
@@ -191,7 +192,7 @@ modern <- bdt %>%
 mean(modern$age) 
 ```
 
-    [1] -44.52683
+    [1] -44.50505
 
 Finding the mean age (relative to 1950) of a sample from fossil
 databases:
@@ -203,21 +204,65 @@ fossil <- bdt %>%
 mean(fossil$age) 
 ```
 
-    [1] 4976267
+    [1] 5087525
 
-We can have a citation here: such as (Kocsis et al. 2019)
+For additional analyses and visualization, data summarization and
+manipulation can be done as follows:
 
-# References
+``` r
+## this manipulation summarizes information for each unique time series
+overview <- bdt %>% 
+  group_by(seriesID) %>%
+  dplyr::summarise(db = unique(db), ## source database
+                   #environment = unique(environment), ## broadly defined environment
+                   group = unique(group), ## taxonomic group
+                   lat = unique(lat), ## latitude
+                   long = unique(long), ## longitude
+                   #abundType = unique(abundanceUnit), ## abundance type of records
+                   samples = length(unique(sampleID)), ## number of samples
+                   richness = length(unique(analyzedTaxon)), ## number of unique species
+                   meanAge = mean(age, na.rm = TRUE), ## mean age of samples 
+                   minAge = min(age, na.rm = TRUE), ## minimum age of a sample
+                   maxAge = max(age, na.rm = TRUE), ## maximum age of a sample
+                   extent =  maxAge - minAge) ## temporal extent (duration) of the time series
+```
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+    `summarise()` has grouped output by 'seriesID'. You can override using the
+    `.groups` argument.
 
-<div id="ref-kocsis2019package" class="csl-entry">
+## Visualizing the data
 
-Kocsis, Ádám T., Carl J. Reddin, John Alroy, and Wolfgang Kiessling.
-2019. “The R Package <span class="nocase">divDyn</span> for Quantifying
-Diversity Dynamics Using Fossil Sampling Data.” *Methods in Ecology and
-Evolution* 10 (5): 735–43. <https://doi.org/10.1111/2041-210X.13161>.
+Create a donut plot showing the contribution of source databases to
+BioDeepTime:
 
-</div>
+``` r
+## donut plot for proportion contribution of each database
+databases <- overview %>%
+  group_by(db) %>%
+  dplyr::summarise(count = n())
 
-</div>
+# Compute percentages
+databases$fraction <- databases$count / sum(databases$count)
+
+# Compute the cumulative percentages (top of each rectangle)
+databases$ymax <- cumsum(databases$fraction)
+
+# Compute the bottom of each rectangle
+databases$ymin <- c(0, head(databases$ymax, n=-1))
+
+# Compute label position
+databases$labelPosition <- (databases$ymax + databases$ymin)/2
+
+# Compute a good label
+databases$label <- paste0(databases$db, ", ", databases$count)
+
+# # Make the plot
+# ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
+#   geom_rect() +
+#   #geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)
+#   scale_fill_manual(values = colors) +
+#   coord_polar(theta="y") +
+#   xlim(c(2, 4)) +
+#   theme_void()# +
+#   #theme(legend.position = "none") ## controls the presence of a legend
+```

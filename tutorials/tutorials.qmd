@@ -111,7 +111,7 @@ mean(fossil$age)
 ```
 
 For additional analyses and visualization, data summarization and manipulation can be done as follows:
-```
+```{r}
 ## this manipulation summarizes information for each unique time series
 overview <- bdt %>% 
   group_by(seriesID) %>%
@@ -132,7 +132,8 @@ overview <- bdt %>%
 ## Visualizing the data
 
 Create a donut plot showing the contribution of source databases to BioDeepTime:
-```## donut plot for proportion contribution of each database
+```{r, plot=TRUE}
+## donut plot for proportion contribution of each database
 databases <- overview %>%
   group_by(db) %>%
   dplyr::summarise(count = n())
@@ -152,15 +153,15 @@ databases$labelPosition <- (databases$ymax + databases$ymin)/2
 # Compute a good label
 databases$label <- paste0(databases$db, ", ", databases$count)
 
-# Make the plot
-ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
-	geom_rect() +
-	#geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)
-	scale_fill_manual(values = colors) +
-	coord_polar(theta="y") +
-	xlim(c(2, 4)) +
-	theme_void() +
-	#theme(legend.position = "none") ## controls the presence of a legend
+# # Make the plot
+# ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
+# 	geom_rect() +
+# 	#geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)
+# 	scale_fill_manual(values = colors) +
+# 	coord_polar(theta="y") +
+# 	xlim(c(2, 4)) +
+# 	theme_void()# +
+# 	#theme(legend.position = "none") ## controls the presence of a legend
 
 ```
 
