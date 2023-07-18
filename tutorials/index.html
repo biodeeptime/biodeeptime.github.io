@@ -226,7 +226,7 @@ presence of a taxon in a sample).</p>
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">bdt</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'data.frame':   7432199 obs. of  38 variables:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'data.frame':   7437847 obs. of  39 variables:
  $ db                : chr  "Neotoma" "Neotoma" "Neotoma" "Neotoma" ...
  $ seriesID          : chr  "TS_1" "TS_1" "TS_1" "TS_1" ...
  $ seriesOriginalName: chr  "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" "Konus Exposure, Adycha River" ...
@@ -250,32 +250,33 @@ presence of a taxon in a sample).</p>
  $ timeOriginalYoung : num  NA NA NA NA NA NA NA NA NA NA ...
  $ waterDepth        : num  NA NA NA NA NA NA NA NA NA NA ...
  $ preservation      : chr  NA NA NA NA ...
- $ samplingEffort    : num  809 809 809 809 809 809 809 809 809 809 ...
+ $ samplingEffort    : num  NA NA NA NA NA NA NA NA NA NA ...
  $ minimumMesh       : num  NA NA NA NA NA NA NA NA NA NA ...
  $ maximumMesh       : num  NA NA NA NA NA NA NA NA NA NA ...
  $ environment       : chr  "Terrestrial or Freshwater" "Terrestrial or Freshwater" "Terrestrial or Freshwater" "Terrestrial or Freshwater" ...
  $ samplingEffortType: chr  NA NA NA NA ...
- $ taxonID           : int  11 6 1 8 7 3 4 10 2 13 ...
- $ analyzedTaxon     : chr  "Cyperaceae" "Cichorioideae" "Ranunculaceae undiff." "Artemisia" ...
+ $ totalCount        : num  809 809 809 809 809 809 809 809 809 809 ...
+ $ taxonID           : int  4 10 3 11 8 1 13 12 5 9 ...
+ $ analyzedTaxon     : chr  "Valeriana" "Onagraceae" "Ericaceae" "Cyperaceae" ...
  $ species           : chr  NA NA NA NA ...
  $ genus             : chr  NA NA NA NA ...
  $ openNomenclature  : chr  NA NA NA NA ...
  $ analyzedRank      : chr  NA NA NA NA ...
- $ group             : chr  "Vascular plants and bryophytes" "Vascular plants and bryophytes" "Vascular plants and bryophytes" "Vascular plants and bryophytes" ...
- $ abundance         : num  7 3 1 5 3 2 2 6 1 22 ...
+ $ group             : chr  "Plants" "Plants" "Plants" "Plants" ...
+ $ abundance         : num  2 6 2 7 5 1 22 12 3 5 ...
  $ abundanceUnit     : chr  "count" "count" "count" "count" ...
  $ refID             : chr  "2" "2" "2" "2" ...
  - attr(*, "chronosphere")=List of 13
   ..$ dat         : chr "biodeeptime"
   ..$ var         : chr "denormalized"
   ..$ res         : logi NA
-  ..$ ver         : num 0.6
+  ..$ ver         : num 1
   ..$ datafile    : chr "biodeeptime.rds"
-  ..$ item        : int 14
+  ..$ item        : int 702
   ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
-  ..$ bibtex      : chr "@misc{jansen_a_smith_2023_7504617,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-  ..$ downloadDate: POSIXct[1:1], format: "2023-07-13 10:46:17"
-  ..$ publishDate : chr "2023-01-28"
+  ..$ bibtex      : chr "@misc{jansen_a_smith_2023_8154672,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
+  ..$ downloadDate: POSIXct[1:1], format: "2023-07-18 13:01:36"
+  ..$ publishDate : chr "2023-07-12"
   ..$ infoURL     : logi NA
   ..$ API         : logi NA
   ..$ additional  : list()
@@ -288,7 +289,7 @@ presence of a taxon in a sample).</p>
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">bdt</span><span class="o">$</span><span class="n">seriesID</span><span class="p">))</span><span class="w">
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 10071
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 10062
 </code></pre></div></div>
 
 <p>The number of records in the database:</p>
@@ -296,7 +297,7 @@ presence of a taxon in a sample).</p>
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">length</span><span class="p">(</span><span class="n">bdt</span><span class="o">$</span><span class="n">db</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 7432199
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 7437847
 </code></pre></div></div>
 
 <p>The number of unique sampling locations:</p>
@@ -304,10 +305,10 @@ presence of a taxon in a sample).</p>
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nrow</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">bdt</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"long"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lat"</span><span class="p">)]))</span><span class="w">
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 8762
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 8752
 </code></pre></div></div>
 
-<p>The oldest record in each database:</p>
+<p>The oldest record (relative to 1950) in each database:</p>
 
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bdt</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">summarize</span><span class="p">(</span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">age</span><span class="p">))</span><span class="w">
 </span></code></pre></div></div>
@@ -323,7 +324,7 @@ presence of a taxon in a sample).</p>
 6 Neptune SandBox          151075752  
 7 Paleobiology Database    150889174. 
 8 SedTraps                       -28.4
-9 Triton                    65996942. 
+9 Triton                    65997000  
 </code></pre></div></div>
 
 <p>Finding the mean age (relative to 1950) of a sample from modern
@@ -335,7 +336,7 @@ databases (BioTIME and SedTraps):</p>
 </span><span class="n">mean</span><span class="p">(</span><span class="n">modern</span><span class="o">$</span><span class="n">age</span><span class="p">)</span><span class="w"> 
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] -44.52683
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] -44.50505
 </code></pre></div></div>
 
 <p>Finding the mean age (relative to 1950) of a sample from fossil
@@ -347,25 +348,68 @@ databases:</p>
 </span><span class="n">mean</span><span class="p">(</span><span class="n">fossil</span><span class="o">$</span><span class="n">age</span><span class="p">)</span><span class="w"> 
 </span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 4976267
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 5087525
 </code></pre></div></div>
 
-<p>We can have a citation here: such as (Kocsis et al. 2019)</p>
+<p>For additional analyses and visualization, data summarization and
+manipulation can be done as follows:</p>
 
-<h1 id="references">References</h1>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## this manipulation summarizes information for each unique time series</span><span class="w">
+</span><span class="n">overview</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bdt</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">seriesID</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">summarise</span><span class="p">(</span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">db</span><span class="p">),</span><span class="w"> </span><span class="c1">## source database</span><span class="w">
+                   </span><span class="c1">#environment = unique(environment), ## broadly defined environment</span><span class="w">
+                   </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">group</span><span class="p">),</span><span class="w"> </span><span class="c1">## taxonomic group</span><span class="w">
+                   </span><span class="n">lat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span><span class="w"> </span><span class="c1">## latitude</span><span class="w">
+                   </span><span class="n">long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">long</span><span class="p">),</span><span class="w"> </span><span class="c1">## longitude</span><span class="w">
+                   </span><span class="c1">#abundType = unique(abundanceUnit), ## abundance type of records</span><span class="w">
+                   </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">sampleID</span><span class="p">)),</span><span class="w"> </span><span class="c1">## number of samples</span><span class="w">
+                   </span><span class="n">richness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">analyzedTaxon</span><span class="p">)),</span><span class="w"> </span><span class="c1">## number of unique species</span><span class="w">
+                   </span><span class="n">meanAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="c1">## mean age of samples </span><span class="w">
+                   </span><span class="n">minAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="c1">## minimum age of a sample</span><span class="w">
+                   </span><span class="n">maxAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> </span><span class="c1">## maximum age of a sample</span><span class="w">
+                   </span><span class="n">extent</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">maxAge</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">minAge</span><span class="p">)</span><span class="w"> </span><span class="c1">## temporal extent (duration) of the time series</span><span class="w">
+</span></code></pre></div></div>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`summarise()` has grouped output by 'seriesID'. You can override using the
+`.groups` argument.
+</code></pre></div></div>
 
-<div id="ref-kocsis2019package" class="csl-entry">
+<h2 id="visualizing-the-data">Visualizing the data</h2>
 
-Kocsis, Ádám T., Carl J. Reddin, John Alroy, and Wolfgang Kiessling.
-2019. “The R Package <span class="nocase">divDyn</span> for Quantifying
-Diversity Dynamics Using Fossil Sampling Data.” *Methods in Ecology and
-Evolution* 10 (5): 735–43. &lt;https://doi.org/10.1111/2041-210X.13161&gt;.
+<p>Create a donut plot showing the contribution of source databases to
+BioDeepTime:</p>
 
-</div>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## donut plot for proportion contribution of each database</span><span class="w">
+</span><span class="n">databases</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">overview</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">db</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">summarise</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">())</span><span class="w">
 
-</div>
+</span><span class="c1"># Compute percentages</span><span class="w">
+</span><span class="n">databases</span><span class="o">$</span><span class="n">fraction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">databases</span><span class="o">$</span><span class="n">count</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">databases</span><span class="o">$</span><span class="n">count</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Compute the cumulative percentages (top of each rectangle)</span><span class="w">
+</span><span class="n">databases</span><span class="o">$</span><span class="n">ymax</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cumsum</span><span class="p">(</span><span class="n">databases</span><span class="o">$</span><span class="n">fraction</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Compute the bottom of each rectangle</span><span class="w">
+</span><span class="n">databases</span><span class="o">$</span><span class="n">ymin</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p">(</span><span class="n">databases</span><span class="o">$</span><span class="n">ymax</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">-1</span><span class="p">))</span><span class="w">
+
+</span><span class="c1"># Compute label position</span><span class="w">
+</span><span class="n">databases</span><span class="o">$</span><span class="n">labelPosition</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">databases</span><span class="o">$</span><span class="n">ymax</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">databases</span><span class="o">$</span><span class="n">ymin</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="w">
+
+</span><span class="c1"># Compute a good label</span><span class="w">
+</span><span class="n">databases</span><span class="o">$</span><span class="n">label</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">databases</span><span class="o">$</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="s2">", "</span><span class="p">,</span><span class="w"> </span><span class="n">databases</span><span class="o">$</span><span class="n">count</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># # Make the plot</span><span class="w">
+</span><span class="c1"># ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +</span><span class="w">
+</span><span class="c1">#   geom_rect() +</span><span class="w">
+</span><span class="c1">#   #geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)</span><span class="w">
+</span><span class="c1">#   scale_fill_manual(values = colors) +</span><span class="w">
+</span><span class="c1">#   coord_polar(theta="y") +</span><span class="w">
+</span><span class="c1">#   xlim(c(2, 4)) +</span><span class="w">
+</span><span class="c1">#   theme_void()# +</span><span class="w">
+</span><span class="c1">#   #theme(legend.position = "none") ## controls the presence of a legend</span><span class="w">
+</span></code></pre></div></div>
 
 </div>
 
