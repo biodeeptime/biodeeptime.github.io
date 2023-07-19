@@ -2,6 +2,7 @@
 layout: page
 title: Get in touch!
 permalink: /contact/
+hero_image: "/../images/bg/ocean.jpg"
 ---
 
 <div class="columns"> 

@@ -7,6 +7,7 @@ format:
     variant: +yaml_metadata_block
 permalink: /tutorials/
 layout: page
+hero_image: "../images/bg/ocean.jpg"
 ---
 
 The tutorial here represents the absolute basics of using the
@@ -131,7 +132,7 @@ str(bdt)
       ..$ item        : int 702
       ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
       ..$ bibtex      : chr "@misc{jansen_a_smith_2023_8154672,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-      ..$ downloadDate: POSIXct[1:1], format: "2023-07-18 13:01:36"
+      ..$ downloadDate: POSIXct[1:1], format: "2023-07-19 17:33:46"
       ..$ publishDate : chr "2023-07-12"
       ..$ infoURL     : logi NA
       ..$ API         : logi NA

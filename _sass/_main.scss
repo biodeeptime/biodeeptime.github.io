@@ -3,6 +3,8 @@
 
 $family-sans-serif: 'Montserrat', sans-serif;
 $primary: #0c7918 !default;
+$gray: #bbbbbb;
+
 
 $tabs-link-active-color: $primary;
 $tabs-link-active-border-bottom-color: $primary;
@@ -23,4 +25,15 @@ $hero-darken: $dark !default;
 
 .content table td{
 	text-align: right
+}
+
+
+.language-r .highlight{
+	background-color: #0c791805;
+
+}
+
+#funderyear{
+	color:$gray;
+	font-style:italic
 }

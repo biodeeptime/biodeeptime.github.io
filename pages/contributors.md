@@ -2,6 +2,7 @@
 layout: page
 title: Contributing databases
 permalink: database/contributing/
+hero_image: "/../../images/bg/ocean.jpg"
 ---
 
 BioDeepTime compiles assemblage time series data from a number of databases - all of which are publicly available. 

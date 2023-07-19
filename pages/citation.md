@@ -2,6 +2,7 @@
 layout: page
 title: Attribution
 permalink: database/attribution/
+hero_image: "../../images/bg/ocean.jpg"
 ---
 
 # License

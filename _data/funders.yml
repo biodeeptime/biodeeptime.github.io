@@ -1,4 +1,13 @@
+- ref: sDiv
+  year: 2023
+  name: sDiv - Synthesis Center of iDiv
+  webpage: https://www.idiv.de/en/sdiv
+  logo: images/logos/iDivLogo-short.jpg
+  funder_logo: images/logos/sDivLogo-black.png
+  text: We received the support of the <em>sDiv synthesis centre of iDiv</em> to investigate dynamics of community turnover across space and time in the form of a SynFlex project (<em>sTime</em>). 
+  what: 
 - ref: paleosynthesis
+  year: 2020
   name: The PaleoSynthesis project
   webpage: http://www.paleosynthesis.de/
   logo: images/logos/Syn-Paleo-sq.bmp
@@ -6,5 +15,3 @@
   text: BioDeepTime began in the context of Paleosynthesis project the provided the initial funding for the working group. The Paleosynthesis project is funded by Volkswagenstiftung. 
   what: The Paleosynthesis has provided funding for the travelling and accodomodation costs for our two first in-person meetings. 
 
-#- ref: sDiv
-#  name: sDiv Synthesis center

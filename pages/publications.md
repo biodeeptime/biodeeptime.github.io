@@ -2,6 +2,7 @@
 layout: page
 title: Publications
 permalink: /publications/
+hero_image: "/../images/bg/ocean.jpg"
 ---
 
 <table>

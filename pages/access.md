@@ -2,6 +2,7 @@
 layout: page
 title: Accessing data
 permalink: /database/access/
+hero_image: "../../images/bg/ocean.jpg"
 ---
 
 

@@ -3,10 +3,11 @@ layout: post
 title:  "BioDeepTime v1.0 is on Zenodo!"
 categories: biodeeptime
 author: BioDeepTime Team 
+hero_image: "/../images/bg/ocean.jpg"
 ---
 
 
-Finally, the first version of the database is online! 
+Finally, the version 1.0 of the database is online! 
 
 <div class="control">
 <div class="tags has-addons">

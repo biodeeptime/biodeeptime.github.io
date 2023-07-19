@@ -1,4 +1,4 @@
-- name: 1st Paleosynthesis on-site workshop  
+- name: 1<sup>st</sup> Paleosynthesis on-site workshop  
   year: 2022
   date: March 27 - March 30
   where: Erlangen - <a href="https://www.gzn.nat.fau.eu/">GeoZentrum Nordbayern, FAU </a>
@@ -23,7 +23,7 @@
     - smith
     - kiessling
 
-- name: 2nd Paleosynthesis on-site workshop  
+- name: 2<sup>nd</sup> Paleosynthesis on-site workshop  
   year: 2023
   date: January 10 - January 13 
   where: Erlangen - <a href="https://www.gzn.nat.fau.eu/">GeoZentrum Nordbayern, FAU </a>
@@ -47,3 +47,15 @@
     - tomasovych
     - penny 
     - dowding
+
+- name: sTime Working Group I meeting
+  year: 2024 
+  date: March (prospective)
+  where: Leipzig - <a href="https://www.idiv.de/en/index.html">German Centre for Integrative Biodiversity Research (iDiv)</a>
+  text: 
+  logo: images/logo_proper.png
+  funder:
+    - sDiv 
+  groupPhoto: images/misc/coming_up.jpg
+  groupPhoto_small: images/misc/coming_up.jpg
+  onsite:

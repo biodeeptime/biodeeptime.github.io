@@ -2,6 +2,7 @@
 layout: page
 title: Milestones
 permalink: database/milestones/
+hero_image: "/../../images/bg/ocean.jpg"
 ---
 
 <div class="columns">

@@ -21,29 +21,33 @@ The BioDeepTime Project aims to unravel the drivers of biodiversity dynamics by 
   <table class="summary">
 	<tr  style="background-color: #fafafa">
 		<th>Records:</th>
-		<td>{{row.records | format_number: "N"}}</td>
+		<td>{{row.records | intcomma: ',' }}</td>
 	</tr>
 	<tr>
-		<th>Sources:</th>
-		<td>{{row.db | format_number: "N"}}</td>
+		<th>References: </th>
+		<td>{{row.refs | intcomma: ',' }}</td>
 	</tr>
 	<tr  style="background-color: #fafafa">
+		<th>Source databases: </th>
+		<td>{{row.db}}</td>
+	</tr>
+	<tr>
 		<th>Time Series:</th>
-		<td>{{row.series}}</td>
-	</tr>
-	<tr>
-		<th>Samples:</th>
-		<td>{{row.samples}}</td>
+		<td>{{row.series | intcomma: ',' }}</td>
 	</tr>
 	<tr  style="background-color: #fafafa">
-		<th>Taxon entries:</th>
-		<td>{{row.taxa}}</td>
+		<th>Samples:</th>
+		<td>{{row.samples | intcomma: ',' }}</td>
 	</tr>
 	<tr>
+		<th>Taxon entries:</th>
+		<td>{{row.taxa  | intcomma: ',' }}</td>
+	</tr>
+	<tr style="background-color: #fafafa">
 		<th>Oldest sample:</th>
 		<td>{{row.from_ma}} Ma</td>
 	</tr>
-	<tr style="background-color: #fafafa">
+	<tr>
 		<th>Youngest sample:</th>
 		<td>{{row.to_year}}</td>
 	</tr>

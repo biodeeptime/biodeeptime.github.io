@@ -2,6 +2,7 @@
 layout: page
 title: Workshops
 permalink: team/workshops/
+hero_image: "../../images/bg/ocean.jpg"
 ---
 
 {% assign wsord = site.data.workshops | sort: 'year' | reverse %}
@@ -40,17 +41,19 @@ permalink: team/workshops/
 			</div>
 		</div>
 		<br>
-		<h4>Participants (in-person)</h4>
-		{% assign everyone = site.data.people | sort: 'last'%}
-		{% assign groupsize = ws.onsite | size %}
-		{% assign i = 1 %}
-		{% for person in everyone %}
-			{% if ws.onsite contains person.ref%}
-		<a href="{{site.url}}{{site.baseurl}}/team/people/#{{ person.first | append: " " | append: person.last | slugify }}">{{person.first}} {{person.last}}</a> 
-			{% unless groupsize == i %} | {% endunless %}
-			{% assign i = i | plus:1 %}
-			{% endif %}
-		{% endfor %}
+		{% if ws.onsite %}
+			<h4>Participants (in-person)</h4>
+			{% assign everyone = site.data.people | sort: 'last'%}
+			{% assign groupsize = ws.onsite | size %}
+			{% assign i = 1 %}
+			{% for person in everyone %}
+				{% if ws.onsite contains person.ref%}
+			<a href="{{site.url}}{{site.baseurl}}/team/people/#{{ person.first | append: " " | append: person.last | slugify }}">{{person.first}} {{person.last}}</a> 
+				{% unless groupsize == i %} | {% endunless %}
+				{% assign i = i | plus:1 %}
+				{% endif %}
+			{% endfor %}
+		{% endif %}
 	</div>
 	<div class="column is-two-fifth">
 
