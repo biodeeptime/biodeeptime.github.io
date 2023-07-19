@@ -4143,4 +4143,8 @@ div.highlight { margin-bottom: 1rem; }
 
 .content table td { text-align: right; }
 
+.language-r .highlight { background-color: #0c791805; }
+
+#funderyear { color: #bbbbbb; font-style: italic; }
+
 /*# sourceMappingURL=app.css.map */

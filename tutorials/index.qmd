@@ -44,7 +44,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a href="/" class="navbar-item">
-              <img src="https://biodeeptime.github.io/images/logo.png" style="margin-right:5px">
+              <img src="https://biodeeptime.github.io/images/logo_proper.png" style="margin-right:5px">
 			  BioDeepTime
             </a>
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu" :class="{ 'is-active': openNav }" x-on:click="openNav = !openNav">
@@ -124,7 +124,7 @@
 </nav>
 
     
-        <section class="hero  is-medium  is-bold is-primary" >
+        <section class="hero  is-medium  is-bold is-primary"  style="background: url('../images/bg/ocean.jpg') no-repeat center center; background-size: cover;" >
     <div class="hero-body ">
         <div class="container">
 		  <div class="columns is-vcentered">
@@ -134,7 +134,7 @@
 			  
 			</div>
 			<div class="column is-2" style="text-align:center">
-			  <a href="https://biodeeptime.github.io"><img src="https://biodeeptime.github.io/images/logo.png" width="400px"></a>
+			  <a href="https://biodeeptime.github.io"><img src="https://biodeeptime.github.io/images/logo_proper.png" width="400px"></a>
 			</div>
 			</div>
         </div>
@@ -200,6 +200,8 @@ str(bdt)
 
 ```{r, echo=FALSE, include=FALSE}
 ##### THIS CHUNK IS NOT PART OF THE TUTORIAL - this creates the summary statistics on the webpage!!!!
+refs <- length(unique(unlist(strsplit(bdt$refID, ","))))
+
 summ <- data.frame(
 	records=nrow(bdt),
 	db=length(table(bdt$db)),
@@ -207,7 +209,8 @@ summ <- data.frame(
 	samples=length(table(bdt$sampleID)), 
 	taxa=length(table(bdt$analyzedTaxon)), 
 	from_ma=round(max(bdt$age)/1e4)/100, 
-	to_year=1950-min(bdt$age) 
+	to_year=1950-min(bdt$age),
+	refs=refs
 )
 write.csv(summ, file="../_data/summary.csv")
 ##### THIS CHUNK IS NOT PART OF THE TUTORIAL - this creates the summary statistics on the webpage!!!!
