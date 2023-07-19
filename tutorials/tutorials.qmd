@@ -28,8 +28,9 @@ The BioDeepTime database is made available through the 'chronosphere' research d
 
 
 ```{r chroninst, message=FALSE, eval=FALSE, echo=TRUE}
-install.packages("chronosphere")
-install.packages("tidyverse")
+install.packages("chronosphere") # used to call the data
+install.packages("tidyverse") # used for data manipulation and plotting
+install.packages("ggrepel") # used for plotting
 ```
 
 The most up-to-date version of the denormalized BioDeepTiem database can be accessed with: 
@@ -37,7 +38,8 @@ The most up-to-date version of the denormalized BioDeepTiem database can be acce
 ```{r download}
 # attach package
 library(chronosphere)
-library(tidyverse) # for data manipulation
+library(tidyverse)
+library(ggrepel)
 
 # download data, verbose=FALSE hides the default chatter 
 bdt <- fetch("biodeeptime", verbose=FALSE)
@@ -158,14 +160,14 @@ databases$labelPosition <- (databases$ymax + databases$ymin)/2
 databases$label <- paste0(databases$db, ", ", databases$count)
 
 # # Make the plot
-# ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
-# 	geom_rect() +
-# 	#geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)
-# 	scale_fill_manual(values = colors) +
-# 	coord_polar(theta="y") +
-# 	xlim(c(2, 4)) +
-# 	theme_void()# +
-# 	#theme(legend.position = "none") ## controls the presence of a legend
+ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
+   geom_rect() +
+   geom_label_repel(x = 4, aes(y=labelPosition, label=label), size=4) + ## x controls label position (inside/outside donut)
+   scale_fill_brewer(palette = "Set3") +
+   coord_polar(theta="y") +
+   xlim(c(2, 4)) +
+   theme_void() +
+   theme(legend.position = "none") ## controls the presence of a legend
 
 ```
 
