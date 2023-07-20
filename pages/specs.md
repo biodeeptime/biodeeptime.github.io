@@ -5,7 +5,7 @@ permalink: /contribute/
 hero_image: "/../images/bg/ocean.jpg"
 ---
 
-We are continuously looking for new data to be included in **BioDeepTime**. Optimally, these should be uploaded to one of our [source databases]({{site.url}}{{site.baseurl}}/databases/contributors/), from where we can access the data in the next update. However, if adding your data in such a way is not feasible, it can be incorporated directly into **BioDeepTime**. Please, [get in touch with us]({{site.url}}{{site.baseurl}}/contact/), if you would like to contribute! 
+We are continuously looking for new data to be included in **BioDeepTime**. Optimally, these should be uploaded to one of our [source databases]({{site.url}}{{site.baseurl}}/database/contributing/), from where we can access the data in the next update. However, if adding your data in such a way is not feasible, it can be incorporated directly into **BioDeepTime**. Please, [get in touch with us]({{site.url}}{{site.baseurl}}/contact/), if you would like to contribute! 
 
 ## Criteria for data to be contributed 
 
@@ -30,3 +30,9 @@ We are continuously looking for new data to be included in **BioDeepTime**. Opti
 ### (4) Available or calculable temporal information (with generally understood uncertainties)
 * Intended community turnover analyses require absolute age estimates for samples, particularly when attempting to correlate to potential causative environmental drivers.
 * Many fossil time series—for instance from the Paleobiology Database—were omitted because of inherent uncertainties in sample ages. For example, ages based solely on stratigraphic position at the resolution of a geological stage can have uncertainties of hundreds of thousands or millions of years. Future versions of BioDeepTime will attempt to include these types of records, after the age models associated with them have been improved.
+
+
+## Spreadsheet template
+
+If you wish to contribute data, feel free to check out our [spreadsheet template]({{site.url}}{{site.baseurl}}/downloads/bdt_spreadsheet_template.xlsx) for quick-formatting data to be added to BioDeepTime (see table and field descriptions on the [database structure]({{site.url}}{{site.baseurl}}/databases/structure/) page). 
+
