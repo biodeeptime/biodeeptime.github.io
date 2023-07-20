@@ -26,8 +26,9 @@ client](https://cran.r-project.org/package=chronosphere) to access data
 can be installed from the CRAN servers with:
 
 ``` r
-install.packages("chronosphere")
-install.packages("tidyverse")
+install.packages("chronosphere") # used to call the data
+install.packages("tidyverse") # used for data manipulation and plotting
+install.packages("ggrepel") # used for plotting
 ```
 
 The most up-to-date version of the denormalized BioDeepTiem database can
@@ -46,25 +47,27 @@ library(chronosphere)
      - Arrays of raster and vector spatials -> package 'via'
 
 ``` r
-library(tidyverse) # for data manipulation
+library(tidyverse)
 ```
 
-    ── Attaching packages
-    ───────────────────────────────────────
-    tidyverse 1.3.2 ──
+    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ✔ dplyr     1.1.2     ✔ readr     2.1.4
+    ✔ forcats   1.0.0     ✔ stringr   1.5.0
+    ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+    ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+    ✔ purrr     1.0.1     
 
-    ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
-    ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-    ✔ tidyr   1.2.0      ✔ stringr 1.4.0 
-    ✔ readr   2.1.2      ✔ forcats 0.5.1 
     ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ✖ dplyr::collapse() masks divDyn::collapse()
     ✖ tidyr::fill()     masks divDyn::fill()
     ✖ dplyr::filter()   masks stats::filter()
     ✖ dplyr::lag()      masks stats::lag()
     ✖ dplyr::slice()    masks divDyn::slice()
+    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
 ``` r
+library(ggrepel)
+
 # download data, verbose=FALSE hides the default chatter 
 bdt <- fetch("biodeeptime", verbose=FALSE)
 ```
@@ -132,7 +135,7 @@ str(bdt)
       ..$ item        : int 702
       ..$ reference   : chr "Jansen A. Smith, Marina C. Rillo, Ádám T. Kocsis, Maria Dornelas, David Fastovich, Huai-Hsuan M. Huang, Lukas J"| __truncated__
       ..$ bibtex      : chr "@misc{jansen_a_smith_2023_8154672,\n author = {Jansen A. Smith and\nMarina C. Rillo and\nÁdám T. Kocsis and\nMa"| __truncated__
-      ..$ downloadDate: POSIXct[1:1], format: "2023-07-19 17:33:46"
+      ..$ downloadDate: POSIXct[1:1], format: "2023-07-20 09:51:33"
       ..$ publishDate : chr "2023-07-12"
       ..$ infoURL     : logi NA
       ..$ API         : logi NA
@@ -228,6 +231,12 @@ overview <- bdt %>%
                    extent =  maxAge - minAge) ## temporal extent (duration) of the time series
 ```
 
+    Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
+    dplyr 1.1.0.
+    ℹ Please use `reframe()` instead.
+    ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
+      always returns an ungrouped data frame and adjust accordingly.
+
     `summarise()` has grouped output by 'seriesID'. You can override using the
     `.groups` argument.
 
@@ -258,12 +267,14 @@ databases$labelPosition <- (databases$ymax + databases$ymin)/2
 databases$label <- paste0(databases$db, ", ", databases$count)
 
 # # Make the plot
-# ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
-#   geom_rect() +
-#   #geom_text(x=2, aes(y=labelPosition, label=label), size=6) + ## x here controls label position (inner / outer)
-#   scale_fill_manual(values = colors) +
-#   coord_polar(theta="y") +
-#   xlim(c(2, 4)) +
-#   theme_void()# +
-#   #theme(legend.position = "none") ## controls the presence of a legend
+ggplot(databases, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=db)) +
+   geom_rect() +
+   geom_label_repel(x = 4, aes(y=labelPosition, label=label), size=4) + ## x controls label position (inside/outside donut)
+   scale_fill_brewer(palette = "Set3") +
+   coord_polar(theta="y") +
+   xlim(c(2, 4)) +
+   theme_void() +
+   theme(legend.position = "none") ## controls the presence of a legend
 ```
+
+![](tutorials_files/figure-commonmark/unnamed-chunk-3-1.png)
