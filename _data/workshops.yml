@@ -34,7 +34,6 @@
   groupPhoto: images/workshops/second_workshop.png
   groupPhoto_small: images/workshops/second_workshop_small.png
   onsite:
-    - margulis
     - kocsis
     - fastovich
     - pippenger
@@ -47,6 +46,8 @@
     - tomasovych
     - penny 
     - dowding
+    - gaiser
+    - vizcaino
 
 - name: sTime Working Group I meeting
   year: 2024 

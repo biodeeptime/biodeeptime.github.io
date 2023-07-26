@@ -172,3 +172,17 @@
   institute: GeoZentrum Nordbayern, Friedrich-Alexander-Universität Erlangen-Nürnberg 
   image: Dowding.jpeg
   special:
+- ref: gaiser
+  first: Franka
+  last: Gaiser  
+  webpage: https://www.bayceer.uni-bayreuth.de/gce/de/mitarbeiter/mit/mitarbeiter_detail.php?id_obj=158576
+  institute: University of Bayreuth 
+  image: gaiser.jpg
+  special:
+- ref: vizcaino
+  first: Maoli 
+  last: Vizcaino 
+  webpage: https://people.earth.yale.edu/profile/maoli-vizcaino/about
+  institute: Yale University
+  image: vizcaino.jpeg
+  special:
