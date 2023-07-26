@@ -1,5 +1,9 @@
 - name: About
-  link: /about/
+  link: /about/us/
+#  dropdown:
+#    - name: Us
+#    - name: Related projects
+#      link: /about/related/
 - name: Team
   dropdown:
     - name: People

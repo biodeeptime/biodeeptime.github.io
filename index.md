@@ -13,7 +13,7 @@ hero_image: "/images/bg/ocean.jpg"
 The BioDeepTime Project aims to unravel the drivers of biodiversity dynamics by leveraging the combined power of ecological and fossil timeseries and by advancing broadly integrative theories of biodiversity change and scaling in time.</p> 
 	<div class="buttons">
 		<a class="button is-info" href="{{site.url}}{{site.basurl}}/database/access/">Access database</a>
-		<a class="button is-primary" style="text-decoration:line-through">Database paper</a>
+		<a class="button is-primary" href="https://doi.org/10.1111/geb.13735">Database paper</a>
 	</div>
   </div>
   <div class="column">

@@ -9,7 +9,7 @@ hero_image: "/../images/bg/ocean.jpg"
 {% for paper in site.data.publications %}
 <tr>
   <td> {{paper.number}}. </td>
-  <td style="padding-left: 22px ; text-indent: -22px ;text-align:left"> {{paper.text}}</td>
+  <td style="padding-left: 22px ; text-indent: -22px ;text-align:left">{{paper.text}}</td>
 </tr>
 {% endfor %}
 </table>
