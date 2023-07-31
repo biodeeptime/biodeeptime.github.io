@@ -2,7 +2,7 @@
 layout: page
 title: Get in touch!
 permalink: /contact/
-hero_image: "/../images/bg/ocean.jpg"
+hero_image: "/../images/bg/IMG_7177.jpg"
 ---
 
 <div class="columns"> 

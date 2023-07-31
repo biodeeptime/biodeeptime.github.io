@@ -2,7 +2,7 @@
 layout: page
 title: Funding history
 permalink: team/funding/
-hero_image: "/../../images/bg/ocean.jpg"
+hero_image: "/../../images/bg/IMG_6166.jpg"
 ---
 
 {% for funder in site.data.funders %}

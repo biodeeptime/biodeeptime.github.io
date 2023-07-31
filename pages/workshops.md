@@ -2,7 +2,7 @@
 layout: page
 title: Workshops
 permalink: team/workshops/
-hero_image: "../../images/bg/ocean.jpg"
+hero_image: "/../../images/bg/IMG_6166.jpg"
 ---
 
 {% assign wsord = site.data.workshops | sort: 'year' | reverse %}

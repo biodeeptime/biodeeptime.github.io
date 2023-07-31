@@ -16,9 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(divDyn)
 ```
 
-The tutorial here represents the absolute basics of using the BioDeepTime database. More elaborate tutorials will be made available on [Evolv-ED](https://www.evolv-ed.net/databases/registry/biodeeptime.html).
+The tutorial here represents the absolute basics of using the BioDeepTime database. More elaborate tutorials will be made available on Evolv-ED (Under construction).
 
-Add `toc: true` to the metadata of the .md file for a table of contents.
 
 ## The Data
 

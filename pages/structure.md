@@ -16,7 +16,7 @@ hero_image: "../../images/bg/ocean.jpg"
 BioDeepTime is a relational database compiled and stored in the SQLite 3 standard. Due to heterogeneity of the original data and variation in their focus and scopes, only a fraction of the data fields are copied over from the original database.  
 
 <a href="{{site.url}}{{site.baseurl}}/images/concept.png" ><img src="{{site.url}}{{site.baseurl}}/images/concept.png"></a>
-[*The basic entities of BioDeepTime (Smith et al. [In Press])*]({{site.url}}{{site.baseurl}}/database/attribution/#data-paper)
+[*The basic entities of BioDeepTime (Smith, Rillo and Kocsis et al. [2023])*]({{site.url}}{{site.baseurl}}/database/attribution/#data-paper)
 
 
 ## Current structure

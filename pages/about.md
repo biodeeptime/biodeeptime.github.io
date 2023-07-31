@@ -2,7 +2,7 @@
 layout: page
 title: About BioDeepTime
 permalink: /about/us/
-hero_image: "../../images/bg/ocean.jpg"
+hero_image: "../../images/bg/IMG_7037.jpg"
 ---
 
 The BioDeepTime Project seeks to address one of the central challenges in biodiversity science by compiling and harmonizing ecological time series from modern and fossil sources to investigate how biological dynamics and drivers vary across timescales ranging from months to millions of years. The project was launched as Paleosynthesis Center working group in 2020, resulting in the BioDeepTime database v1.0, and continues to pursue questions related to temporal dynamics of biodiversity.

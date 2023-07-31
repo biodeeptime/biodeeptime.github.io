@@ -2,7 +2,7 @@
 layout: page
 title: People
 permalink: team/people/
-hero_image: "/../../images/bg/ocean.jpg"
+hero_image: "/../../images/bg/IMG_6166.jpg"
 ---
 
 # Project Coordination and Database Development

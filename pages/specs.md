@@ -2,7 +2,7 @@
 layout: page
 title: Contributing data
 permalink: /contribute/
-hero_image: "/../images/bg/ocean.jpg"
+hero_image: "/../images/bg/IMG_7177.jpg"
 ---
 
 We are continuously looking for new data to be included in **BioDeepTime**. Optimally, these should be uploaded to one of our [source databases]({{site.url}}{{site.baseurl}}/database/contributing/), from where we can access the data in the next update. However, if adding your data in such a way is not feasible, it can be incorporated directly into **BioDeepTime**. Please, [get in touch with us]({{site.url}}{{site.baseurl}}/contact/), if you would like to contribute! 
