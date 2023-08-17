@@ -15,4 +15,5 @@ The website was made by [Ádám T. Kocsis]({{site.url}}{{site.baseurl}}/team/peo
 ### Hero backgroud image sources
 
 - [Great Barrier Reef](https://www.besthdwallpaper.com/islands/great-barrier-reef-island-ocean-dt_en-US-85084.html)
+- On pages under *About*, *Team*, *Publications*, *Contribute!* and *Contact* were taken by [Erin Saupe]({{site.url}}{{site.baseurl}}/team/people/#erin-saupe)
 
