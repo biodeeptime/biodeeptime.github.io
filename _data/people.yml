@@ -186,3 +186,24 @@
   institute: Yale University
   image: vizcaino.jpeg
   special:
+- ref: straube 
+  first: Eileen 
+  last: Straube 
+  webpage: https://www.spowi5.uni-bayreuth.de/de/team/Straube/index.php
+  institute: University of Bayreuth
+  image: EileenS.jpg
+  special:
+- ref: samuelsfair
+  first: Maya 
+  last: Samuels-Fair 
+  webpage: https://ucmp.berkeley.edu/
+  institute: University of California, Berkeley
+  image: samuels-fair.jpg
+  special:
+- ref: hagen 
+  first: Oskar 
+  last: Hagen 
+  webpage: https://hagen.bio/
+  institute: German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig
+  image: OskarHagen2022.jpg
+  special:
