@@ -51,12 +51,30 @@
 
 - name: sTime Working Group I meeting
   year: 2024 
-  date: March (prospective)
+  date: April 8 - April 12 
   where: Leipzig - <a href="https://www.idiv.de/en/index.html">German Centre for Integrative Biodiversity Research (iDiv)</a>
   text: 
   logo: images/logo_proper.png
   funder:
     - sDiv 
-  groupPhoto: images/misc/coming_up.jpg
-  groupPhoto_small: images/misc/coming_up.jpg
+  groupPhoto: images/workshops/sTime2024_2.jpg
+  groupPhoto_small: images/workshops/sTime2024_2_small.jpg
   onsite:
+    - kocsis
+    - rillo
+    - smith
+    - dornelas
+    - tomasovych
+    - penny 
+    - may
+    - saupe
+    - hull
+    - straube
+    - hagen 
+    - rangel 
+    - petryshen 
+    - samuelsfair 
+    - miller 
+    - li 
+    - sugawara
+    - blowes 

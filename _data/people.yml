@@ -214,17 +214,24 @@
   institute: Yale University
   image: Wyatt3.jpg
   special:
-- ref: petryshen 
-  first: Wyatt  
-  last: Petryshen 
-  webpage: https://wyattpetryshen.com/
-  institute: Yale University
-  image: Wyatt3.jpg
-  special:
 - ref: miller 
   first: Zach  
   last: Miller 
   webpage: https://zacharyrmiller.netlify.app/
   institute: Yale University
   image: miller.jpeg 
+  special:
+- ref: rangel 
+  first: Thiago  
+  last: Rangel 
+  webpage: http://www.rangel.bio.br/
+  institute: Federal University of Goiás
+  image: rangel.png 
+  special:
+- ref: blowes 
+  first: Shane  
+  last: Blowes 
+  webpage: https://www.idiv.de/en/profile/719.html
+  institute: German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig
+  image: blowes.jpeg 
   special:
