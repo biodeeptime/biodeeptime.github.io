@@ -34,5 +34,5 @@ We are continuously looking for new data to be included in **BioDeepTime**. Opti
 
 ## Spreadsheet template
 
-If you wish to contribute data, feel free to check out our [spreadsheet template]({{site.url}}{{site.baseurl}}/downloads/bdt_spreadsheet_template.xlsx) for quick-formatting data to be added to BioDeepTime (see table and field descriptions on the [database structure]({{site.url}}{{site.baseurl}}/databases/structure/) page). 
+If you wish to contribute data, feel free to check out our [new, simplified spreadsheet template]({{site.url}}{{site.baseurl}}/downloads/bdt_simplified_template.xlsx) for quick-formatting data to be added to BioDeepTime (see table and field descriptions on the [database structure]({{site.url}}{{site.baseurl}}/databases/structure/) page). 
 
