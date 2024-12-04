@@ -11,6 +11,7 @@ The **BioDeepTime** webpage is built using the open-source content management so
 
 The website was made by [Ádám T. Kocsis]({{site.url}}{{site.baseurl}}/team/people/#ádám-kocsis), to whom all questions about it should be addressed. 
 
+The BioDeepTime logo was designed by Stefan Berhardt.
 
 ### Hero backgroud image sources
 
