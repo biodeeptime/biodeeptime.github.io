@@ -235,3 +235,31 @@
   institute: German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig
   image: blowes.jpeg 
   special:
+- ref: shipley 
+  first: Benjamin 
+  last: Shipley 
+  webpage: 
+  institute: Monash University
+  image: generic.png
+  special:
+- ref: fritz 
+  first: Susanne  
+  last: Fritz 
+  webpage: 
+  institute: German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig
+  image: generic.png
+  special:
+- ref: benevento 
+  first: Gemma  
+  last: Benevento 
+  webpage: 
+  institute: German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig
+  image: generic.png
+  special:
+- ref: clarke
+  first: Alexander  
+  last: Clarke 
+  webpage: 
+  institute: Yale University
+  image: generic.png
+  special:

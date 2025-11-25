@@ -48,8 +48,9 @@
     - dowding
     - gaiser
     - vizcaino
+    - shipley 
 
-- name: sTime Working Group I meeting
+- name: 1<sup>st</sup> sTime Working Group I meeting
   year: 2024 
   date: April 8 - April 12 
   where: Leipzig - <a href="https://www.idiv.de/en/index.html">German Centre for Integrative Biodiversity Research (iDiv)</a>
@@ -78,3 +79,32 @@
     - li 
     - sugawara
     - blowes 
+
+- name: 2<sup>nd</sup> sTime Working Group meeting
+  year: 2025 
+  date: November 10 - November 13 
+  where: Leipzig - <a href="https://www.idiv.de/en/index.html">German Centre for Integrative Biodiversity Research (iDiv)</a>
+  text: 
+  logo: images/logo_proper.png
+  funder:
+    - sDiv 
+  groupPhoto: images/workshops/sTime_2_group picture2.jpg
+  groupPhoto_small: images/workshops/sTime_2_group picture2_small.jpg
+  onsite:
+    - kocsis
+    - rillo
+    - smith
+    - saupe
+    - hull
+    - hagen 
+    - rangel 
+    - petryshen 
+    - miller 
+    - sugawara
+    - blowes 
+    - finnegan
+    - shipley 
+    - fritz 
+    - liow 
+    - clarke 
+    - benevento 
